@@ -579,6 +579,10 @@ video {
   margin-top: 1.5rem;
 }
 
+.mr-20 {
+  margin-right: 5rem;
+}
+
 .flex {
   display: flex;
 }
@@ -599,6 +603,10 @@ video {
   width: 2rem;
 }
 
+.w-full {
+  width: 100%;
+}
+
 .shrink-0 {
   flex-shrink: 0;
 }
@@ -609,8 +617,20 @@ video {
           user-select: none;
 }
 
+.flex-row {
+  flex-direction: row;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
 .flex-wrap {
   flex-wrap: wrap;
+}
+
+.items-start {
+  align-items: flex-start;
 }
 
 .items-center {
@@ -619,6 +639,10 @@ video {
 
 .justify-center {
   justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
 }
 
 .gap-3 {
@@ -641,8 +665,27 @@ video {
   border-radius: 9999px;
 }
 
+.border-2 {
+  border-width: 2px;
+}
+
 .border-t-\[1px\] {
   border-top-width: 1px;
+}
+
+.border-gray-500 {
+  --tw-border-opacity: 1;
+  border-color: rgb(107 114 128 / var(--tw-border-opacity));
+}
+
+.border-white {
+  --tw-border-opacity: 1;
+  border-color: rgb(255 255 255 / var(--tw-border-opacity));
+}
+
+.border-black {
+  --tw-border-opacity: 1;
+  border-color: rgb(0 0 0 / var(--tw-border-opacity));
 }
 
 .bg-black {
@@ -668,8 +711,49 @@ video {
   padding-bottom: 3rem;
 }
 
+.py-2 {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
 .py-6 {
   padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+.pb-40 {
+  padding-bottom: 10rem;
+}
+
+.pr-16 {
+  padding-right: 4rem;
+}
+
+.pt-2 {
+  padding-top: 0.5rem;
+}
+
+.pt-4 {
+  padding-top: 1rem;
+}
+
+.pt-6 {
+  padding-top: 1.5rem;
+}
+
+.pr-40 {
+  padding-right: 10rem;
+}
+
+.pl-20 {
+  padding-left: 5rem;
+}
+
+.pb-20 {
+  padding-bottom: 5rem;
+}
+
+.pb-6 {
   padding-bottom: 1.5rem;
 }
 
@@ -684,6 +768,14 @@ video {
 
 .uppercase {
   text-transform: uppercase;
+}
+
+.leading-none {
+  line-height: 1;
+}
+
+.leading-tight {
+  line-height: 1.25;
 }
 
 .text-black {
@@ -707,17 +799,50 @@ video {
   background-color: rgb(98 109 214 / var(--tw-bg-opacity)) /* #626dd6 */;
 }
 
-p.cimc-logo-copy {
-  line-height: 1;
-  white-space: nowrap;
+.text-cimc-blue {
+  color: rgb(98 109 214 / var(--tw-bg-opacity)) /* #626dd6 */;
 }
 
-span.cimc-black-logo-copy {
-  color: #000000;
+.cimc-standard {
+  font-family: Helvetica, sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: normal;
+}
+
+.cimc-heading {
+  font-family: Helvetica, sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: bold;
+  line-height: 2;
+}
+
+.cimc-logo-copy {
   font-family: Helvetica, sans-serif;
   font-size: 20px;
   font-style: normal;
   font-weight: bold;
+}
+
+.selection\:bg-gray-500 *::-moz-selection {
+  --tw-bg-opacity: 1;
+  background-color: rgb(107 114 128 / var(--tw-bg-opacity));
+}
+
+.selection\:bg-gray-500 *::selection {
+  --tw-bg-opacity: 1;
+  background-color: rgb(107 114 128 / var(--tw-bg-opacity));
+}
+
+.selection\:text-black *::-moz-selection {
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
+}
+
+.selection\:text-black *::selection {
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
 }
 
 .selection\:text-white *::-moz-selection {
@@ -728,6 +853,26 @@ span.cimc-black-logo-copy {
 .selection\:text-white *::selection {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.selection\:bg-gray-500::-moz-selection {
+  --tw-bg-opacity: 1;
+  background-color: rgb(107 114 128 / var(--tw-bg-opacity));
+}
+
+.selection\:bg-gray-500::selection {
+  --tw-bg-opacity: 1;
+  background-color: rgb(107 114 128 / var(--tw-bg-opacity));
+}
+
+.selection\:text-black::-moz-selection {
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
+}
+
+.selection\:text-black::selection {
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
 }
 
 .selection\:text-white::-moz-selection {
@@ -784,5 +929,9 @@ span.cimc-black-logo-copy {
 @media (min-width: 768px) {
   .md\:flex {
     display: flex;
+  }
+
+  .md\:pl-20 {
+    padding-left: 5rem;
   }
 }

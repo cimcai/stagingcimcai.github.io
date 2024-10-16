@@ -6,12 +6,23 @@
     --tw-bg-opacity: 1;
     background-color: rgb(98 109 214 / var(--tw-bg-opacity)) /* #626dd6 */;
 }
-p.cimc-logo-copy {
-    line-height: 1;
-    white-space: nowrap;
+.text-cimc-blue {
+    color: rgb(98 109 214 / var(--tw-bg-opacity)) /* #626dd6 */;
 }
-span.cimc-black-logo-copy {
-    color: #000000;
+.cimc-standard {
+    font-family: Helvetica, sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: normal;
+}
+.cimc-heading {
+    font-family: Helvetica, sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: bold;
+    line-height: 2;
+}
+.cimc-logo-copy {
     font-family: Helvetica, sans-serif;
     font-size: 20px;
     font-style: normal;
