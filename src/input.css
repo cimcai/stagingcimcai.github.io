@@ -2,3 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+.bg-cimc-blue {
+    --tw-bg-opacity: 1;
+    background-color: rgb(98 109 214 / var(--tw-bg-opacity)) /* #626dd6 */;
+}
