@@ -28,6 +28,12 @@
     font-style: normal;
     font-weight: bold;
 }
+.cimc-small-logo-copy {
+    font-family: Helvetica, sans-serif;
+    font-style: normal;
+    font-size: 11px;
+    font-weight: 700;
+}
 .footer {
     background-image: url("../assets/botsun.svg");
     background-size: cover

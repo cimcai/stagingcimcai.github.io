@@ -558,32 +558,12 @@ video {
   margin-right: 0.75rem;
 }
 
-.mr-40 {
-  margin-right: 10rem;
-}
-
 .mr-auto {
   margin-right: auto;
 }
 
-.mt-6 {
-  margin-top: 1.5rem;
-}
-
-.mr-20 {
-  margin-right: 5rem;
-}
-
-.mr-8 {
-  margin-right: 2rem;
-}
-
 .flex {
   display: flex;
-}
-
-.hidden {
-  display: none;
 }
 
 .h-4 {
@@ -598,8 +578,16 @@ video {
   width: 1rem;
 }
 
+.w-6\/12 {
+  width: 50%;
+}
+
 .w-8 {
   width: 2rem;
+}
+
+.w-\[729px\] {
+  width: 729px;
 }
 
 .w-full {
@@ -632,12 +620,20 @@ video {
   align-items: flex-start;
 }
 
+.items-end {
+  align-items: flex-end;
+}
+
 .items-center {
   align-items: center;
 }
 
 .justify-start {
   justify-content: flex-start;
+}
+
+.justify-end {
+  justify-content: flex-end;
 }
 
 .justify-center {
@@ -658,15 +654,6 @@ video {
   --tw-space-y-reverse: 0;
   margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(1rem * var(--tw-space-y-reverse));
-}
-
-.border-t-\[1px\] {
-  border-top-width: 1px;
-}
-
-.border-gray-500 {
-  --tw-border-opacity: 1;
-  border-color: rgb(107 114 128 / var(--tw-border-opacity));
 }
 
 .bg-black {
@@ -697,18 +684,21 @@ video {
   padding-bottom: 0.5rem;
 }
 
-.py-6 {
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
-}
-
-.py-64 {
-  padding-top: 16rem;
-  padding-bottom: 16rem;
+.px-6 {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
 }
 
 .pb-40 {
   padding-bottom: 10rem;
+}
+
+.pl-8 {
+  padding-left: 2rem;
+}
+
+.pl-\[175px\] {
+  padding-left: 175px;
 }
 
 .pt-2 {
@@ -723,37 +713,17 @@ video {
   padding-top: 1.5rem;
 }
 
-.pt-8 {
-  padding-top: 2rem;
-}
-
-.pl-\[175px\] {
-  padding-left: 175px;
-}
-
-.pl-8 {
-  padding-left: 2rem;
-}
-
-.pl-6 {
-  padding-left: 1.5rem;
-}
-
 .pt-64 {
   padding-top: 16rem;
+}
+
+.pt-8 {
+  padding-top: 2rem;
 }
 
 .text-sm {
   font-size: 0.875rem;
   line-height: 1.25rem;
-}
-
-.font-bold {
-  font-weight: 700;
-}
-
-.uppercase {
-  text-transform: uppercase;
 }
 
 .leading-none {
@@ -809,6 +779,13 @@ video {
   font-size: 20px;
   font-style: normal;
   font-weight: bold;
+}
+
+.cimc-small-logo-copy {
+  font-family: Helvetica, sans-serif;
+  font-style: normal;
+  font-size: 11px;
+  font-weight: 700;
 }
 
 .footer {
@@ -882,23 +859,9 @@ video {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
-@media not all and (min-width: 1536px) {
-  .max-2xl\:hidden {
-    display: none;
-  }
-}
-
 @media not all and (min-width: 768px) {
-  .max-md\:ml-auto {
-    margin-left: auto;
-  }
-
   .max-md\:hidden {
     display: none;
-  }
-
-  .max-md\:gap-3 {
-    gap: 0.75rem;
   }
 
   .max-md\:px-6 {
@@ -906,38 +869,33 @@ video {
     padding-right: 1.5rem;
   }
 
-  .max-md\:pl-6 {
-    padding-left: 1.5rem;
+  .max-md\:px-48 {
+    padding-left: 12rem;
+    padding-right: 12rem;
   }
 
   .max-md\:pb-8 {
     padding-bottom: 2rem;
   }
 
-  .max-md\:pl-\[175px\] {
-    padding-left: 175px;
+  .max-md\:pl-6 {
+    padding-left: 1.5rem;
   }
 
-  .max-md\:pl-8 {
-    padding-left: 2rem;
+  .max-md\:pt-40 {
+    padding-top: 10rem;
   }
-}
 
-@media not all and (min-width: 640px) {
-  .max-sm\:hidden {
-    display: none;
+  .max-md\:pb-64 {
+    padding-bottom: 16rem;
+  }
+
+  .max-md\:pt-64 {
+    padding-top: 16rem;
   }
 }
 
 @media (min-width: 640px) {
-  .sm\:ml-auto {
-    margin-left: auto;
-  }
-
-  .sm\:mt-0 {
-    margin-top: 0px;
-  }
-
   .sm\:flex {
     display: flex;
   }
@@ -952,15 +910,6 @@ video {
     --tw-space-y-reverse: 0;
     margin-top: calc(0px * calc(1 - var(--tw-space-y-reverse)));
     margin-bottom: calc(0px * var(--tw-space-y-reverse));
-  }
-
-  .sm\:text-right {
-    text-align: right;
-  }
-
-  .sm\:text-base {
-    font-size: 1rem;
-    line-height: 1.5rem;
   }
 }
 
@@ -981,20 +930,23 @@ video {
     justify-content: center;
   }
 
-  .md\:py-0 {
-    padding-top: 0px;
-    padding-bottom: 0px;
+  .md\:pb-64 {
+    padding-bottom: 16rem;
   }
 
   .md\:pl-20 {
     padding-left: 5rem;
   }
 
-  .md\:pb-64 {
-    padding-bottom: 16rem;
-  }
-
   .md\:pl-\[175px\] {
     padding-left: 175px;
+  }
+
+  .md\:pb-40 {
+    padding-bottom: 10rem;
+  }
+
+  .md\:pt-8 {
+    padding-top: 2rem;
   }
 }
