@@ -6,7 +6,7 @@ function Footer() {
     return (
         <div 
             style={style} 
-            className="bg-[image:var(--image)] background-size: cover flex-col">
+            className="bg-[image:var(--image)] bg-cover flex-col">
         
           <div className="flex md:justify-center max-md:px-6 pt-6">
             <div className="flex justify-start md:w-[729px]">

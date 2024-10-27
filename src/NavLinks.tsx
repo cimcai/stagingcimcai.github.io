@@ -2,7 +2,7 @@ function NavLinks() {
   return (
     <>
       <div className="md:hidden px-2 flex gap-3 items-center">
-        <a href="#">
+        <a href="#library">
           <span className="leading-none cimc-logo-copy text-black">
             LIBRARY
           </span>
