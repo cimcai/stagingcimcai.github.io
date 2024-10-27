@@ -14,11 +14,13 @@ function LibraryCell( {title, description, linkUrl, thumbnailUrl }: LibraryCellP
       <a href={linkUrl} target="_blank">
         {thumbnailUrl ? <img src={thumbnailUrl} alt={`${title} Thumbnail`} className="flex rounded py-2 max-md:w-10/12" /> : null}
       </a>
-      <a href={linkUrl} target="_blank" className="hover:underline">
-        {title}
-      </a>
+      <div className="pb-2">
+        <a href={linkUrl} target="_blank" className="hover:underline">
+          {title}
+        </a>
+      </div>
       {description ? 
-        <p className="text-sm">
+        <p className="text-sm leading-tight">
           {description}
         </p>
        : null}
