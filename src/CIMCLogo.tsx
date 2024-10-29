@@ -6,21 +6,20 @@ export function CIMCLogo(): React.ReactNode {
 	)
 }
 
-interface FullCIMCLogoProps {
+
+interface PartialCIMCLogoProps {
 	color: string;
 	logoScale: number;
-	isSmallText: boolean;
 }
 
-export function FullCIMCLogo({ color, logoScale, isSmallText }: FullCIMCLogoProps) {
-	const ogWidth = 173.73067
-	const ogHeight = 51.723999
-	const width = logoScale * ogWidth
-	const height = logoScale * ogHeight
+export function PartialCIMCLogo({color, logoScale}: PartialCIMCLogoProps) {
+  const LOGO_WIDTH = 173.73067
+  const LOGO_HEIGHT = 51.723999
+  const width = logoScale * LOGO_WIDTH
+  const height = logoScale * LOGO_HEIGHT
 
-	return (
-    <div className={`${color} flex justify-end`}>
-        <div className="w-6/12 max-md:pl-3">
+  return (
+    <div className={`${color} w-6/12 max-md:pl-3`}>
         <svg version="1.1" width={width} height={height} viewBox={`0 0 ${width} ${height}`}>
             <g transform={`scale(${logoScale})`}>
             <g transform="matrix(1.3333333,0,0,-1.3333333,-48.000401,4238.8667)">
@@ -34,8 +33,21 @@ export function FullCIMCLogo({ color, logoScale, isSmallText }: FullCIMCLogoProp
             </g>
             </g>
         </svg>
-        </div>
-        <div className="md:pl-[175px] max-md:w-6/12">
+      </div>
+  )
+}
+
+interface FullCIMCLogoProps {
+	color: string;
+	logoScale: number;
+	isSmallText: boolean;
+}
+
+export function FullCIMCLogo({ color, logoScale, isSmallText }: FullCIMCLogoProps) {
+	return (
+    <div className="flex justify-end">
+      <PartialCIMCLogo color={color} logoScale={logoScale} />
+      <div className="md:pl-[175px] max-md:w-6/12">
         <p className={`leading-none whitespace-nowrap cimc-${isSmallText ? "small-" : ""}logo-copy`}>
             CALIFORNIA
             <br />
@@ -43,7 +55,7 @@ export function FullCIMCLogo({ color, logoScale, isSmallText }: FullCIMCLogoProp
             <br />
             CONSCIOUSNESS
         </p>
-        </div>
+      </div>
     </div>
   )
 }

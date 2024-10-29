@@ -1,13 +1,17 @@
-import { FullCIMCLogo } from "./CIMCLogo";
+import { PartialCIMCLogo } from "./CIMCLogo";
 import NavLinks from "./NavLinks";
 
 function Header() {
   return (
-    <div className="flex md:justify-center max-md:px-6 pt-6">
-      <div className="flex justify-start md:w-[729px] max-md:hidden">
-        <FullCIMCLogo color="text-black" logoScale={1} isSmallText={false} />
+    <div className="flex md:justify-center max-md:px-6 pt-6 ">
+      <div className="flex md:w-[729px]">
+        <div className="max-md:hidden">
+          <PartialCIMCLogo color="text-black" logoScale={1}/>
+        </div>
+        <div className="flex md:pl-[175px]">
+          <NavLinks />
+        </div>
       </div>
-      <NavLinks />
     </div>
   )
 }

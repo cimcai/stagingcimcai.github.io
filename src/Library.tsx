@@ -10,16 +10,16 @@ interface LibraryCellProps {
 
 function LibraryCell( {title, description, linkUrl, thumbnailUrl }: LibraryCellProps) {
   return (
-    <div className="rounded py-4">
+    <div className="rounded py-4 flex-col">
       <a href={linkUrl} target="_blank">
-        {thumbnailUrl ? <img src={thumbnailUrl} alt={`${title} Thumbnail`} className="flex rounded py-2 max-md:w-10/12" /> : null}
+        {thumbnailUrl ? <img src={thumbnailUrl} alt={`${title} Thumbnail`} className="flex rounded py-2 max-md:w-9/12" /> : null}
       </a>
       <div className="pb-2">
-        <a href={linkUrl} target="_blank" className="hover:underline">
+        <a href={linkUrl} target="_blank" className="underline">
           {title}
         </a>
       </div>
-      {description ? 
+      {description ?
         <p className="text-sm leading-tight">
           {description}
         </p>

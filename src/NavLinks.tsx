@@ -1,20 +1,16 @@
 function NavLinks() {
   return (
     <>
-      <div className="md:hidden px-2 flex gap-3 items-center">
+      <div className="px-2 flex gap-3 items-center cimc-nonbold-heading text-black">
         <a href="#library">
-          <span className="leading-none cimc-logo-copy text-black">
-            LIBRARY
-          </span>
+          Library
         </a>
         <a href="#">
-          <span className="leading-none cimc-logo-copy text-black">
-            EVENTS
-          </span>
+            Events
         </a>
       </div>
-      
-      <div className="md:hidden pl-8 flex gap-3 flex-wrap">
+
+      <div className="pl-6 flex gap-3 flex-wrap items-center">
         <a href="https://twitter.com/Plinz" target="_new" aria-label="X">
           <div className="h-10 w-10 p-2 hover:scale-110 transition-transform delay-50 text-black">
             <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0" y="0" width="16" height="16" viewBox="0, 0, 16, 16" className="w-6 h-6"><g id="Layer_1"><path d="M9.524,6.776 L15.481,-0 L14.07,-0 L8.895,5.882 L4.765,-0 L0,-0 L6.247,8.896 L0,16 L1.411,16 L6.873,9.787 L11.235,16 L16,16 M1.921,1.041 L4.089,1.041 L14.069,15.01 L11.9,15.01" fill="currentColor"></path></g>
