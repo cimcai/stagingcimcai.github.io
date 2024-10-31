@@ -1,4 +1,4 @@
-import logocimc from './assets/logocimc.svg'
+import logocimc from '../assets/logocimc.svg'
 
 export function CIMCLogo(): React.ReactNode {
 	return (

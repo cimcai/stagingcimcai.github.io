@@ -1,13 +1,13 @@
-import botsun from './assets/botsun.svg'
+import botsun from '../assets/botsun.svg'
 
 function Footer() {
     const style = { "--image": `url(${botsun})` } as React.CSSProperties;
 
     return (
-        <div 
-            style={style} 
+        <div
+            style={style}
             className="bg-[image:var(--image)] bg-cover flex-col">
-        
+
           <div className="flex md:justify-center max-md:px-6 pt-6">
             <div className="flex justify-start md:w-[729px]">
               <div className="flex items-end text-black">

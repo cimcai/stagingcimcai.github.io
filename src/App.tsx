@@ -1,7 +1,7 @@
 import './styles/App.css'
-import { CIMCLogo, ResponsiveCIMCLogo } from './CIMCLogo'
-import Header from './Header'
-import Footer from './Footer'
+import { CIMCLogo, ResponsiveCIMCLogo } from './components/CIMCLogo'
+import Header from './components/Header'
+import Footer from './components/Footer'
 import Forward from './Forward'
 import Institute from './Institute'
 import Contact from './Contact'
@@ -17,7 +17,7 @@ function App() {
             <CIMCLogo />
           </div>
           <ResponsiveCIMCLogo />
-          
+
           <Forward />
         </div>
 

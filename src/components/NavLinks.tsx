@@ -6,7 +6,7 @@ function NavLinks() {
           Library
         </a>
         <a href="#">
-            Events
+          Events
         </a>
       </div>
 

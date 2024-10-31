@@ -39,6 +39,11 @@
   ],
   "column2": [
     {
+      "thumbnailUrl": "https://i.ytimg.com/vi/K5nJ5l6dl2s/hqdefault.jpg",
+      "linkUrl": "https://youtu.be/K5nJ5l6dl2s",
+      "title": "Machine Dreams (33c3)"
+    },
+    {
       "thumbnailUrl": "./Kant.png",
       "linkUrl": "https://www.gutenberg.org/files/4280/4280-h/4280-h.htm",
       "title": "Kant - The Critique of Pure Reason",
