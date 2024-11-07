@@ -12,16 +12,43 @@ const HomeContainer = styled.div`
     `}
   background-color: ${theme`colors.cimc_blue`};
 `
-
+const LogoContainer = styled.div`
+  ${tw`
+      flex
+      bg-transparent
+      justify-center
+      items-center
+      max-md:px-6
+      pt-60
+      pb-6
+    `}
+  background-color: ${theme`colors.cimc_blue`};
+`
+const VideoContainer = styled.div`
+  ${tw`
+      flex
+      bg-transparent
+      justify-center
+      items-center
+      max-md:px-6
+      pt-28
+      pb-6
+    `}
+  background-color: ${theme`colors.cimc_blue`};
+`
 
 export const Home = () => {
 return (
     <HomeContainer>
-      <div id="home" className="flex bg-transparent justify-center items-center max-md:px-6 pt-60 md:pb-40 max-md:pb-6">
+      <LogoContainer id="home">
         <CIMCLogo />
-      </div>
+      </LogoContainer>
       <ResponsiveCIMCLogo />
-
+      <VideoContainer>
+        <video controls width={729} poster="joschamoc.png">
+          <source src="./joschamoc.mp4" type="video/mp4" />
+        </video>
+      </VideoContainer>
       <Forward />
     </HomeContainer>
   )

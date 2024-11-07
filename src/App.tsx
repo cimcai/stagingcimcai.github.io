@@ -1,12 +1,14 @@
 import './styles/App.css'
 import Footer from './components/Footer'
-import Institute from './Institute'
-import Contact from './Contact'
-import Library from './Library'
+import Institute from './pages/Institute'
+import Library from './pages/Library'
 import Home from './pages/Home'
 import Navbar from './components/NavBar'
 import { Button } from 'react-scroll'
 import { useCallback, useEffect, useState } from 'react'
+import Team from './pages/Team'
+import Projects from './pages/Projects'
+import Mission from './pages/Mission'
 
 function App() {
   const scrollThreshHold = 550;
@@ -31,15 +33,14 @@ function App() {
     <div>
       <Navbar shouldBeTransparent={!shouldShowScollButton}/>
       <Home />
-      <div id="mission" className="bg-white text-black selection:text-black selection:bg-gray-500 flex justify-center px-6 pt-10 pb-40">
+      <div className="bg-white text-black selection:text-black selection:bg-gray-500 flex justify-center px-6 pt-10">
         <div className="md:w-[729px]">
-          <div className="md:flex flex-row mr-auto items-start">
-            <Institute />
-            <Contact />
-          </div>
+          <Institute />
+          <Mission />
         </div>
       </div>
-
+      <Projects />
+      <Team />
       <Library />
       <Footer />
 

@@ -1,13 +1,20 @@
+import styled from 'styled-components';
+import tw from 'twin.macro';
 import botsun from '../assets/botsun.svg'
 
+const ContactContainer = styled.div`
+  ${tw`
+    bg-[image:var(--image)]
+    bg-cover
+    flex-col
+    `}
+  --image: url(${botsun})
+`
+
 function Footer() {
-    const style = { "--image": `url(${botsun})` } as React.CSSProperties;
 
     return (
-        <div
-            style={style}
-            className="bg-[image:var(--image)] bg-cover flex-col">
-
+        <ContactContainer>
           <div className="flex md:justify-center max-md:px-6 pt-6">
             <div className="flex justify-start md:w-[729px]">
               <div className="flex items-end text-black">
@@ -42,13 +49,13 @@ function Footer() {
                   <div className="cimc-normal leading-snug">
                     <span className="cimc-heading">© 2024</span>
                     <br />
-                    California Institute for Machine Consciousness
+                    <span className="cimc-sub-heading">California Institute for Machine Consciousness</span>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        </ContactContainer>
     )
 }
 

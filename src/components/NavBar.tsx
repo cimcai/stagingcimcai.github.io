@@ -48,6 +48,8 @@ export default function Navbar({shouldBeTransparent}: NavbarProps) {
         <NavbarStyle>
           <Link to="home" className="select-none cursor-pointer" smooth duration={400} activeStyle={{textDecoration: 'underline', textUnderlinePosition: "under"}} spy saveHashHistory>Home</Link>
           <Link to="mission" className="select-none cursor-pointer" smooth duration={400} offset={-64} activeStyle={{textDecoration: 'underline', textUnderlinePosition: "under"}} spy saveHashHistory>Mission</Link>
+          <Link to="projects" className="select-none cursor-pointer" smooth duration={400} offset={-64} activeStyle={{textDecoration: 'underline', textUnderlinePosition: "under"}} spy saveHashHistory>Projects</Link>
+          <Link to="team" className="select-none cursor-pointer" smooth duration={400} offset={-64} activeStyle={{textDecoration: 'underline', textUnderlinePosition: "under"}} spy saveHashHistory>Team</Link>
           <Link to="library" className="select-none cursor-pointer" smooth duration={400} offset={-64} activeStyle={{textDecoration: 'underline', textUnderlinePosition: "under"}} spy saveHashHistory>Library</Link>
         </NavbarStyle>
       </NavbarContainer>
