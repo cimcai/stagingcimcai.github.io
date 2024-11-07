@@ -9,38 +9,35 @@ const HomeContainer = styled.div`
       text-white
       selection:text-white
       selection:bg-gray-500
+      to-black
     `}
-  background-color: ${theme`colors.cimc_blue`};
+    background-color: ${theme`colors.cimc_blue`};
 `
 const LogoContainer = styled.div`
   ${tw`
       flex
-      bg-transparent
       justify-center
       items-center
       max-md:px-6
       pt-60
       pb-6
     `}
-  background-color: ${theme`colors.cimc_blue`};
 `
 const VideoContainer = styled.div`
   ${tw`
       flex
-      bg-transparent
       justify-center
       items-center
       max-md:px-6
       pt-28
       pb-6
     `}
-  background-color: ${theme`colors.cimc_blue`};
 `
 
 export const Home = () => {
 return (
-    <HomeContainer>
-      <LogoContainer id="home">
+    <HomeContainer id="home">
+      <LogoContainer >
         <CIMCLogo />
       </LogoContainer>
       <ResponsiveCIMCLogo />

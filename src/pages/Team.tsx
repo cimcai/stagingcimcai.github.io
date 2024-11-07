@@ -107,11 +107,6 @@ const Team = () => {
           Erik Newton
           <br/>
           <br/>
-          <span className="cimc-sub-heading">Chief of Staff</span>
-          <br/>
-          Corey Doney
-          <br/>
-          <br/>
           <span className="cimc-sub-heading">Board</span>
           <br/>
           Jim O’Neill

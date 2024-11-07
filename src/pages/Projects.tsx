@@ -8,7 +8,7 @@ const ProjectsContainer = styled.div`
       selection:text-black
       selection:bg-gray-500
       flex
-      justify-center
+      md:justify-center
       max-md:px-6
       pt-10
       pb-40
@@ -16,12 +16,12 @@ const ProjectsContainer = styled.div`
 `
 const Projects = () => {
   return(
-    <ProjectsContainer>
+    <ProjectsContainer id="projects">
       <div className="md:w-[729px]">
-        <p id="projects" className="cimc-heading leading-tight py-4">
+        <p className="cimc-heading leading-tight py-4">
           PROJECTS
         </p>
-        <ul>
+        <ul className="list-disc ml-4">
           <li>
             Self organization automata
           </li>

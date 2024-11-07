@@ -1,7 +1,7 @@
 function Mission() {
   return (
-    <div className="w-full">
-      <p id="mission" className="cimc-heading leading-tight py-4">
+    <div id="mission" className="w-full">
+      <p className="cimc-heading leading-tight py-4">
         MISSION OF THE CALIFORNIA INSTITUTE FOR MACHINE CONSCIOUSNESS
       </p>
       <p className="cimc-standard leading-tight py-2">
