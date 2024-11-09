@@ -1,22 +1,37 @@
-function Mission() {
+import Institute from "../components/Institute";
+import MissionStatement from "../components/MissionStatement";
+import styled from 'styled-components'
+import tw from 'twin.macro'
+
+const MissionContainer = styled.div`
+    ${tw`
+      flex
+      justify-center
+      px-6
+      pt-16
+    `}
+`
+
+const MissionStyle = styled.div`
+  ${tw`
+    bg-white
+    text-black
+    selection:text-black
+    selection:bg-gray-500
+    md:w-[729px]
+    py-10
+    `}
+`
+const Mission = () => {
   return (
-    <div id="mission" className="w-full">
-      <p className="cimc-heading leading-tight py-4">
-        MISSION OF THE CALIFORNIA INSTITUTE FOR MACHINE CONSCIOUSNESS
-      </p>
-      <p className="cimc-standard leading-tight py-2">
-        Develop testable theories of machine consciousness and foster a culture and ethics built on a deeper understanding of consciousness.
-        <br />
-        <br />
-        I. Advance and validate theories of consciousness through applied research
-        <br />
-        <br />
-        II. Build a robust ethical framework for AI that prioritizes conscious agency and societal impact.
-        <br />
-        <br />
-        III. Engage collaboratively with academia, industry, and the public
-      </p>
-    </div>
+    <>
+      <MissionContainer>
+        <MissionStyle>
+          <Institute />
+          <MissionStatement />
+        </MissionStyle>
+      </MissionContainer>
+    </>
   )
 }
 

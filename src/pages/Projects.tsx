@@ -3,21 +3,26 @@ import tw from "twin.macro";
 
 const ProjectsContainer = styled.div`
   ${tw`
-      text-black
-      bg-white
-      selection:text-black
-      selection:bg-gray-500
       flex
       md:justify-center
       max-md:px-6
-      pt-10
+      pt-16
       pb-40
+    `}
+`
+const ProjectStyle = styled.div`
+  ${tw`
+    bg-white
+    text-black
+    selection:text-black
+    selection:bg-gray-500
+      md:w-[729px]
     `}
 `
 const Projects = () => {
   return(
     <ProjectsContainer id="projects">
-      <div className="md:w-[729px]">
+      <ProjectStyle>
         <p className="cimc-heading leading-tight py-4">
           PROJECTS
         </p>
@@ -35,7 +40,7 @@ const Projects = () => {
             Cognitive modeling, personality and psychological modeling.
           </li>
         </ul>
-      </div>
+      </ProjectStyle>
     </ProjectsContainer>
   )
 }

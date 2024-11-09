@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import tw, { theme } from 'twin.macro'
 import { CIMCLogo, ResponsiveCIMCLogo } from '../components/CIMCLogo'
-import Forward from '../Forward'
+import Forward from '../components/Forward'
 
 const HomeContainer = styled.div`
   ${tw`
@@ -42,7 +42,7 @@ return (
       </LogoContainer>
       <ResponsiveCIMCLogo />
       <VideoContainer>
-        <video controls width={729} poster="joschamoc.png">
+        <video controls width={729} poster="joschamoc.jpg">
           <source src="./joschamoc.mp4" type="video/mp4" />
         </video>
       </VideoContainer>
