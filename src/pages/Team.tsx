@@ -17,6 +17,13 @@ const TeamContainer = styled.div`
   color: ${theme`colors.cimc_blue`};
 `
 
+const ProfileContainer = styled.div`
+  ${tw`
+      pb-4
+      leading-tight
+    `}
+`
+
 interface AdvisorProfileData {
   name: string;
   job: string;
@@ -32,7 +39,7 @@ interface AdvisorProfileProps {
 const AdvisorProfile: React.FC<AdvisorProfileProps & React.RefAttributes<HTMLAnchorElement>> = ({profileData}) => {
   const {name, job, institution, institutionUrl, portraitUrl} = profileData
   return (
-    <div className="pb-4 leading-tight">
+    <ProfileContainer>
       <img src={portraitUrl} alt={`${name} Portrait`} className="flex rounded py-2 h-56" />
       <p className="cimc-heading">
         {name}
@@ -45,7 +52,7 @@ const AdvisorProfile: React.FC<AdvisorProfileProps & React.RefAttributes<HTMLAnc
           {institution}
         </p>
       </a>
-    </div>
+    </ProfileContainer>
   )
 }
 

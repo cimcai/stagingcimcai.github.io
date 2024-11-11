@@ -19,7 +19,7 @@ const LogoContainer = styled.div`
       justify-center
       items-center
       max-md:px-6
-      pt-60
+      pt-40
       pb-6
     `}
 `
