@@ -33,7 +33,7 @@ const AdvisorProfile: React.FC<AdvisorProfileProps & React.RefAttributes<HTMLAnc
   const {name, job, institution, institutionUrl, portraitUrl} = profileData
   return (
     <div className="pb-4 leading-tight">
-      <img src={portraitUrl} alt={`${name} Portrait`} className="flex rounded py-2 w-5/12" />
+      <img src={portraitUrl} alt={`${name} Portrait`} className="flex rounded py-2 h-56" />
       <p className="cimc-heading">
         {name}
       </p>
