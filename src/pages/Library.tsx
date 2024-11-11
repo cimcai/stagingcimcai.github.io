@@ -5,24 +5,32 @@ const { column1, column2, column3 } = linksData;
 
 interface LibraryCellProps {
   title: string;
-  linkUrl: string;
+  linkUrl?: string;
   thumbnailUrl?: string;
   description?: string;
 }
 
 const LibraryCell: React.FC<LibraryCellProps & React.RefAttributes<HTMLAnchorElement>> = ({title, description, linkUrl, thumbnailUrl }) => {
+
   return (
-    <div className="rounded py-4 flex-col">
-      <a href={linkUrl} target="_blank">
-        {thumbnailUrl ? <img src={thumbnailUrl} alt={`${title} Thumbnail`} className="flex rounded py-2 max-md:w-9/12" /> : null}
-      </a>
-      <div className="pb-2">
-        <a href={linkUrl} target="_blank" className="underline">
+    <div className="flex-col pb-2">
+      {!linkUrl && !description?
+        <div className="pt-6 text-xl">
           {title}
-        </a>
-      </div>
+        </div>
+      : <>
+          <a href={linkUrl} target="_blank">
+            {thumbnailUrl ? <img src={thumbnailUrl} alt={`${title} Thumbnail`} className="flex py-2 max-md:w-9/12" /> : null}
+          </a>
+          <div className={`pt-${thumbnailUrl ? 0 : 8} leading-tight ${linkUrl ? "underline underline-offset-auto" : ""}`}>
+            <a href={linkUrl} target="_blank">
+              {title}
+            </a>
+          </div>
+        </>
+      }
       {description ?
-        <p className="text-sm leading-tight">
+        <p className="pt-2 text-sm leading-tight">
           {description}
         </p>
        : null}
