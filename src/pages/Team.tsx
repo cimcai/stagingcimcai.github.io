@@ -1,6 +1,5 @@
 import styled from "styled-components"
 import tw, { theme } from "twin.macro"
-import Contact from "./Contact"
 import profilesData from "../data/profiles.json"
 
 const TeamContainer = styled.div`
@@ -13,6 +12,7 @@ const TeamContainer = styled.div`
       justify-center
       max-md:px-6
       pt-16
+      pb-40
     `}
   color: ${theme`colors.cimc_blue`};
 `
@@ -129,7 +129,6 @@ const Team = () => {
           </p>
         </div>
       </TeamContainer>
-      <Contact />
     </>
   )
 }

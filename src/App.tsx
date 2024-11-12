@@ -8,6 +8,7 @@ import Mission from "./pages/Mission"
 import Projects from "./pages/Projects"
 import Team from "./pages/Team"
 import Library from "./pages/Library"
+import Contact from "./pages/Contact"
 
 export interface CIMCRoutes {
   path: string;
@@ -44,6 +45,12 @@ export const routes:CIMCRoutes[] = [
     path: "/library",
     name: "Library",
     element: <Library />,
+    nodeRef: createRef(),
+  },
+  {
+    path: "/contact",
+    name: "Contact",
+    element: <Contact />,
     nodeRef: createRef(),
   },
 ]
