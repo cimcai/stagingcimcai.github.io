@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import linksData from "../data/links.json"
 import tw from "twin.macro";
-const { column1, column2, column3 } = linksData;
 
 interface LibraryCellProps {
   title: string;
@@ -11,24 +10,18 @@ interface LibraryCellProps {
 }
 
 const LibraryCell: React.FC<LibraryCellProps & React.RefAttributes<HTMLAnchorElement>> = ({title, description, linkUrl, thumbnailUrl }) => {
-
   return (
-    <div className="flex-col pb-2">
-      {!linkUrl && !description?
-        <div className="pt-6 text-xl">
-          {title}
-        </div>
-      : <>
+    <div className="flex-col md:pr-4 md:w-1/3 max-md:w-8/12">
+      <>
+        <a href={linkUrl} target="_blank">
+          {thumbnailUrl ? <img src={thumbnailUrl} alt={`${title} Thumbnail`} className="flex py-2 max-md:w-9/12" /> : null}
+        </a>
+        <div className={`pt-${thumbnailUrl ? 0 : 8} leading-tight ${linkUrl ? "underline underline-offset-auto" : ""}`}>
           <a href={linkUrl} target="_blank">
-            {thumbnailUrl ? <img src={thumbnailUrl} alt={`${title} Thumbnail`} className="flex py-2 max-md:w-9/12" /> : null}
+            {title}
           </a>
-          <div className={`pt-${thumbnailUrl ? 0 : 8} leading-tight ${linkUrl ? "underline underline-offset-auto" : ""}`}>
-            <a href={linkUrl} target="_blank">
-              {title}
-            </a>
-          </div>
-        </>
-      }
+        </div>
+      </>
       {description ?
         <p className="pt-2 text-sm leading-tight">
           {description}
@@ -38,22 +31,43 @@ const LibraryCell: React.FC<LibraryCellProps & React.RefAttributes<HTMLAnchorEle
   )
 }
 
-interface LibraryColumnProps {
-  columnCellsData: LibraryCellProps[];
-  extraXPadding?: boolean;
+
+interface LibraryCellRowProps {
+  topic: string;
+  linkData: LibraryCellProps[];
 }
 
+const LibraryCellsContainer = styled.div`
+  ${tw`
+    md:flex
+    flex-wrap
+    max-md:flex-1
+    pt-2
+    pb-4
+  `}
+`
+const LibraryRowContainer = styled.div`
+  ${tw`
+  `}
+`
 
-const LibraryColumn: React.FC<LibraryColumnProps> = ({ columnCellsData, extraXPadding = false }) => {
+const LibraryRow: React.FC<LibraryCellRowProps> = ({topic, linkData }) => {
   return (
-    <div className={`flex-1 py-4 md:w-1/3 ${extraXPadding ? "px-6" : ""}`}>
+    <LibraryRowContainer>
+      <div className="pt-6 text-xl">
+        {topic}
+      </div>
+      <LibraryCellsContainer>
       {
-        columnCellsData.map((cellData) => {
+        linkData.map((cellData) => {
           const {title, description, linkUrl, thumbnailUrl } = cellData
-          return <LibraryCell key={title} title={title} linkUrl={linkUrl} thumbnailUrl={thumbnailUrl} description={description}/>
+          return (
+            <LibraryCell key={title} title={title} linkUrl={linkUrl} thumbnailUrl={thumbnailUrl} description={description}/>
+          )
         })
       }
-    </div>
+      </LibraryCellsContainer>
+    </LibraryRowContainer>
   )
 }
 
@@ -70,20 +84,22 @@ const LibraryContainer = styled.div`
 `
 const LibraryColumnContainer = styled.div`
   ${tw`
-    flex
     md:w-[729px]
-    max-md:flex-col
   `}
 `
-
 
 const Library = () => {
   return (
     <LibraryContainer id="library">
       <LibraryColumnContainer>
-        <LibraryColumn columnCellsData={column1} />
-        <LibraryColumn columnCellsData={column2} extraXPadding/>
-        <LibraryColumn columnCellsData={column3} />
+      {
+        linksData.map((linksData) => {
+          const {topic, linkData} = linksData
+          return (
+            <LibraryRow topic={topic} linkData={linkData} />
+          )
+        })
+      }
       </LibraryColumnContainer>
     </LibraryContainer>
   )

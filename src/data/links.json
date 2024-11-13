@@ -1,265 +1,273 @@
-{
-  "column1": [
-    {
-      "title": "Presentations"
-    },
-    {
-      "thumbnailUrl": "https://i.ytimg.com/vi/pkhuDqK1_MU/hqdefault.jpg",
-      "linkUrl": "https://youtu.be/pkhuDqK1_MU",
-      "title": "Institute of Art and Ideas: A radical theory on consciousness"
-    },
-    {
-      "thumbnailUrl": "https://i.ytimg.com/vi/-rxXoiQyQVc/hqdefault.jpg",
-      "linkUrl": "https://youtu.be/-rxXoiQyQVc",
-      "title": "FQXi: Reconciling Consciousness with Physicalism"
-    },
-    {
-      "thumbnailUrl": "https://i.ytimg.com/vi/WRdJCFEqFTU/hqdefault.jpg",
-      "linkUrl": "https://youtu.be/WRdJCFEqFTU",
-      "title": "33c3: Computational Metapsychology"
-    },
-    {
-      "thumbnailUrl": "https://i.ytimg.com/vi/K5nJ5l6dl2s/hqdefault.jpg",
-      "linkUrl": "https://youtu.be/K5nJ5l6dl2s",
-      "title": "33c3: Machine Dreams"
-    },
-    {
-      "thumbnailUrl": "https://i.ytimg.com/vi/e3K5UxWRRuY/hqdefault.jpg",
-      "linkUrl": "https://youtu.be/e3K5UxWRRuY",
-      "title": "33c3: The Ghost in the Machine"
-    },
-    {
-      "thumbnailUrl": "https://i.ytimg.com/vi/cs9Ls0m5QVE/hqdefault.jpg",
-      "linkUrl": "https://youtu.be/cs9Ls0m5QVE",
-      "title": "33c3: Synthetic Sentience"
-    },
-    {
-      "thumbnailUrl": "https://i.ytimg.com/vi/LlLbHm-bJQE/hqdefault.jpg",
-      "linkUrl": "https://youtu.be/LlLbHm-bJQE",
-      "title": "Machine Consciousness"
-    },
-    {
-      "title": "Podcasts"
-    },
-    {
-      "thumbnailUrl": "https://i.ytimg.com/vi/3MkJEGE9GRY/hqdefault.jpg",
-      "linkUrl": "https://youtu.be/3MkJEGE9GRY",
-      "title": "Machine Learning Street Talk: Why your thoughts aren't yours"
-    },
-    {
-      "thumbnailUrl": "https://i.ytimg.com/vi/CcQMYNi9a2w/hqdefault.jpg",
-      "linkUrl": "https://youtu.be/CcQMYNi9a2w",
-      "title": "Karl Friston and Joscha Bach on the ToE podcast"
-    },
-    {
-      "thumbnailUrl": "https://i.ytimg.com/vi/O_5e_WSNedE/hqdefault.jpg",
-      "linkUrl": "https://youtu.be/O_5e_WSNedE",
-      "title": "Stephen Wolfram and Joscha Bach discuss multiway systems"
-    },
-    {
-      "thumbnailUrl": "https://i.ytimg.com/vi/knADtWMGxmw/hqdefault.jpg",
-      "linkUrl": "https://youtu.be/knADtWMGxmw",
-      "title": "Michael Levin, Chris Fields and Joscha Bach"
-    },
-    {
-      "thumbnailUrl": "https://i.ytimg.com/vi/kgMFnfB5E_A/hqdefault.jpg",
-      "linkUrl": "https://youtu.be/kgMFnfB5E_A&t=1m38s",
-      "title": "Michael Levin | Joscha Bach: Collective Intelligence"
-    },
-    {
-      "linkUrl": "https://open.spotify.com/show/6hMLQalUpXl0ErT7dOM7dY",
-      "title": "The podcast of this institute"
-    },
-    {
-      "title": "Publications"
-    },
-    {
-      "linkUrl": "https://arxiv.org/pdf/2308.08708",
-      "title": "Consciousness in Artificial Intelligence: Insights from the Science of Consciousness",
-      "description": "Butlin, P., Long, R. et al 2023"
-    },
-    {
-      "linkUrl": "https://ceur-ws.org/Vol-2287/paper29.pdf",
-      "title": "Phenomenal Experience and the Perceptual Binding State",
-      "description": "Bach, J. 2019"
-    },
-    {
-      "linkUrl": "http://bach.ai/pub/Bach%20-%20Cortical%20Conductor%20Theory%20(BICA%202018).pdf",
-      "title": "The Cortical Conductor Theory: Towards Addressing Consciousness in AI Models ",
-      "description": "Bach, J. 2018"
-    },
-    {
-      "linkUrl": "http://cognitive-ai.com/publications/assets/Draft-MicroPsi-JBach-07-03-30.pdf",
-      "title": "Principles of Synthetic Intelligence (Oxford University Press)",
-      "description": "Bach, J. 2009"
-    },
-    {
-      "linkUrl": "https://writings.stephenwolfram.com/2023/12/observer-theory/",
-      "title": "Stephen Wolfram - Observer Theory",
-      "description": "We call it perception. We call it measurement. We call it analysis. But in the end it’s about how we take in the world as it is, and derive from it the impression of it that we have in our minds."
-    }
-  ],
-  "column2": [
-    {
-      "title": "Classical Texts"
-    },
-    {
-      "title": "De Anima by Aristotle (4th century BCE)",
-      "description": "Aristotle's foundational treatise on the psyche explores how perception, memory, and imagination work together, and characterizes its agency as an essential aspect of life and thought."
-    },
-    {
-      "title": "Meditations on First Philosophy by René Descartes (1641)",
-      "description": "Descartes introduces the famous \"I think, therefore I am,\" positioning consciousness as the core of self-certainty and exploring the duality between mind and body."
-    },
-    {
-      "title": "New Essays on Human Understanding by Gottfried Wilhem Leibniz (1704)",
-      "description": "This text is Leibniz’s response to John Locke’s Essay Concerning Human Understanding. Leibniz argues that consciousness and knowledge are not entirely derived from experience,as Locke proposed, but also involve innate ideas. He explores the gradation of consciousness, from unconscious perceptions to clear self-awareness, and introduces his famous distinction between perception and apperception (conscious reflection)."
-    },
-    {
-      "title": "L'Homme Machine by Julien Offray de La Mettrie (1748)",
-      "description": "La Mettrie rejects dualist and idealist theories of the mind, and instead proposes a materialistic view, which sees humans as complex machines whose thoughts and feelings arise solely from physical processes."
-    },
-    {
-      "thumbnailUrl": "./Kant.png",
-      "linkUrl": "https://www.gutenberg.org/files/4280/4280-h/4280-h.htm",
-      "title": "The Critique of Pure Reason by Immanuel Kant (1781)",
-      "description": "Kant examines how the mind structures experience, exploring how time, space, and causality shape our perception: a classical work that marks Kant's legacy as a cognitive scientist."
-    },
-    {
-      "title": "The Principles of Psychology by William James (1890)",
-      "description": "James introduces the concept of the \"stream of consciousness,\" analyzing how thoughts and perceptions form a continuous flow, integral to understanding self-awareness."
-    },
-    {
-      "thumbnailUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Ludwig_Wittgenstein.jpg/800px-Ludwig_Wittgenstein.jpg",
-      "linkUrl": "https://www.gutenberg.org/files/5740/5740-pdf.pdf",
-      "title": "Tractatus Logico-Philosophicus by Ludwig Wittgenstein (1921)",
-      "description": "Wittgenstein's attempt to unify mathematics and thought was a major influence on Alan Turing."
-    },
-    {
-      "title": "The Doors of Perception by Aldous Huxley (1954)",
-      "description": "Huxley reflects on altered states of consciousness through psychedelic experiences, challenging conventional perceptions and exploring the potential expansiveness of the mind."
-    },
-    {
-      "title": "The Conscious Mind: In Search of a Fundamental Theory by David Chalmers (1996)",
-      "description": "Chalmers highlights the difficulty of explaining consciousness through physical processes, presenting the \"hard problem\" of how subjective experience arises from the brain."
-    },
-    {
-      "title": "Modern Works"
-    },
-    {
-      "title": "The Society of Mind by Marvin Minsky (1985)",
-      "description": "Minsky presents the mind as a collection of semi-independent mental processes, proposing that our mind functions like a society of interacting agents."
-    },
-    {
-      "title": "Being No-One by Thomas Metzinger (2003)",
-      "description": "Metzinger argues that the self is an illusion created by the brain, offering a comprehensive framework for understanding the phenomenology of consciousness as a construct."
-    },
-    {
-      "thumbnailUrl": "./elephant.png",
-      "linkUrl": "https://direct.mit.edu/books/book-pdf/2328586/book_9780262377287.pdf",
-      "title": "The Elephant and the Blind",
-      "description": "In this book, Metzinger uses the metaphor of the \"elephant and the blind\" to illustrate how different philosophical and scientific approaches capture only parts of the full picture of consciousness."
-    },
-    {
-      "title": "I Am a Strange Loop by Douglas Hofstadter (2007)",
-      "description": "Hofstadter examines how consciousness emerges through self-reference, proposing that our sense of self arises from recursive mental patterns."
-    },
-    {
-      "title": "The Mind’s I: Fantasies and Reflections on Self and Soul by Douglas Hofstadter and Daniel Dennett (1981)",
-      "description": "This collection of essays questions the nature of self and consciousness, exploring identity, free will, and what it means to be \"aware.\""
-    },
-    {
-      "title": "Metazoa: Animal Life and the Birth of the Mind by Peter Godfrey-Smith (2020)",
-      "description": "Godfrey-Smith investigates consciousness in animals, examining the evolutionary roots of subjective experience across species."
-    },
-    {
-      "title": "Consciousness and the Brain: Deciphering How the Brain Codes Our Thoughts by Stanislas Dehaene (2014)",
-      "description": "Dehaene explores how brain activity produces conscious thought, focusing on the neural signatures and mechanisms that generate awareness."
-    },
-    {
-      "title": "The Feeling of What Happens: Body and Emotion in the Making of Consciousness by Antonio Damasio (1999)",
-      "description": "Damasio presents consciousness as rooted in emotions and bodily processes. In his perspective, mind and body have to be understood as integrated."
-    },
-    {
-      "title": "Good and Real: Demystifying Paradoxes from Physics to Ethics by Gary Drescher (2006)",
-      "description": "Drescher examines consciousness and reality through logical and ethical lenses, explaining his version of a Cartesian Theatre that shows how subjective experience fits within objective reality."
-    },
-    {
-      "title": "Consciousness Explained by Daniel Dennett (1991)",
-      "description": "Dennett proposes a model of consciousness as a collection of mental processes, arguing that our experience of self is a narrative without a central experiencer."
-    },
-    {
-      "title": "From Bacteria to Bach and Back: The Evolution of Minds by Daniel Dennett (2017)",
-      "description": "Dennett explores the evolution of consciousness, tracing the development of minds from simple organisms to complex human cognition."
-    },
-    {
-      "title": "Consciousness and the Social Brain by Michael Graziano (2013)",
-      "description": "Graziano introduces the Attention Schema Theory, suggesting that consciousness arises from the brain’s model of attention and social awareness."
-    },
-    {
-      "title": "Conscious Mind, Resonant Brain by Stephen Grossberg (2021)",
-      "description": "Grossberg proposes that consciousness emerges through brain networks that resonate, offering a neural explanation for how awareness arises."
-    }
-  ],
-  "column3": [
-    {
-      "title": "Science Fiction"
-    },
-    {
-      "title": "Permutation City by Greg Egan (1994)",
-      "description": "Egan explores digital consciousness and mind uploading, presenting thought experiments about the continuity of self and simulated life in virtual worlds."
-    },
-    {
-      "title": "Closer (1992) and Diaspora (1997) by Greg Egan",
-      "description": "Egan plays with identity and the creation and deconstruction of selfs, crossing over between human and artificial minds."
-    },
-    {
-      "title": "On the Life Cycle of Software Objects (2010) and Exhalation (2019) by Ted Chiang",
-      "description": "Chiang presents AI beings with evolving personalities, and an intelligent entity exploring its own hardware and mind."
-    },
-    {
-      "title": "Blindsight (2006) and Echopraxia (2014) by Peter Watts",
-      "description": "Probably the best collection of deliciously crafted possible minds, in lethal encounters between humanity, post human minds and alien intelligences."
-    },
-    {
-      "title": "He Who Shapes by Roger Zelazny (1965)",
-      "description": "In this short story, Zelazny explores consciousness through a therapist’s mind-manipulation techniques and discovers the concept of the embedding space as the basis of mental representations. (Many of his books play with this concept in some form or other.)"
-    },
-    {
-      "title": "Solaris by Stanislav Lem (1961)",
-      "description": "The Polish novelist Lem is probably the most significant author of the cybernetic age. In the course of his thinking, he became increasingly pessimistic about the generality of intelligence. In \"Solaris\", he describes an encounter between humanity and a planet sized intelligence, and the fundamental incomprehensibility of minds far outside of the range of human capabilities."
-    },
-    {
-      "title": "Other Selections"
-    },
-    {
-      "thumbnailUrl": "./lucidity.png",
-      "linkUrl": "https://joscha.substack.com/p/levels-of-lucidity",
-      "title": "Levels of Lucidity",
-      "description": "An exploration of different levels of lucidity, focusing on how our perception interacts with awareness in various states of consciousness."
-    },
-    {
-      "thumbnailUrl": "./iobserve.png",
-      "linkUrl": "https://suno.com/song/2ee0ca66-3b69-462e-a981-050fb0264796",
-      "title": "Bing - i observe",
-      "description": "A song capturing the essence of observation and introspection, expressing the relationship between experience and awareness."
-    },
-    {
-      "linkUrl": "https://antilogicalism.com/wp-content/uploads/2017/07/faust.pdf",
-      "title": "Goethe - Faust",
-      "description": "Again you show yourselves,\nyou wavering Forms,\nRevealed, as you once\nwere, to clouded vision."
-    },
-    {
-      "thumbnailUrl": "./Essay.png",
-      "linkUrl": "https://franzhiha.substack.com/p/an-essay-on-consciousness-iv?utm_source=substack",
-      "title": "An Essay on Consciousness",
-      "description": "An in-depth essay exploring the intricacies of consciousness, perception, and the human condition."
-    },
-    {
-      "thumbnailUrl": "./Westworld.png",
-      "linkUrl": "https://open.spotify.com/intl-de/album/43pttVYo7IjBvive3uebVF?si=RcxihwF4RAm4QYI10hOXVQ",
-      "title": "Westworld: Season 1 (Music from the HBO Series)",
-      "description": "Music from the first season of HBO's Westworld, reflecting the interplay between artificial intelligence and human nature."
-    }
-  ]
-}
+[
+  {
+    "topic": "Presentations",
+    "linkData": [
+      {
+        "thumbnailUrl": "https://i.ytimg.com/vi/pkhuDqK1_MU/hqdefault.jpg",
+        "linkUrl": "https://youtu.be/pkhuDqK1_MU",
+        "title": "Institute of Art and Ideas: A radical theory on consciousness"
+      },
+      {
+        "thumbnailUrl": "https://i.ytimg.com/vi/-rxXoiQyQVc/hqdefault.jpg",
+        "linkUrl": "https://youtu.be/-rxXoiQyQVc",
+        "title": "FQXi: Reconciling Consciousness with Physicalism"
+      },
+      {
+        "thumbnailUrl": "https://i.ytimg.com/vi/WRdJCFEqFTU/hqdefault.jpg",
+        "linkUrl": "https://youtu.be/WRdJCFEqFTU",
+        "title": "33c3: Computational Metapsychology"
+      },
+      {
+        "thumbnailUrl": "https://i.ytimg.com/vi/K5nJ5l6dl2s/hqdefault.jpg",
+        "linkUrl": "https://youtu.be/K5nJ5l6dl2s",
+        "title": "33c3: Machine Dreams"
+      },
+      {
+        "thumbnailUrl": "https://i.ytimg.com/vi/e3K5UxWRRuY/hqdefault.jpg",
+        "linkUrl": "https://youtu.be/e3K5UxWRRuY",
+        "title": "33c3: The Ghost in the Machine"
+      },
+      {
+        "thumbnailUrl": "https://i.ytimg.com/vi/cs9Ls0m5QVE/hqdefault.jpg",
+        "linkUrl": "https://youtu.be/cs9Ls0m5QVE",
+        "title": "33c3: Synthetic Sentience"
+      },
+      {
+        "thumbnailUrl": "https://i.ytimg.com/vi/LlLbHm-bJQE/hqdefault.jpg",
+        "linkUrl": "https://youtu.be/LlLbHm-bJQE",
+        "title": "Machine Consciousness"
+      }
+    ]
+  },
+  {
+    "topic": "Podcasts",
+    "linkData": [
+      {
+        "thumbnailUrl": "https://i.ytimg.com/vi/3MkJEGE9GRY/hqdefault.jpg",
+        "linkUrl": "https://youtu.be/3MkJEGE9GRY",
+        "title": "Machine Learning Street Talk: Why your thoughts aren't yours"
+      },
+      {
+        "thumbnailUrl": "https://i.ytimg.com/vi/CcQMYNi9a2w/hqdefault.jpg",
+        "linkUrl": "https://youtu.be/CcQMYNi9a2w",
+        "title": "Karl Friston and Joscha Bach on the ToE podcast"
+      },
+      {
+        "thumbnailUrl": "https://i.ytimg.com/vi/O_5e_WSNedE/hqdefault.jpg",
+        "linkUrl": "https://youtu.be/O_5e_WSNedE",
+        "title": "Stephen Wolfram and Joscha Bach discuss multiway systems"
+      },
+      {
+        "thumbnailUrl": "https://i.ytimg.com/vi/knADtWMGxmw/hqdefault.jpg",
+        "linkUrl": "https://youtu.be/knADtWMGxmw",
+        "title": "Michael Levin, Chris Fields and Joscha Bach"
+      },
+      {
+        "thumbnailUrl": "https://i.ytimg.com/vi/kgMFnfB5E_A/hqdefault.jpg",
+        "linkUrl": "https://youtu.be/kgMFnfB5E_A&t=1m38s",
+        "title": "Michael Levin | Joscha Bach: Collective Intelligence"
+      },
+      {
+        "linkUrl": "https://open.spotify.com/show/6hMLQalUpXl0ErT7dOM7dY",
+        "title": "The podcast of this institute"
+      }
+    ]
+  },
+  {
+    "topic": "Publications",
+    "linkData": [
+      {
+        "linkUrl": "https://arxiv.org/pdf/2308.08708",
+        "title": "Consciousness in Artificial Intelligence: Insights from the Science of Consciousness",
+        "description": "Butlin, P., Long, R. et al 2023"
+      },
+      {
+        "linkUrl": "https://ceur-ws.org/Vol-2287/paper29.pdf",
+        "title": "Phenomenal Experience and the Perceptual Binding State",
+        "description": "Bach, J. 2019"
+      },
+      {
+        "linkUrl": "http://bach.ai/pub/Bach%20-%20Cortical%20Conductor%20Theory%20(BICA%202018).pdf",
+        "title": "The Cortical Conductor Theory: Towards Addressing Consciousness in AI Models ",
+        "description": "Bach, J. 2018"
+      },
+      {
+        "linkUrl": "http://cognitive-ai.com/publications/assets/Draft-MicroPsi-JBach-07-03-30.pdf",
+        "title": "Principles of Synthetic Intelligence (Oxford University Press)",
+        "description": "Bach, J. 2009"
+      },
+      {
+        "linkUrl": "https://writings.stephenwolfram.com/2023/12/observer-theory/",
+        "title": "Stephen Wolfram - Observer Theory",
+        "description": "We call it perception. We call it measurement. We call it analysis. But in the end it’s about how we take in the world as it is, and derive from it the impression of it that we have in our minds."
+      }
+    ]
+  },
+  {
+    "topic": "Classical Texts",
+    "linkData": [
+      {
+        "title": "De Anima by Aristotle (4th century BCE)",
+        "description": "Aristotle's foundational treatise on the psyche explores how perception, memory, and imagination work together, and characterizes its agency as an essential aspect of life and thought."
+      },
+      {
+        "title": "Meditations on First Philosophy by René Descartes (1641)",
+        "description": "Descartes introduces the famous \"I think, therefore I am,\" positioning consciousness as the core of self-certainty and exploring the duality between mind and body."
+      },
+      {
+        "title": "New Essays on Human Understanding by Gottfried Wilhem Leibniz (1704)",
+        "description": "This text is Leibniz’s response to John Locke’s Essay Concerning Human Understanding. Leibniz argues that consciousness and knowledge are not entirely derived from experience,as Locke proposed, but also involve innate ideas. He explores the gradation of consciousness, from unconscious perceptions to clear self-awareness, and introduces his famous distinction between perception and apperception (conscious reflection)."
+      },
+      {
+        "title": "L'Homme Machine by Julien Offray de La Mettrie (1748)",
+        "description": "La Mettrie rejects dualist and idealist theories of the mind, and instead proposes a materialistic view, which sees humans as complex machines whose thoughts and feelings arise solely from physical processes."
+      },
+      {
+        "thumbnailUrl": "./Kant.png",
+        "linkUrl": "https://www.gutenberg.org/files/4280/4280-h/4280-h.htm",
+        "title": "The Critique of Pure Reason by Immanuel Kant (1781)",
+        "description": "Kant examines how the mind structures experience, exploring how time, space, and causality shape our perception: a classical work that marks Kant's legacy as a cognitive scientist."
+      },
+      {
+        "title": "The Principles of Psychology by William James (1890)",
+        "description": "James introduces the concept of the \"stream of consciousness,\" analyzing how thoughts and perceptions form a continuous flow, integral to understanding self-awareness."
+      },
+      {
+        "thumbnailUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Ludwig_Wittgenstein.jpg/800px-Ludwig_Wittgenstein.jpg",
+        "linkUrl": "https://www.gutenberg.org/files/5740/5740-pdf.pdf",
+        "title": "Tractatus Logico-Philosophicus by Ludwig Wittgenstein (1921)",
+        "description": "Wittgenstein's attempt to unify mathematics and thought was a major influence on Alan Turing."
+      },
+      {
+        "title": "The Doors of Perception by Aldous Huxley (1954)",
+        "description": "Huxley reflects on altered states of consciousness through psychedelic experiences, challenging conventional perceptions and exploring the potential expansiveness of the mind."
+      },
+      {
+        "title": "The Conscious Mind: In Search of a Fundamental Theory by David Chalmers (1996)",
+        "description": "Chalmers highlights the difficulty of explaining consciousness through physical processes, presenting the \"hard problem\" of how subjective experience arises from the brain."
+      }
+    ]
+  },
+  {
+    "topic": "Modern Works",
+    "linkData": [
+      {
+        "title": "The Society of Mind by Marvin Minsky (1985)",
+        "description": "Minsky presents the mind as a collection of semi-independent mental processes, proposing that our mind functions like a society of interacting agents."
+      },
+      {
+        "title": "Being No-One by Thomas Metzinger (2003)",
+        "description": "Metzinger argues that the self is an illusion created by the brain, offering a comprehensive framework for understanding the phenomenology of consciousness as a construct."
+      },
+      {
+        "thumbnailUrl": "./elephant.png",
+        "linkUrl": "https://direct.mit.edu/books/book-pdf/2328586/book_9780262377287.pdf",
+        "title": "The Elephant and the Blind",
+        "description": "In this book, Metzinger uses the metaphor of the \"elephant and the blind\" to illustrate how different philosophical and scientific approaches capture only parts of the full picture of consciousness."
+      },
+      {
+        "title": "I Am a Strange Loop by Douglas Hofstadter (2007)",
+        "description": "Hofstadter examines how consciousness emerges through self-reference, proposing that our sense of self arises from recursive mental patterns."
+      },
+      {
+        "title": "The Mind’s I: Fantasies and Reflections on Self and Soul by Douglas Hofstadter and Daniel Dennett (1981)",
+        "description": "This collection of essays questions the nature of self and consciousness, exploring identity, free will, and what it means to be \"aware.\""
+      },
+      {
+        "title": "Metazoa: Animal Life and the Birth of the Mind by Peter Godfrey-Smith (2020)",
+        "description": "Godfrey-Smith investigates consciousness in animals, examining the evolutionary roots of subjective experience across species."
+      },
+      {
+        "title": "Consciousness and the Brain: Deciphering How the Brain Codes Our Thoughts by Stanislas Dehaene (2014)",
+        "description": "Dehaene explores how brain activity produces conscious thought, focusing on the neural signatures and mechanisms that generate awareness."
+      },
+      {
+        "title": "The Feeling of What Happens: Body and Emotion in the Making of Consciousness by Antonio Damasio (1999)",
+        "description": "Damasio presents consciousness as rooted in emotions and bodily processes. In his perspective, mind and body have to be understood as integrated."
+      },
+      {
+        "title": "Good and Real: Demystifying Paradoxes from Physics to Ethics by Gary Drescher (2006)",
+        "description": "Drescher examines consciousness and reality through logical and ethical lenses, explaining his version of a Cartesian Theatre that shows how subjective experience fits within objective reality."
+      },
+      {
+        "title": "Consciousness Explained by Daniel Dennett (1991)",
+        "description": "Dennett proposes a model of consciousness as a collection of mental processes, arguing that our experience of self is a narrative without a central experiencer."
+      },
+      {
+        "title": "From Bacteria to Bach and Back: The Evolution of Minds by Daniel Dennett (2017)",
+        "description": "Dennett explores the evolution of consciousness, tracing the development of minds from simple organisms to complex human cognition."
+      },
+      {
+        "title": "Consciousness and the Social Brain by Michael Graziano (2013)",
+        "description": "Graziano introduces the Attention Schema Theory, suggesting that consciousness arises from the brain’s model of attention and social awareness."
+      },
+      {
+        "title": "Conscious Mind, Resonant Brain by Stephen Grossberg (2021)",
+        "description": "Grossberg proposes that consciousness emerges through brain networks that resonate, offering a neural explanation for how awareness arises."
+      }
+    ]
+  },
+  {
+    "topic": "Science Fiction",
+    "linkData": [
+      {
+        "title": "Permutation City by Greg Egan (1994)",
+        "description": "Egan explores digital consciousness and mind uploading, presenting thought experiments about the continuity of self and simulated life in virtual worlds."
+      },
+      {
+        "title": "Closer (1992) and Diaspora (1997) by Greg Egan",
+        "description": "Egan plays with identity and the creation and deconstruction of selfs, crossing over between human and artificial minds."
+      },
+      {
+        "title": "On the Life Cycle of Software Objects (2010) and Exhalation (2019) by Ted Chiang",
+        "description": "Chiang presents AI beings with evolving personalities, and an intelligent entity exploring its own hardware and mind."
+      },
+      {
+        "title": "Blindsight (2006) and Echopraxia (2014) by Peter Watts",
+        "description": "Probably the best collection of deliciously crafted possible minds, in lethal encounters between humanity, post human minds and alien intelligences."
+      },
+      {
+        "title": "He Who Shapes by Roger Zelazny (1965)",
+        "description": "In this short story, Zelazny explores consciousness through a therapist’s mind-manipulation techniques and discovers the concept of the embedding space as the basis of mental representations. (Many of his books play with this concept in some form or other.)"
+      },
+      {
+        "title": "Solaris by Stanislav Lem (1961)",
+        "description": "The Polish novelist Lem is probably the most significant author of the cybernetic age. In the course of his thinking, he became increasingly pessimistic about the generality of intelligence. In \"Solaris\", he describes an encounter between humanity and a planet sized intelligence, and the fundamental incomprehensibility of minds far outside of the range of human capabilities."
+      }
+    ]
+  },
+  {
+    "topic": "Other Selections",
+    "linkData": [
+      {
+        "thumbnailUrl": "./lucidity.png",
+        "linkUrl": "https://joscha.substack.com/p/levels-of-lucidity",
+        "title": "Levels of Lucidity",
+        "description": "An exploration of different levels of lucidity, focusing on how our perception interacts with awareness in various states of consciousness."
+      },
+      {
+        "thumbnailUrl": "./iobserve.png",
+        "linkUrl": "https://suno.com/song/2ee0ca66-3b69-462e-a981-050fb0264796",
+        "title": "Bing - i observe",
+        "description": "A song capturing the essence of observation and introspection, expressing the relationship between experience and awareness."
+      },
+      {
+        "linkUrl": "https://antilogicalism.com/wp-content/uploads/2017/07/faust.pdf",
+        "title": "Goethe - Faust",
+        "description": "Again you show yourselves,\nyou wavering Forms,\nRevealed, as you once\nwere, to clouded vision."
+      },
+      {
+        "thumbnailUrl": "./Essay.png",
+        "linkUrl": "https://franzhiha.substack.com/p/an-essay-on-consciousness-iv?utm_source=substack",
+        "title": "An Essay on Consciousness",
+        "description": "An in-depth essay exploring the intricacies of consciousness, perception, and the human condition."
+      },
+      {
+        "thumbnailUrl": "./Westworld.png",
+        "linkUrl": "https://open.spotify.com/intl-de/album/43pttVYo7IjBvive3uebVF?si=RcxihwF4RAm4QYI10hOXVQ",
+        "title": "Westworld: Season 1 (Music from the HBO Series)",
+        "description": "Music from the first season of HBO's Westworld, reflecting the interplay between artificial intelligence and human nature."
+      }
+    ]
+  }
+]
