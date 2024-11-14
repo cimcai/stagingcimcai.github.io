@@ -1,5 +1,12 @@
 [
   {
+    "name": "Karl Friston",
+    "job": "Neuroscientist",
+    "institution": "University College London",
+    "institutionUrl": "https://profiles.ucl.ac.uk/2747-karl-friston",
+    "portraitUrl": "./portraitFriston.png"
+  },
+  {
     "name": "Mike Levin",
     "job": "Biologist",
     "institution": "The Levin Lab",
@@ -19,12 +26,5 @@
     "institution": "Wolfram Research",
     "institutionUrl": "https://www.stephenwolfram.com",
     "portraitUrl": "./portraitWolfram.png"
-  },
-  {
-    "name": "Karl Friston",
-    "job": "Neuroscientist",
-    "institution": "University College London",
-    "institutionUrl": "https://profiles.ucl.ac.uk/2747-karl-friston",
-    "portraitUrl": "./portraitFriston.png"
   }
 ]

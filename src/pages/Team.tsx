@@ -81,7 +81,7 @@ const Team = () => {
           <p className="cimc-heading py-4">
             CORE TEAM
           </p>
-          <p className="cimc-heading">
+          <p className="cimc-sub-heading">
             Scientific Advisors
           </p>
           <div className="md:flex">
@@ -90,13 +90,13 @@ const Team = () => {
           </div>
 
 
-          <p className="cimc-standard leading-tight pt-8">
-            <span className="cimc-sub-heading">CEO</span>
+          <p className="cimc-standard leading-tight pt-4">
+            <span className="cimc-sub-heading">Director</span>
             <br/>
             Joscha Bach
             <br/>
             <br/>
-            <span className="cimc-sub-heading">COO</span>
+            <span className="cimc-sub-heading">Chief of Staff</span>
             <br/>
             Erik Newton
             <br/>
@@ -117,7 +117,7 @@ const Team = () => {
             Christine Peterson
             <br/>
             <br/>
-            <span className="cimc-sub-heading">Organizational advisors</span>
+            <span className="cimc-sub-heading">Organizational Advisors</span>
             <br/>
             Jim Rutt
             <br/>
