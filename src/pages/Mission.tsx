@@ -5,6 +5,10 @@ import tw from 'twin.macro'
 
 const MissionContainer = styled.div`
     ${tw`
+    bg-white
+    text-black
+    selection:text-black
+    selection:bg-gray-500
       flex
       justify-center
       px-6
@@ -14,10 +18,6 @@ const MissionContainer = styled.div`
 
 const MissionStyle = styled.div`
   ${tw`
-    bg-white
-    text-black
-    selection:text-black
-    selection:bg-gray-500
     md:w-[729px]
     py-10
     `}

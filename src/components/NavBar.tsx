@@ -24,7 +24,8 @@ const NavbarStyle = styled.div`
     text-white
     flex
     flex-row
-    text-xl
+    md:text-xl
+    max-md:text-lg
     gap-3
   `}
 `

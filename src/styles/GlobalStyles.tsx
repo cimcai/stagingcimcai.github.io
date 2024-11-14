@@ -1,9 +1,13 @@
-import { createGlobalStyle } from 'styled-components'
-import tw, { GlobalStyles as BaseStyles, theme } from 'twin.macro'
+import { createGlobalStyle } from "styled-components"
+import tw, { GlobalStyles as BaseStyles, theme } from "twin.macro"
 
 const CustomStyles = createGlobalStyle({
+  html: {
+    minHeight: "100%",
+  },
   body: {
-    '--bg-color': theme`colors.black`,
+    minHeight: "100vh",
+    backgroundColor: theme`colors.black`,
     ...tw`antialiased`,
   },
 })

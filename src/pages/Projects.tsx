@@ -3,6 +3,10 @@ import tw from "twin.macro";
 
 const ProjectsContainer = styled.div`
   ${tw`
+    bg-white
+    text-black
+    selection:text-black
+    selection:bg-gray-500
       flex
       md:justify-center
       max-md:px-6
@@ -12,10 +16,6 @@ const ProjectsContainer = styled.div`
 `
 const ProjectStyle = styled.div`
   ${tw`
-    bg-white
-    text-black
-    selection:text-black
-    selection:bg-gray-500
       md:w-[729px]
     `}
 `
