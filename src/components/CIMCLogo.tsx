@@ -1,8 +1,43 @@
+import styled from 'styled-components';
+import tw from 'twin.macro';
 import logocimc from '../assets/logocimc.svg'
 
-export function CIMCLogo(): React.ReactNode {
+
+const LogoContainer = styled.div`
+${tw`
+    flex
+    justify-center
+    items-center
+    max-md:px-6
+    pt-40
+    pb-6
+  `}
+`
+
+const LogoLayoutContainer = styled.div`
+${tw`
+    flex-col
+  `}
+`
+interface CIMCLogoProps {
+	showName: boolean;
+}
+
+export function CIMCLogo({showName = true}: CIMCLogoProps): React.ReactNode {
 	return (
-		<img className="select-none" src={logocimc} alt="CIMC" />
+    <LogoContainer >
+      <LogoLayoutContainer>
+        <img className="select-none" src={logocimc} alt="CIMC" />
+        { showName ?
+          <div className="py-6">
+            <span className={`leading-none whitespace-nowrap cimc-big-logo-copy`}>
+              California Institute for Machine Consciousness
+            </span>
+          </div>
+          : null
+        }
+      </LogoLayoutContainer>
+    </LogoContainer>
 	)
 }
 
@@ -49,11 +84,11 @@ export function FullCIMCLogo({ color, logoScale, isSmallText }: FullCIMCLogoProp
       <PartialCIMCLogo color={color} logoScale={logoScale} />
       <div className="md:pl-[175px] max-md:w-6/12">
         <p className={`leading-none whitespace-nowrap cimc-${isSmallText ? "small-" : ""}logo-copy`}>
-            CALIFORNIA
-            <br />
-            INSTITUTE FOR MACHINE
-            <br />
-            CONSCIOUSNESS
+          CALIFORNIA
+          <br />
+          INSTITUTE FOR MACHINE
+          <br />
+          CONSCIOUSNESS
         </p>
       </div>
     </div>

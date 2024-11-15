@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import tw, { theme } from 'twin.macro'
-import { CIMCLogo, ResponsiveCIMCLogo } from '../components/CIMCLogo'
+import { CIMCFullName, CIMCLogo } from '../components/CIMCLogo'
 import Forward from '../components/Forward'
 
 const HomeContainer = styled.div`
@@ -13,23 +13,14 @@ const HomeContainer = styled.div`
     `}
     background-color: ${theme`colors.cimc_blue`};
 `
-const LogoContainer = styled.div`
-  ${tw`
-      flex
-      justify-center
-      items-center
-      max-md:px-6
-      pt-40
-      pb-6
-    `}
-`
+
 const VideoContainer = styled.div`
   ${tw`
       flex
       justify-center
       items-center
       max-md:px-6
-      pt-28
+      pt-6
       pb-6
     `}
 `
@@ -37,10 +28,7 @@ const VideoContainer = styled.div`
 export const Home = () => {
 return (
     <HomeContainer id="home">
-      <LogoContainer >
-        <CIMCLogo />
-      </LogoContainer>
-      <ResponsiveCIMCLogo />
+      <CIMCLogo showName/>
       <VideoContainer>
         <video controls width={729} poster="joschamoc.jpg">
           <source src="./joschamoc.mp4" type="video/mp4" />
