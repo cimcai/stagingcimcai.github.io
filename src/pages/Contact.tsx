@@ -12,6 +12,7 @@ const ContactContainer = styled.div`
       pb-40
     `}
   color: ${theme`colors.cimc_blue`};
+  height: calc(100vh - 226px);
 `
 const Contact = () => {
   return (

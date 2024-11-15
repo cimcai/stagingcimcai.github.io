@@ -13,6 +13,7 @@ const ProjectsContainer = styled.div`
       pt-16
       pb-40
     `}
+  height: calc(100vh - 226px);
 `
 const ProjectStyle = styled.div`
   ${tw`

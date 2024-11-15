@@ -4,16 +4,17 @@ import styled from 'styled-components'
 import tw from 'twin.macro'
 
 const MissionContainer = styled.div`
-    ${tw`
-    bg-white
-    text-black
-    selection:text-black
-    selection:bg-gray-500
-      flex
-      justify-center
-      px-6
-      pt-16
-    `}
+  ${tw`
+  bg-white
+  text-black
+  selection:text-black
+  selection:bg-gray-500
+    flex
+    justify-center
+    px-6
+    pt-16
+  `}
+  height: calc(100vh - 226px);
 `
 
 const MissionStyle = styled.div`
