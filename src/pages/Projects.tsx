@@ -11,11 +11,8 @@ const ProjectsContainer = styled.div`
       md:justify-center
       max-md:px-6
       pt-16
-      pb-40
+      pb-20
     `}
-    @media (min-width: 768px) {
-      height: calc(100vh - 226px);
-    }
 `
 const ProjectStyle = styled.div`
   ${tw`

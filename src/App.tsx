@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom"
+import { Outlet, ScrollRestoration } from "react-router-dom"
 import { createRef, RefObject } from "react"
 import "./styles/App.css"
 import Navbar from "./components/NavBar"
@@ -61,6 +61,7 @@ function App() {
       <Navbar routes={routes} />
       <Outlet />
       <Footer />
+      <ScrollRestoration />
     </div>
   )
 }
