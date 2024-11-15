@@ -4,27 +4,27 @@
     "job": "Neuroscientist",
     "institution": "University College London",
     "institutionUrl": "https://profiles.ucl.ac.uk/2747-karl-friston",
-    "portraitUrl": "./portraitFriston.png"
+    "portraitUrl": "./portraitFriston.jpg"
   },
   {
     "name": "Mike Levin",
     "job": "Biologist",
     "institution": "The Levin Lab",
     "institutionUrl": "https://drmichaellevin.org",
-    "portraitUrl": "./portraitLevin.png"
+    "portraitUrl": "./portraitLevin.jpg"
   },
   {
     "name": "Christoph v. d. Malsburg",
     "job": "Neuroscientist/Physicist",
     "institution": "Frankfurt Institute for Advanced Studies",
     "institutionUrl": "https://www.izn-frankfurt.de/mitglied/malsburg",
-    "portraitUrl": "./portraitMalsburg.png"
+    "portraitUrl": "./portraitMalsburg.jpg"
   },
   {
     "name": "Stephen Wolfram",
     "job": "Computer Scientist/Physicist/Mathmeatian",
     "institution": "Wolfram Research",
     "institutionUrl": "https://www.stephenwolfram.com",
-    "portraitUrl": "./portraitWolfram.png"
+    "portraitUrl": "./portraitWolfram.jpg"
   }
 ]
