@@ -14,9 +14,9 @@ const LibraryCell: React.FC<LibraryCellProps & React.RefAttributes<HTMLAnchorEle
     <div className="flex-col md:pr-4 md:w-1/3 max-md:w-11/12">
       <div>
         <a href={linkUrl} target="_blank">
-          {thumbnailUrl ? <img src={thumbnailUrl} alt={`${title} Thumbnail`} className="flex py-2 max-md:w-9/12" /> : null}
+          {thumbnailUrl ? <img src={thumbnailUrl} alt={`${title} Thumbnail`} className="flex pb-2 max-md:w-9/12" /> : null}
         </a>
-        <div className={`pt-${thumbnailUrl ? 0 : 8} pt-6 leading-tight ${linkUrl ? "underline underline-offset-auto" : ""}`}>
+        <div className={`pt-${thumbnailUrl ? 0 : 8} pt-${thumbnailUrl ? 0 : 6} leading-tight ${linkUrl ? "underline underline-offset-auto" : ""}`}>
           <a href={linkUrl} target="_blank">
             {title}
           </a>

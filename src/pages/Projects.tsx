@@ -13,7 +13,9 @@ const ProjectsContainer = styled.div`
       pt-16
       pb-40
     `}
-  height: calc(100vh - 226px);
+    @media (min-width: 768px) {
+      height: calc(100vh - 226px);
+    }
 `
 const ProjectStyle = styled.div`
   ${tw`
@@ -28,17 +30,41 @@ const Projects = () => {
           PROJECTS
         </p>
         <ul>
-          <li>
-            Self organization automata
+          <li className="pb-4">
+            What is consciousness, how does it relate to mind, modeling, reality?
+          </li>
+          <li className="pb-4">
+            How can we characterize phenomenology, functionality and implementation?
+          </li>
+          <li className="pb-4">
+            Which systems can be conscious?
+          </li>
+          <li className="pb-4">
+            What are necessary and sufficient conditions?
+          </li>
+          <li className="pb-4">
+            How can we test for consciousness?
+          </li>
+          <li className="pb-4">
+            Hypothesis: consciousness is discovered by the brain, as part of learning paradigm in a self organizing substrate
+          </li>
+          <li className="pb-4">
+            Understanding the brain as a multiway system
+          </li>
+          <li className="pb-4">
+            Can we get a self organizing system (eg. NCA) to learn complex sequence prediction tasks?
+          </li>
+          <li className="pb-4">
+            Can self organizing learning systems control agents?
+          </li>
+          <li className="pb-4">
+            Do we observe the discovery of self improving self reflexive structure?
+          </li>
+          <li className="pb-4">
+            What are the limitations of this paradigm?
           </li>
           <li>
-            Turing test for consciousness, can it be measured?
-          </li>
-          <li>
-            Can we build empathetic ai? (Extensions of ourselves, artists)
-          </li>
-          <li>
-            Cognitive modeling, personality and psychological modeling.
+            Can we discover implications for consciousness in comparable systems in nature (ie. how much does it depend on architecture?)
           </li>
         </ul>
       </ProjectStyle>
