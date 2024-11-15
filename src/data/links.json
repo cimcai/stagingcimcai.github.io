@@ -3,9 +3,9 @@
     "topic": "Presentations",
     "linkData": [
       {
-        "thumbnailUrl": "https://i.ytimg.com/vi/pkhuDqK1_MU/hqdefault.jpg",
-        "linkUrl": "https://youtu.be/pkhuDqK1_MU",
-        "title": "Institute of Art and Ideas: A radical theory on consciousness"
+        "thumbnailUrl": "https://i.ytimg.com/vi/LlLbHm-bJQE/hqdefault.jpg",
+        "linkUrl": "https://youtu.be/LlLbHm-bJQE",
+        "title": "Machine Consciousness"
       },
       {
         "thumbnailUrl": "https://i.ytimg.com/vi/-rxXoiQyQVc/hqdefault.jpg",
@@ -33,9 +33,9 @@
         "title": "33c3: Synthetic Sentience"
       },
       {
-        "thumbnailUrl": "https://i.ytimg.com/vi/LlLbHm-bJQE/hqdefault.jpg",
-        "linkUrl": "https://youtu.be/LlLbHm-bJQE",
-        "title": "Machine Consciousness"
+        "thumbnailUrl": "./joschapresentation.png",
+        "linkUrl": "https://youtu.be/pkhuDqK1_MU",
+        "title": "A radical theory on consciousness"
       }
     ]
   },
@@ -98,8 +98,8 @@
       },
       {
         "linkUrl": "https://writings.stephenwolfram.com/2023/12/observer-theory/",
-        "title": "Stephen Wolfram - Observer Theory",
-        "description": "We call it perception. We call it measurement. We call it analysis. But in the end it’s about how we take in the world as it is, and derive from it the impression of it that we have in our minds."
+        "title": "Observer Theory",
+        "description": "Wolfram, Stephen 2023"
       }
     ]
   },
@@ -244,11 +244,6 @@
         "linkUrl": "https://suno.com/song/2ee0ca66-3b69-462e-a981-050fb0264796",
         "title": "Bing - i observe",
         "description": "A song capturing the essence of observation and introspection, expressing the relationship between experience and awareness."
-      },
-      {
-        "linkUrl": "https://antilogicalism.com/wp-content/uploads/2017/07/faust.pdf",
-        "title": "Goethe - Faust",
-        "description": "Again you show yourselves,\nyou wavering Forms,\nRevealed, as you once\nwere, to clouded vision."
       },
       {
         "thumbnailUrl": "./Essay.png",

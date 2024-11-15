@@ -14,7 +14,9 @@ const MissionContainer = styled.div`
     px-6
     pt-16
   `}
-  height: calc(100vh - 226px);
+  @media (min-width: 768px) {
+    height: calc(100vh - 226px);
+  }
 `
 
 const MissionStyle = styled.div`

@@ -27,7 +27,7 @@ const Projects = () => {
         <p className="cimc-heading leading-tight py-4">
           PROJECTS
         </p>
-        <ul className="list-disc ml-4">
+        <ul>
           <li>
             Self organization automata
           </li>
