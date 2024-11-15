@@ -20,8 +20,8 @@ const VideoContainer = styled.div`
       justify-center
       items-center
       max-md:px-6
-      pt-6
-      pb-6
+      max-md:pb-6
+      md:pb-2
     `}
 `
 

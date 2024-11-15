@@ -25,8 +25,9 @@ const NavbarStyle = styled.div`
     flex
     flex-row
     md:text-xl
-    max-md:text-lg
-    gap-3
+    max-md:text-base
+    md:gap-4
+    max-md:gap-2
   `}
 `
 
