@@ -91,12 +91,12 @@ const Team = () => {
 
 
           <p className="cimc-standard leading-tight pt-4">
-            <span className="cimc-sub-heading">Director</span>
+            <span className="cimc-sub-heading">CEO</span>
             <br/>
             Joscha Bach
             <br/>
             <br/>
-            <span className="cimc-sub-heading">Chief of Staff</span>
+            <span className="cimc-sub-heading">COO</span>
             <br/>
             Erik Newton
             <br/>
