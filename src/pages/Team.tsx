@@ -1,6 +1,8 @@
 import styled from "styled-components"
 import tw, { theme } from "twin.macro"
 import profilesData from "../data/profiles.json"
+import portraitJoscha from "../../public/portraitJoscha.jpg"
+import portraitErik from "../../public/portraitErik.jpg"
 
 const TeamContainer = styled.div`
   ${tw`
@@ -93,11 +95,13 @@ const Team = () => {
           <p className="text-cimc-standard leading-tight pt-4">
             <span className="text-cimc-subheading">CEO</span>
             <br/>
+            <img src={portraitJoscha} alt="Joscha Portrait" className="flex rounded py-2 h-56" />
             Joscha Bach
             <br/>
             <br/>
             <span className="text-cimc-subheading">COO</span>
             <br/>
+            <img src={portraitErik} alt="Erik Newton" className="flex rounded py-2 h-56" />
             Erik Newton
             <br/>
             <br/>
