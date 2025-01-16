@@ -83,6 +83,22 @@ const Team = () => {
           <p className="text-cimc-heading py-4">
             CORE TEAM
           </p>
+          <p className="text-cimc-heading leading-tight py-4">
+            <div className="md:flex">
+              <div className="flex-1 md:w-1/2 pb-4">
+                <span className="text-cimc-subheading">Director</span>
+                <br/>
+                <img src={portraitJoscha} alt="Joscha Portrait" className="flex rounded py-2 h-56" />
+                Joscha Bach
+              </div>
+              <div className="flex-1 md:w-1/2 pb-4">
+                <span className="text-cimc-subheading">President</span>
+                <br/>
+                <img src={portraitErik} alt="Erik Newton" className="flex rounded py-2 h-56" />
+                Erik Newton
+              </div>
+            </div>
+          </p>
           <p className="text-cimc-subheading">
             Scientific Advisors
           </p>
@@ -91,21 +107,8 @@ const Team = () => {
             <AdvisorProfileColumn columnCellsData={profilesData.slice(-2)} />
           </div>
 
-
           <p className="text-cimc-standard leading-tight pt-4">
-            <span className="text-cimc-subheading">CEO</span>
-            <br/>
-            <img src={portraitJoscha} alt="Joscha Portrait" className="flex rounded py-2 h-56" />
-            Joscha Bach
-            <br/>
-            <br/>
-            <span className="text-cimc-subheading">COO</span>
-            <br/>
-            <img src={portraitErik} alt="Erik Newton" className="flex rounded py-2 h-56" />
-            Erik Newton
-            <br/>
-            <br/>
-            <span className="text-cimc-subheading">Board</span>
+            <p className="text-cimc-subheading">Board</p>
             <br/>
             Jim O’Neill
             <br/>
@@ -116,12 +119,12 @@ const Team = () => {
             Lou de Kerhuelvez
             <br/>
             <br/>
-            <span className="text-cimc-subheading">Board Observer</span>
+            <p className="text-cimc-subheading">Board Observer</p>
             <br/>
             Christine Peterson
             <br/>
             <br/>
-            <span className="text-cimc-subheading">Organizational Advisors</span>
+            <p className="text-cimc-subheading">Organizational Advisors</p>
             <br/>
             Jim Rutt
             <br/>
