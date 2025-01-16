@@ -80,22 +80,24 @@ const Team = () => {
     <>
       <TeamContainer id="team">
         <div className="md:w-[729px]">
-          <p className="text-cimc-heading py-4">
-            CORE TEAM
+          <p className="text-cimc-subheading py-4">
+            Core Team
           </p>
-          <p className="text-cimc-heading leading-tight py-4">
+          <p className="text-cimc-heading leading-tight">
             <div className="md:flex">
               <div className="flex-1 md:w-1/2 pb-4">
-                <span className="text-cimc-subheading">Director</span>
-                <br/>
                 <img src={portraitJoscha} alt="Joscha Portrait" className="flex rounded py-2 h-56" />
                 Joscha Bach
+                <p className="text-cimc-standard">
+                  Director
+                </p>
               </div>
               <div className="flex-1 md:w-1/2 pb-4">
-                <span className="text-cimc-subheading">President</span>
-                <br/>
                 <img src={portraitErik} alt="Erik Newton" className="flex rounded py-2 h-56" />
                 Erik Newton
+                <p className="text-cimc-standard">
+                President
+                </p>
               </div>
             </div>
           </p>
@@ -107,8 +109,8 @@ const Team = () => {
             <AdvisorProfileColumn columnCellsData={profilesData.slice(-2)} />
           </div>
 
-          <p className="text-cimc-standard leading-tight pt-4">
-            <p className="text-cimc-subheading">Board</p>
+          <p className="text-cimc-standard leading-normal pt-4">
+            <p className="text-cimc-heading">Board</p>
             <br/>
             Jim O’Neill
             <br/>
@@ -119,12 +121,12 @@ const Team = () => {
             Lou de Kerhuelvez
             <br/>
             <br/>
-            <p className="text-cimc-subheading">Board Observer</p>
+            <p className="text-cimc-heading">Board Observer</p>
             <br/>
             Christine Peterson
             <br/>
             <br/>
-            <p className="text-cimc-subheading">Organizational Advisors</p>
+            <p className="text-cimc-heading">Organizational Advisors</p>
             <br/>
             Jim Rutt
             <br/>
