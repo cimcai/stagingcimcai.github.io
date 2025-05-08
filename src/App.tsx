@@ -55,8 +55,8 @@ export const routes: CIMCRoutes[] = [
     nodeRef: createRef(),
   },
   {
-    path: "/contact",
-    name: "Contact",
+    path: "/donate",
+    name: "Donate",
     element: <Contact />,
     nodeRef: createRef(),
   },
