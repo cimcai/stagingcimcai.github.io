@@ -10,7 +10,7 @@ interface LibraryCellProps {
   linkUrl?: string
   thumbnailUrl?: string
   description?: string
-  topic?: string // add topic for grouping
+  tags?: string[]
 }
 
 const LibraryCell: React.FC<
@@ -145,11 +145,11 @@ const Library = () => {
   }, [])
 
   // Group by topic
-  const grouped = links.reduce<{ [topic: string]: LibraryCellProps[] }>(
+  const grouped = links.reduce<{ [tags: string]: LibraryCellProps[] }>(
     (acc, link) => {
-      if (!link.topic) return acc
-      if (!acc[link.topic]) acc[link.topic] = []
-      acc[link.topic].push(link)
+      if (!link.tags) return acc
+      if (!acc[link.tags[0]]) acc[link.tags[0]] = []
+      acc[link.tags[0]].push(link)
       return acc
     },
     {},
