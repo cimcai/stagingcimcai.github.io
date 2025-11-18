@@ -21,14 +21,15 @@ const NavbarContainer = styled.div.withConfig({
   shouldForwardProp: (prop) => !["isOpen"].includes(prop),
 })<NavbarIsOpenProps>`
   ${tw`
-      md:h-24
       h-16
+      md:h-24
       w-full
       flex
       justify-between
       fixed
       px-6
-      max-md:py-6
+      py-6
+      md:py-0
       bg-white/90
       bg-opacity-90
       z-20
@@ -36,10 +37,13 @@ const NavbarContainer = styled.div.withConfig({
   ${({ isOpen }) =>
     isOpen &&
     tw`
-      max-md:h-screen
-      max-md:justify-between
-      max-md:items-center
-      max-md:flex-col
+      h-screen
+      md:h-24
+      justify-between
+      items-center
+      md:items-stretch
+      flex-col
+      md:flex-row
   `}
 `
 
@@ -49,9 +53,10 @@ const NavbarInnerContainer = styled.div`
     max-w-[1280px]
     flex
     justify-start
+    items-start
     md:items-center
-    max-md:items-start
-    max-md:flex-col
+    flex-col
+    md:flex-row
   `}
 `
 
@@ -59,21 +64,24 @@ const NavbarStyle = styled.div.withConfig({
   shouldForwardProp: (prop) => !["isOpen"].includes(prop),
 })<NavbarIsOpenProps>`
   ${tw`
-    flex
+    hidden
+    md:flex
     md:items-center
     md:flex-row
     md:text-cimc-navbar
     md:gap-8
-    max-md:hidden
     justify-start
   `}
   ${({ isOpen }) =>
     isOpen &&
-    tw`max-md:flex
-    max-md:flex-col
-    max-md:gap-8
-    max-md:pt-12
-    max-md:text-cimc-navbar-mobile
+    tw`
+    flex
+    flex-col
+    gap-8
+    pt-12
+    md:pt-0
+    text-cimc-navbar-mobile
+    md:text-cimc-navbar
   `}
 `
 
@@ -102,17 +110,18 @@ const ContactButton = styled.a.withConfig({
     text-cimc-contact-button
     shadow-[0px_0px_0px_1px_rgba(10,13,18,0.18)_inset,0px_-2px_0px_0px_rgba(10,13,18,0.05)_inset,0px_1px_2px_0px_rgba(10,13,18,0.05)]
     h-[44px]
-    max-md:w-full
+    w-full
+    md:w-auto
     px-[56px]
     py-[10px]
     mb-20
-    md:flex
+    flex
     md:mt-[26px]
     text-center
     gap-[var(--spacing-sm,6px)]
     no-underline
   `};
-  ${({ isOpen }) => !isOpen && "display: none;"}
+  ${({ isOpen }) => !isOpen && tw`hidden md:flex`}
 `
 
 interface NavbarProps {
