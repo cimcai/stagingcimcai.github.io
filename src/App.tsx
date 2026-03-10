@@ -4,6 +4,7 @@ import Footer from "./components/Footer"
 import Navbar from "./components/NavBar"
 import { useHashRedirect } from "./hooks/useHashRedirect"
 import AaaiSymposium from "./pages/AaaiSymposium"
+import AaaiSymposiumSchedule from "./pages/AaaiSymposiumSchedule"
 import Events from "./pages/Events"
 import Home from "./pages/Home"
 import Library from "./pages/Library"
@@ -75,6 +76,12 @@ export const routes: CIMCRoutes[] = [
     path: "/events/aaai-symposium",
     name: "Events",
     element: <AaaiSymposium />,
+    nodeRef: createRef(),
+  },
+  {
+    path: "/events/aaai-symposium/schedule",
+    name: "Events",
+    element: <AaaiSymposiumSchedule />,
     nodeRef: createRef(),
   },
   {

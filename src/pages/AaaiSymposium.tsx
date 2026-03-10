@@ -1,4 +1,5 @@
 import { type MouseEvent, useEffect, useRef, useState } from "react"
+import { Link } from "react-router-dom"
 import styled from "styled-components"
 import tw from "twin.macro"
 import { PageHeroGraphic } from "../components/PageHeroGraphic"
@@ -809,9 +810,16 @@ const AaaiSymposium = () => {
 
             <ContentSection>
               <SectionHeading id="tentative-schedule">
-                Tentative Schedule
+                Program Schedule
               </SectionHeading>
-              <Paragraph>(On website)</Paragraph>
+              <Paragraph>
+                <Link
+                  to="/events/aaai-symposium/schedule"
+                  className="text-cimc_blue hover:underline"
+                >
+                  View the full program schedule &rarr;
+                </Link>
+              </Paragraph>
             </ContentSection>
 
             <ContentSection>
