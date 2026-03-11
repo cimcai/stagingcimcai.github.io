@@ -34,11 +34,58 @@ export interface ScheduleDay {
   sessions: ScheduleSession[]
 }
 
-// Validate JSON structure against interfaces at compile time.
-// The only mismatch is rowType (JSON infers `string`, we need the union),
-// so the cast inside is intentionally narrow.
-function parseScheduleData(data: typeof scheduleJson): ScheduleDay[] {
-  return data as ScheduleDay[]
+// Validate JSON structure against interfaces at runtime so that
+// schema mismatches in the static JSON are surfaced early.
+function isScheduleDayArray(value: unknown): value is ScheduleDay[] {
+  if (!Array.isArray(value)) return false
+  const allowedRowTypes: ScheduleRow["rowType"][] = [
+    "keynote",
+    "paper",
+    "lightning",
+    "discussion",
+    "break",
+  ]
+  return value.every((day) => {
+    if (
+      typeof day !== "object" ||
+      day === null ||
+      typeof (day as any).label !== "string" ||
+      !Array.isArray((day as any).sessions)
+    ) {
+      return false
+    }
+    return (day as any).sessions.every((session: any) => {
+      if (
+        typeof session !== "object" ||
+        session === null ||
+        typeof session.title !== "string" ||
+        !Array.isArray(session.rows)
+      ) {
+        return false
+      }
+      return session.rows.every((row: any) => {
+        if (
+          typeof row !== "object" ||
+          row === null ||
+          typeof row.time !== "string" ||
+          !allowedRowTypes.includes(row.rowType)
+        ) {
+          return false
+        }
+        // Basic sanity checks for optional fields when present.
+        if ("entries" in row && !Array.isArray(row.entries)) {
+          return false
+        }
+        return true
+      })
+    })
+  })
+}
+function parseScheduleData(data: unknown): ScheduleDay[] {
+  if (!isScheduleDayArray(data)) {
+    throw new Error("Invalid symposiumSchedule.json format")
+  }
+  return data
 }
 
 const scheduleData = parseScheduleData(scheduleJson)

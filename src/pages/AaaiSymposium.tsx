@@ -1,4 +1,11 @@
-import { type MouseEvent, useEffect, useRef, useState } from "react"
+import {
+  type MouseEvent,
+  Suspense,
+  lazy,
+  useEffect,
+  useRef,
+  useState,
+} from "react"
 import styled from "styled-components"
 import tw from "twin.macro"
 import { PageHeroGraphic } from "../components/PageHeroGraphic"
@@ -6,7 +13,8 @@ import LinkIcon from "../components/icons/LinkIcon"
 import LinkedInIcon from "../components/icons/LinkedInIcon"
 import XIcon from "../components/icons/XIcon"
 import speakers from "../data/speakers.json"
-import AaaiSymposiumSchedule from "./AaaiSymposiumSchedule"
+
+const AaaiSymposiumSchedule = lazy(() => import("./AaaiSymposiumSchedule"))
 
 interface SpeakerLink {
   label?: string
@@ -954,7 +962,9 @@ const AaaiSymposium = () => {
       </FloatingTocButton>
 
       {isScheduleOpen && (
-        <AaaiSymposiumSchedule onClose={() => setIsScheduleOpen(false)} />
+        <Suspense>
+          <AaaiSymposiumSchedule onClose={() => setIsScheduleOpen(false)} />
+        </Suspense>
       )}
     </Container>
   )
