@@ -383,7 +383,7 @@ const FloatingTocButton = styled.button.withConfig({
     transition-all
     duration-200
     shadow-[0px_2px_8px_rgba(10,13,18,0.18)]
-    hover:opacity-85
+    hover:opacity-80
   `}
   color: rgba(24, 29, 39, 0.6);
 
@@ -504,10 +504,8 @@ const AaaiSymposium = () => {
                 </TocItem>
                 <TocItem>
                   <TocLink
-                    href="#call-for-participation"
-                    onClick={(event) =>
-                      handleTocClick(event, "call-for-participation")
-                    }
+                    href="#registration"
+                    onClick={(event) => handleTocClick(event, "registration")}
                   >
                     Registration
                   </TocLink>
@@ -773,9 +771,7 @@ const AaaiSymposium = () => {
             </ContentSection>
 
             <ContentSection>
-              <SectionHeading id="call-for-participation">
-                Registration
-              </SectionHeading>
+              <SectionHeading id="registration">Registration</SectionHeading>
               <Paragraph>
                 How to register and pricing:
                 <br />
