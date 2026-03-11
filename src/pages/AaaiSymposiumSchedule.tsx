@@ -60,7 +60,6 @@ const Panel = styled.dialog`
     md:w-[920px]
     md:h-[90vh]
     md:rounded-[12px]
-    overflow-y-auto
     relative
   `}
   box-shadow: 0 8px 40px rgba(0, 0, 0, 0.18);
@@ -68,6 +67,24 @@ const Panel = styled.dialog`
   padding: 0;
   max-width: none;
   max-height: none;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+`
+
+const PanelHeader = styled.div`
+  ${tw`
+    px-4
+    sm:px-6
+    md:px-10
+    pt-6
+    md:pt-10
+    pb-4
+    md:pb-6
+    relative
+  `}
+  flex-shrink: 0;
+  border-bottom: 1px solid #e2e8f0;
 `
 
 const CloseButton = styled.button`
@@ -100,14 +117,16 @@ const CloseButton = styled.button`
   }
 `
 
-const InnerContainer = styled.div`
+const PanelBody = styled.div`
   ${tw`
     px-4
     sm:px-6
     md:px-10
-    py-6
-    md:py-10
+    py-4
+    md:py-6
   `}
+  flex: 1;
+  overflow-y: auto;
 `
 
 /* ------------------------------------------------------------------ */
@@ -120,8 +139,9 @@ const TitleBlock = styled.div`
     flex-col
     gap-[10px]
     md:gap-[16px]
-    mb-6
-    md:mb-10
+    mb-3
+    md:mb-4
+    pr-10
   `}
 `
 
@@ -568,7 +588,7 @@ const AaaiSymposiumSchedule = ({
           </svg>
         </CloseButton>
 
-        <InnerContainer>
+        <PanelHeader>
           <TitleBlock>
             <Title id="schedule-dialog-title">Program Schedule</Title>
             <Subtitle>
@@ -592,14 +612,16 @@ const AaaiSymposiumSchedule = ({
               <LegendDot $color="#b2f5ea" /> Discussion
             </LegendItem>
           </Legend>
+        </PanelHeader>
 
+        <PanelBody>
           {scheduleData.map((day, dayIdx) => renderDay(day, dayIdx))}
 
           <ScheduleFooter>
             AAAI 2026 Spring Symposium Series {"\u00b7"} Machine Consciousness:
             Integrating Theory, Technology, and Philosophy (SSS-26)
           </ScheduleFooter>
-        </InnerContainer>
+        </PanelBody>
       </Panel>
     </Backdrop>
   )
