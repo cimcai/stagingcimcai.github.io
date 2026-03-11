@@ -12,23 +12,9 @@ import { PageHeroGraphic } from "../components/PageHeroGraphic"
 import LinkIcon from "../components/icons/LinkIcon"
 import LinkedInIcon from "../components/icons/LinkedInIcon"
 import XIcon from "../components/icons/XIcon"
-import speakers from "../data/speakers.json"
+import speakers, { type SpeakerLink } from "../data/speakers"
 
 const AaaiSymposiumSchedule = lazy(() => import("./AaaiSymposiumSchedule"))
-
-interface SpeakerLink {
-  label?: string
-  url: string
-}
-
-interface Speaker {
-  name: string
-  image?: string
-  links?: SpeakerLink[]
-  bio: string
-  talkTitle?: string
-  abstract?: string[]
-}
 
 const Container = styled.div`
   ${tw`
@@ -833,7 +819,7 @@ const AaaiSymposium = () => {
             <ContentSection>
               <SectionHeading id="speakers">Speakers</SectionHeading>
 
-              {(speakers as Speaker[]).map((sp, idx) => {
+              {speakers.map((sp, idx) => {
                 const base = (sp.image || "").split("/").pop() || ""
                 const filename = base.replace(/^image/, "speaker")
                 const imgSrc = sp.image?.startsWith("/")
