@@ -1,56 +1,119 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import styled from "styled-components"
 import tw from "twin.macro"
-import { PageHeroGraphic } from "../components/PageHeroGraphic"
-import {
-  type ScheduleDay,
-  type ScheduleEntry,
-  type ScheduleRow,
-  type ScheduleSession,
-  scheduleData,
-} from "../data/symposiumSchedule"
+import scheduleJson from "../data/symposiumSchedule.json"
 
 /* ------------------------------------------------------------------ */
-/*  Styled Components                                                  */
+/*  Interfaces                                                         */
 /* ------------------------------------------------------------------ */
 
-const Container = styled.div`
+export interface ScheduleEntry {
+  title: string
+  speaker: string
+  abstract?: string
+}
+
+export interface ScheduleRow {
+  time: string
+  rowType: "keynote" | "paper" | "lightning" | "discussion" | "break"
+  content?: string
+  activityLabel?: string
+  title?: string
+  speaker?: string
+  abstract?: string
+  entries?: ScheduleEntry[]
+}
+
+export interface ScheduleSession {
+  title: string
+  rows: ScheduleRow[]
+}
+
+export interface ScheduleDay {
+  label: string
+  sessions: ScheduleSession[]
+}
+
+const scheduleData: ScheduleDay[] = scheduleJson as ScheduleDay[]
+
+/* ------------------------------------------------------------------ */
+/*  Overlay chrome                                                      */
+/* ------------------------------------------------------------------ */
+
+const Backdrop = styled.div<{ $open: boolean }>`
   ${tw`
-    bg-white
+    fixed
+    inset-0
+    z-50
     flex
-    flex-col
     items-center
     justify-center
-    pt-16
-    md:pt-24
-    w-full
   `}
+  background: rgba(0, 0, 0, 0.5);
+  opacity: ${({ $open }) => ($open ? 1 : 0)};
+  pointer-events: ${({ $open }) => ($open ? "auto" : "none")};
+  transition: opacity 0.2s ease;
 `
 
-const Section = styled.div`
+const Panel = styled.div<{ $open: boolean }>`
   ${tw`
+    bg-white
+    w-full
+    h-full
+    md:w-[920px]
+    md:h-[90vh]
+    md:rounded-[12px]
+    overflow-y-auto
+    relative
+  `}
+  transform: ${({ $open }) => ($open ? "translateY(0)" : "translateY(24px)")};
+  transition: transform 0.2s ease;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.18);
+`
+
+const CloseButton = styled.button`
+  ${tw`
+    absolute
+    top-3
+    right-3
+    md:top-4
+    md:right-4
+    z-10
+    w-9
+    h-9
+    md:w-10
+    md:h-10
+    rounded-full
     flex
-    flex-col
     items-center
-    gap-[36px]
-    md:gap-[56px]
-    pb-[72px]
-    w-full
+    justify-center
+    transition-colors
+    duration-150
+  `}
+  background: rgba(242, 242, 247, 0.9);
+  border: 1px solid #e2e8f0;
+  color: rgba(24, 29, 39, 0.6);
+  cursor: pointer;
+
+  &:hover {
+    background: #e2e8f0;
+    color: rgba(24, 29, 39, 0.9);
+  }
+`
+
+const InnerContainer = styled.div`
+  ${tw`
+    px-4
+    sm:px-6
+    md:px-10
+    py-6
+    md:py-10
   `}
 `
 
-const Content = styled.div`
-  ${tw`
-    w-full
-    max-w-[400px]
-    md:max-w-none
-    md:w-[860px]
-    px-4
-    sm:px-5
-    md:px-0
-  `}
-  overflow: hidden;
-`
+/* ------------------------------------------------------------------ */
+/*  Schedule styled components                                          */
+/* ------------------------------------------------------------------ */
 
 const TitleBlock = styled.div`
   ${tw`
@@ -58,14 +121,16 @@ const TitleBlock = styled.div`
     flex-col
     gap-[10px]
     md:gap-[16px]
+    mb-6
+    md:mb-10
   `}
 `
 
-const Title = styled.h1`
+const Title = styled.h2`
   ${tw`
-    text-[32px]
-    sm:text-[36px]
-    md:text-[56px]
+    text-[28px]
+    sm:text-[32px]
+    md:text-[44px]
     leading-[1.08]
     md:leading-[1.05]
     text-cimc_dark
@@ -74,11 +139,11 @@ const Title = styled.h1`
   letter-spacing: -2.24px;
 `
 
-const Subtitle = styled.h2`
+const Subtitle = styled.p`
   ${tw`
-    text-[18px]
-    sm:text-[20px]
-    md:text-[24px]
+    text-[16px]
+    sm:text-[18px]
+    md:text-[20px]
   `}
   color: rgba(24, 29, 39, 0.6);
   letter-spacing: -0.72px;
@@ -327,10 +392,37 @@ const ScheduleFooter = styled.div`
 /*  Component                                                          */
 /* ------------------------------------------------------------------ */
 
-const AaaiSymposiumSchedule = () => {
+interface AaaiSymposiumScheduleProps {
+  open: boolean
+  onClose: () => void
+}
+
+const AaaiSymposiumSchedule = ({
+  open,
+  onClose,
+}: AaaiSymposiumScheduleProps) => {
   const [visibleAbstracts, setVisibleAbstracts] = useState<Set<string>>(
     new Set(),
   )
+
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = "hidden"
+    } else {
+      document.body.style.overflow = ""
+    }
+    return () => {
+      document.body.style.overflow = ""
+    }
+  }, [open])
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && open) onClose()
+    }
+    document.addEventListener("keydown", handleKeyDown)
+    return () => document.removeEventListener("keydown", handleKeyDown)
+  }, [open, onClose])
 
   const toggleAbstract = (id: string) => {
     setVisibleAbstracts((prev) => {
@@ -396,11 +488,7 @@ const AaaiSymposiumSchedule = () => {
               </div>
             )}
             {row.entries.map((entry, entryIdx) =>
-              renderEntry(
-                entry,
-                `${baseId}-${entryIdx}`,
-                row.rowType,
-              ),
+              renderEntry(entry, `${baseId}-${entryIdx}`, row.rowType),
             )}
           </ContentCol>
         </ScheduleRowDiv>
@@ -449,10 +537,32 @@ const AaaiSymposiumSchedule = () => {
   )
 
   return (
-    <Container>
-      <PageHeroGraphic />
-      <Section>
-        <Content>
+    <Backdrop $open={open} onClick={onClose}>
+      <Panel $open={open} onClick={(e) => e.stopPropagation()}>
+        <CloseButton
+          type="button"
+          onClick={onClose}
+          aria-label="Close schedule"
+        >
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+          >
+            <path
+              d="M18 6L6 18M6 6l12 12"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </CloseButton>
+
+        <InnerContainer>
           <TitleBlock>
             <Title>Program Schedule</Title>
             <Subtitle>
@@ -461,9 +571,7 @@ const AaaiSymposiumSchedule = () => {
               2026
             </Subtitle>
           </TitleBlock>
-        </Content>
 
-        <Content>
           <Legend>
             <LegendItem>
               <LegendDot $color="#bee3f8" /> Keynote
@@ -485,9 +593,9 @@ const AaaiSymposiumSchedule = () => {
             AAAI 2026 Spring Symposium Series {"\u00b7"} Machine Consciousness:
             Integrating Theory, Technology, and Philosophy (SSS-26)
           </ScheduleFooter>
-        </Content>
-      </Section>
-    </Container>
+        </InnerContainer>
+      </Panel>
+    </Backdrop>
   )
 }
 

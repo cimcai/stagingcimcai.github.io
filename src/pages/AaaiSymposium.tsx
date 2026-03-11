@@ -1,5 +1,4 @@
 import { type MouseEvent, useEffect, useRef, useState } from "react"
-import { Link } from "react-router-dom"
 import styled from "styled-components"
 import tw from "twin.macro"
 import { PageHeroGraphic } from "../components/PageHeroGraphic"
@@ -7,6 +6,7 @@ import LinkIcon from "../components/icons/LinkIcon"
 import LinkedInIcon from "../components/icons/LinkedInIcon"
 import XIcon from "../components/icons/XIcon"
 import speakers from "../data/speakers.json"
+import AaaiSymposiumSchedule from "./AaaiSymposiumSchedule"
 
 interface SpeakerLink {
   label?: string
@@ -403,6 +403,7 @@ const FloatingTocButton = styled.button.withConfig({
 const AaaiSymposium = () => {
   const tocRef = useRef<HTMLDivElement | null>(null)
   const [isBackToTocVisible, setIsBackToTocVisible] = useState(false)
+  const [isScheduleOpen, setIsScheduleOpen] = useState(false)
 
   const scrollToSection = (targetId: string) => {
     const target = document.getElementById(targetId)
@@ -513,12 +514,12 @@ const AaaiSymposium = () => {
                 </TocItem>
                 <TocItem>
                   <TocLink
-                    href="#tentative-schedule"
+                    href="#program-schedule"
                     onClick={(event) =>
-                      handleTocClick(event, "tentative-schedule")
+                      handleTocClick(event, "program-schedule")
                     }
                   >
-                    Tentative Schedule
+                    Program Schedule
                   </TocLink>
                 </TocItem>
                 <TocItem>
@@ -809,16 +810,18 @@ const AaaiSymposium = () => {
             </ContentSection>
 
             <ContentSection>
-              <SectionHeading id="tentative-schedule">
+              <SectionHeading id="program-schedule">
                 Program Schedule
               </SectionHeading>
               <Paragraph>
-                <Link
-                  to="/events/aaai-symposium/schedule"
-                  className="text-cimc_blue hover:underline"
+                <button
+                  type="button"
+                  onClick={() => setIsScheduleOpen(true)}
+                  className="text-cimc_blue hover:underline cursor-pointer bg-transparent border-none p-0 text-inherit font-inherit"
+                  style={{ fontSize: "inherit" }}
                 >
                   View the full program schedule &rarr;
-                </Link>
+                </button>
               </Paragraph>
             </ContentSection>
 
@@ -952,6 +955,11 @@ const AaaiSymposium = () => {
           />
         </svg>
       </FloatingTocButton>
+
+      <AaaiSymposiumSchedule
+        open={isScheduleOpen}
+        onClose={() => setIsScheduleOpen(false)}
+      />
     </Container>
   )
 }
