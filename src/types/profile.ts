@@ -1,4 +1,4 @@
-export type TeamMember = {
+export interface TeamMember {
   name: string
   job?: string
   description?: string

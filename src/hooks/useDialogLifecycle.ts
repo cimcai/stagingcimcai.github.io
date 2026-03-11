@@ -17,14 +17,29 @@ export const useDialogLifecycle = (
     const htmlOverflow = document.documentElement.style.overflow
     const bodyOverflow = document.body.style.overflow
 
-    const openDialog = () => {
-      if (!dialog.isConnected || dialog.open) return
+    const restoreScrollLock = () => {
+      document.documentElement.style.overflow = htmlOverflow
+      document.body.style.overflow = bodyOverflow
+    }
+
+    const applyScrollLock = () => {
       document.documentElement.style.overflow = "hidden"
       document.body.style.overflow = "hidden"
-      dialog.showModal()
+    }
+
+    const openDialog = () => {
+      if (!dialog.isConnected || dialog.open) return
+      applyScrollLock()
+
+      try {
+        dialog.showModal()
+      } catch {
+        restoreScrollLock()
+      }
     }
 
     const handleClose = () => {
+      restoreScrollLock()
       if (!suppressCloseRef.current) onCloseRef.current()
     }
 
@@ -39,8 +54,7 @@ export const useDialogLifecycle = (
       window.cancelAnimationFrame(frameId)
       dialog.removeEventListener("close", handleClose)
       if (dialog.open) dialog.close()
-      document.documentElement.style.overflow = htmlOverflow
-      document.body.style.overflow = bodyOverflow
+      restoreScrollLock()
       suppressCloseRef.current = false
     }
   }, [dialogRef])
