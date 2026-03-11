@@ -954,7 +954,7 @@ const AaaiSymposium = () => {
       </FloatingTocButton>
 
       {isScheduleOpen && (
-        <AaaiSymposiumSchedule open onClose={() => setIsScheduleOpen(false)} />
+        <AaaiSymposiumSchedule onClose={() => setIsScheduleOpen(false)} />
       )}
     </Container>
   )

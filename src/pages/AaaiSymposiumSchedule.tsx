@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import styled from "styled-components"
 import tw from "twin.macro"
 import scheduleJson from "../data/symposiumSchedule.json"
@@ -411,41 +411,27 @@ const ScheduleFooter = styled.div`
 /* ------------------------------------------------------------------ */
 
 interface AaaiSymposiumScheduleProps {
-  open: boolean
   onClose: () => void
 }
 
-const AaaiSymposiumSchedule = ({
-  open,
-  onClose,
-}: AaaiSymposiumScheduleProps) => {
+const AaaiSymposiumSchedule = ({ onClose }: AaaiSymposiumScheduleProps) => {
   const dialogRef = useRef<HTMLDialogElement>(null)
+  const onCloseRef = useRef(onClose)
+  onCloseRef.current = onClose
   const [visibleAbstracts, setVisibleAbstracts] = useState<Set<string>>(
     new Set(),
   )
 
-  const handleClose = useCallback(() => {
-    onClose()
-  }, [onClose])
-
   useEffect(() => {
     const dialog = dialogRef.current
     if (!dialog) return
 
-    if (open && !dialog.open) {
-      dialog.showModal()
-    } else if (!open && dialog.open) {
-      dialog.close()
-    }
-  }, [open])
+    dialog.showModal()
 
-  useEffect(() => {
-    const dialog = dialogRef.current
-    if (!dialog) return
-
+    const handleClose = () => onCloseRef.current()
     dialog.addEventListener("close", handleClose)
     return () => dialog.removeEventListener("close", handleClose)
-  }, [handleClose])
+  }, [])
 
   const toggleAbstract = (id: string) => {
     setVisibleAbstracts((prev) => {
