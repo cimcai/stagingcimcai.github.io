@@ -4,7 +4,8 @@ import { PageHeroGraphic } from "../components/PageHeroGraphic"
 import LinkIcon from "../components/icons/LinkIcon"
 import LinkedInIcon from "../components/icons/LinkedInIcon"
 import XIcon from "../components/icons/XIcon"
-import profilesData from "../data/profiles.json"
+import profilesData from "../data/profiles"
+import type { TeamMember } from "../types/profile"
 
 const TeamContainer = styled.div`
   ${tw`
@@ -107,17 +108,6 @@ const ProfileLinks = styled.div`
   ${tw`
     flex flex-row gap-4 justify-between`}
 `
-
-type TeamMember = {
-  name: string
-  job?: string
-  description?: string
-  institution?: string
-  institutionUrl?: string
-  linkedInUrl?: string
-  xUrl?: string
-  portraitUrl: string
-}
 
 // ProfileList component
 const ProfileList = ({

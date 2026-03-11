@@ -1,7 +1,8 @@
-import { useEffect, useRef, useState } from "react"
+import { useRef, useState } from "react"
 import styled from "styled-components"
 import tw from "twin.macro"
 import scheduleData from "../data/symposiumSchedule"
+import { useDialogLifecycle } from "../hooks/useDialogLifecycle"
 import type {
   ScheduleDay,
   ScheduleEntry,
@@ -16,12 +17,15 @@ import type {
 const Dialog = styled.dialog`
   ${tw`
     bg-white
+    fixed
+    inset-0
+    m-0
     w-full
     h-full
     md:w-[920px]
     md:h-[90vh]
+    md:m-auto
     md:rounded-[12px]
-    relative
   `}
   box-shadow: 0 8px 40px rgba(0, 0, 0, 0.18);
   border: none;
@@ -92,6 +96,7 @@ const PanelBody = styled.div`
   `}
   flex: 1;
   overflow-y: auto;
+  overscroll-behavior: contain;
 `
 
 /* ------------------------------------------------------------------ */
@@ -382,25 +387,10 @@ interface AaaiSymposiumScheduleProps {
 
 const AaaiSymposiumSchedule = ({ onClose }: AaaiSymposiumScheduleProps) => {
   const dialogRef = useRef<HTMLDialogElement>(null)
-  const onCloseRef = useRef(onClose)
-  onCloseRef.current = onClose
   const [visibleAbstracts, setVisibleAbstracts] = useState<Set<string>>(
     new Set(),
   )
-
-  useEffect(() => {
-    const dialog = dialogRef.current
-    if (!dialog) return
-
-    if (!dialog.open) dialog.showModal()
-
-    const handleClose = () => onCloseRef.current()
-    dialog.addEventListener("close", handleClose)
-    return () => {
-      dialog.removeEventListener("close", handleClose)
-      if (dialog.open) dialog.close()
-    }
-  }, [])
+  const requestClose = useDialogLifecycle(dialogRef, onClose)
 
   const toggleAbstract = (id: string) => {
     setVisibleAbstracts((prev) => {
@@ -524,12 +514,12 @@ const AaaiSymposiumSchedule = ({ onClose }: AaaiSymposiumScheduleProps) => {
       ref={dialogRef}
       aria-labelledby="schedule-dialog-title"
       onClick={(e) => {
-        if (e.target === dialogRef.current) dialogRef.current?.close()
+        if (e.target === dialogRef.current) requestClose()
       }}
     >
       <CloseButton
         type="button"
-        onClick={() => dialogRef.current?.close()}
+        onClick={requestClose}
         aria-label="Close schedule"
       >
         <svg
