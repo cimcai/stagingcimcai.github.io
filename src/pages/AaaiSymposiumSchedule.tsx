@@ -40,7 +40,7 @@ const scheduleData: ScheduleDay[] = scheduleJson as ScheduleDay[]
 /*  Overlay chrome                                                      */
 /* ------------------------------------------------------------------ */
 
-const Backdrop = styled.div<{ $open: boolean }>`
+const Backdrop = styled.div`
   ${tw`
     fixed
     inset-0
@@ -50,12 +50,9 @@ const Backdrop = styled.div<{ $open: boolean }>`
     justify-center
   `}
   background: rgba(0, 0, 0, 0.5);
-  opacity: ${({ $open }) => ($open ? 1 : 0)};
-  pointer-events: ${({ $open }) => ($open ? "auto" : "none")};
-  transition: opacity 0.2s ease;
 `
 
-const Panel = styled.div<{ $open: boolean }>`
+const Panel = styled.div`
   ${tw`
     bg-white
     w-full
@@ -66,8 +63,6 @@ const Panel = styled.div<{ $open: boolean }>`
     overflow-y-auto
     relative
   `}
-  transform: ${({ $open }) => ($open ? "translateY(0)" : "translateY(24px)")};
-  transition: transform 0.2s ease;
   box-shadow: 0 8px 40px rgba(0, 0, 0, 0.18);
 `
 
@@ -417,8 +412,12 @@ const AaaiSymposiumSchedule = ({
   }, [open])
 
   useEffect(() => {
+    if (!open) {
+      return
+    }
+
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape" && open) onClose()
+      if (e.key === "Escape") onClose()
     }
     document.addEventListener("keydown", handleKeyDown)
     return () => document.removeEventListener("keydown", handleKeyDown)
@@ -445,7 +444,6 @@ const AaaiSymposiumSchedule = ({
   const renderEntry = (
     entry: ScheduleEntry,
     absId: string,
-    rowType: string,
   ) => (
     <EntryItemDiv key={absId}>
       <div>
@@ -488,7 +486,7 @@ const AaaiSymposiumSchedule = ({
               </div>
             )}
             {row.entries.map((entry, entryIdx) =>
-              renderEntry(entry, `${baseId}-${entryIdx}`, row.rowType),
+              renderEntry(entry, `${baseId}-${entryIdx}`),
             )}
           </ContentCol>
         </ScheduleRowDiv>
@@ -536,9 +534,16 @@ const AaaiSymposiumSchedule = ({
     </div>
   )
 
+  if (!open) return null
+
   return (
-    <Backdrop $open={open} onClick={onClose}>
-      <Panel $open={open} onClick={(e) => e.stopPropagation()}>
+    <Backdrop onClick={onClose}>
+      <Panel
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="schedule-dialog-title"
+        onClick={(e) => e.stopPropagation()}
+      >
         <CloseButton
           type="button"
           onClick={onClose}
@@ -564,7 +569,7 @@ const AaaiSymposiumSchedule = ({
 
         <InnerContainer>
           <TitleBlock>
-            <Title>Program Schedule</Title>
+            <Title id="schedule-dialog-title">Program Schedule</Title>
             <Subtitle>
               AAAI 2026 Spring Symposium on Machine Consciousness: Integrating
               Theory, Technology, and Philosophy {"\u00b7"} April 7{"\u2013"}9,
