@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useCallback, useEffect, useRef, useState } from "react"
 import styled from "styled-components"
 import tw from "twin.macro"
 import scheduleJson from "../data/symposiumSchedule.json"
@@ -34,25 +34,20 @@ export interface ScheduleDay {
   sessions: ScheduleSession[]
 }
 
-const scheduleData: ScheduleDay[] = scheduleJson as ScheduleDay[]
+// Validate JSON structure against interfaces at compile time.
+// The only mismatch is rowType (JSON infers `string`, we need the union),
+// so the cast inside is intentionally narrow.
+function parseScheduleData(data: typeof scheduleJson): ScheduleDay[] {
+  return data as ScheduleDay[]
+}
+
+const scheduleData = parseScheduleData(scheduleJson)
 
 /* ------------------------------------------------------------------ */
 /*  Overlay chrome                                                      */
 /* ------------------------------------------------------------------ */
 
-const Backdrop = styled.div`
-  ${tw`
-    fixed
-    inset-0
-    z-50
-    flex
-    items-center
-    justify-center
-  `}
-  background: rgba(0, 0, 0, 0.5);
-`
-
-const Panel = styled.dialog`
+const Dialog = styled.dialog`
   ${tw`
     bg-white
     w-full
@@ -70,6 +65,10 @@ const Panel = styled.dialog`
   display: flex;
   flex-direction: column;
   overflow: hidden;
+
+  &::backdrop {
+    background: rgba(0, 0, 0, 0.5);
+  }
 `
 
 const PanelHeader = styled.div`
@@ -420,32 +419,33 @@ const AaaiSymposiumSchedule = ({
   open,
   onClose,
 }: AaaiSymposiumScheduleProps) => {
+  const dialogRef = useRef<HTMLDialogElement>(null)
   const [visibleAbstracts, setVisibleAbstracts] = useState<Set<string>>(
     new Set(),
   )
 
+  const handleClose = useCallback(() => {
+    onClose()
+  }, [onClose])
+
   useEffect(() => {
-    if (open) {
-      document.body.style.overflow = "hidden"
-    } else {
-      document.body.style.overflow = ""
-    }
-    return () => {
-      document.body.style.overflow = ""
+    const dialog = dialogRef.current
+    if (!dialog) return
+
+    if (open && !dialog.open) {
+      dialog.showModal()
+    } else if (!open && dialog.open) {
+      dialog.close()
     }
   }, [open])
 
   useEffect(() => {
-    if (!open) {
-      return
-    }
+    const dialog = dialogRef.current
+    if (!dialog) return
 
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose()
-    }
-    document.addEventListener("keydown", handleKeyDown)
-    return () => document.removeEventListener("keydown", handleKeyDown)
-  }, [open, onClose])
+    dialog.addEventListener("close", handleClose)
+    return () => dialog.removeEventListener("close", handleClose)
+  }, [handleClose])
 
   const toggleAbstract = (id: string) => {
     setVisibleAbstracts((prev) => {
@@ -456,14 +456,23 @@ const AaaiSymposiumSchedule = ({
     })
   }
 
-  const renderAbstract = (id: string, text: string) => (
-    <>
-      <AbstractToggleBtn type="button" onClick={() => toggleAbstract(id)}>
-        {visibleAbstracts.has(id) ? "Hide abstract" : "Show abstract"}
-      </AbstractToggleBtn>
-      {visibleAbstracts.has(id) && <AbstractTextDiv>{text}</AbstractTextDiv>}
-    </>
-  )
+  const renderAbstract = (id: string, text: string) => {
+    const expanded = visibleAbstracts.has(id)
+    const regionId = `abstract-${id}`
+    return (
+      <>
+        <AbstractToggleBtn
+          type="button"
+          onClick={() => toggleAbstract(id)}
+          aria-expanded={expanded}
+          aria-controls={regionId}
+        >
+          {expanded ? "Hide abstract" : "Show abstract"}
+        </AbstractToggleBtn>
+        {expanded && <AbstractTextDiv id={regionId}>{text}</AbstractTextDiv>}
+      </>
+    )
+  }
 
   const renderEntry = (entry: ScheduleEntry, absId: string) => (
     <EntryItemDiv key={absId}>
@@ -471,7 +480,7 @@ const AaaiSymposiumSchedule = ({
         <ActivityTitle>{entry.title}</ActivityTitle>
         {entry.abstract && renderAbstract(absId, entry.abstract)}
       </div>
-      {entry.speaker && <Speaker>{entry.speaker}</Speaker>}
+      <Speaker>{entry.speaker}</Speaker>
     </EntryItemDiv>
   )
 
@@ -555,75 +564,68 @@ const AaaiSymposiumSchedule = ({
     </div>
   )
 
-  if (!open) return null
-
   return (
-    <Backdrop onClick={onClose}>
-      <Panel
-        open
-        aria-modal="true"
-        aria-labelledby="schedule-dialog-title"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <CloseButton
-          type="button"
-          onClick={onClose}
-          aria-label="Close schedule"
+    <Dialog
+      ref={dialogRef}
+      aria-labelledby="schedule-dialog-title"
+      onClick={(e) => {
+        if (e.target === dialogRef.current) onClose()
+      }}
+    >
+      <CloseButton type="button" onClick={onClose} aria-label="Close schedule">
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
         >
-          <svg
-            width="16"
-            height="16"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            aria-hidden="true"
-          >
-            <path
-              d="M18 6L6 18M6 6l12 12"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </CloseButton>
+          <path
+            d="M18 6L6 18M6 6l12 12"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      </CloseButton>
 
-        <PanelHeader>
-          <TitleBlock>
-            <Title id="schedule-dialog-title">Program Schedule</Title>
-            <Subtitle>
-              AAAI 2026 Spring Symposium on Machine Consciousness: Integrating
-              Theory, Technology, and Philosophy {"\u00b7"} April 7{"\u2013"}9,
-              2026
-            </Subtitle>
-          </TitleBlock>
+      <PanelHeader>
+        <TitleBlock>
+          <Title id="schedule-dialog-title">Program Schedule</Title>
+          <Subtitle>
+            AAAI 2026 Spring Symposium on Machine Consciousness: Integrating
+            Theory, Technology, and Philosophy {"\u00b7"} April 7{"\u2013"}9,
+            2026
+          </Subtitle>
+        </TitleBlock>
 
-          <Legend>
-            <LegendItem>
-              <LegendDot $color="#bee3f8" /> Keynote
-            </LegendItem>
-            <LegendItem>
-              <LegendDot $color="#c6f6d5" /> Paper (25 min)
-            </LegendItem>
-            <LegendItem>
-              <LegendDot $color="#fefcbf" /> Lightning (10 min)
-            </LegendItem>
-            <LegendItem>
-              <LegendDot $color="#b2f5ea" /> Discussion
-            </LegendItem>
-          </Legend>
-        </PanelHeader>
+        <Legend>
+          <LegendItem>
+            <LegendDot $color="#bee3f8" /> Keynote
+          </LegendItem>
+          <LegendItem>
+            <LegendDot $color="#c6f6d5" /> Paper (25 min)
+          </LegendItem>
+          <LegendItem>
+            <LegendDot $color="#fefcbf" /> Lightning (10 min)
+          </LegendItem>
+          <LegendItem>
+            <LegendDot $color="#b2f5ea" /> Discussion
+          </LegendItem>
+        </Legend>
+      </PanelHeader>
 
-        <PanelBody>
-          {scheduleData.map((day, dayIdx) => renderDay(day, dayIdx))}
+      <PanelBody>
+        {scheduleData.map((day, dayIdx) => renderDay(day, dayIdx))}
 
-          <ScheduleFooter>
-            AAAI 2026 Spring Symposium Series {"\u00b7"} Machine Consciousness:
-            Integrating Theory, Technology, and Philosophy (SSS-26)
-          </ScheduleFooter>
-        </PanelBody>
-      </Panel>
-    </Backdrop>
+        <ScheduleFooter>
+          AAAI 2026 Spring Symposium Series {"\u00b7"} Machine Consciousness:
+          Integrating Theory, Technology, and Philosophy (SSS-26)
+        </ScheduleFooter>
+      </PanelBody>
+    </Dialog>
   )
 }
 

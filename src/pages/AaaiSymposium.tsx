@@ -813,6 +813,7 @@ const AaaiSymposium = () => {
                 <button
                   type="button"
                   onClick={() => setIsScheduleOpen(true)}
+                  aria-haspopup="dialog"
                   className="text-cimc_blue hover:underline cursor-pointer bg-transparent border-none p-0 text-inherit font-inherit"
                   style={{ fontSize: "inherit" }}
                 >
@@ -952,10 +953,9 @@ const AaaiSymposium = () => {
         </svg>
       </FloatingTocButton>
 
-      <AaaiSymposiumSchedule
-        open={isScheduleOpen}
-        onClose={() => setIsScheduleOpen(false)}
-      />
+      {isScheduleOpen && (
+        <AaaiSymposiumSchedule open onClose={() => setIsScheduleOpen(false)} />
+      )}
     </Container>
   )
 }
