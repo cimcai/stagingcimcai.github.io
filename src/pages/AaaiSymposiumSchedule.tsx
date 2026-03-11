@@ -36,7 +36,6 @@ const Dialog = styled.dialog`
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  overscroll-behavior: contain;
 
   &::backdrop {
     background: rgba(0, 0, 0, 0.5);
@@ -98,6 +97,7 @@ const PanelBody = styled.div`
   `}
   flex: 1;
   overflow-y: auto;
+  overscroll-behavior: contain;
 `
 
 /* ------------------------------------------------------------------ */
