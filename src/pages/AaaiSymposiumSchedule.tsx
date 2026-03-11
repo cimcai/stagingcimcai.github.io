@@ -392,11 +392,14 @@ const AaaiSymposiumSchedule = ({ onClose }: AaaiSymposiumScheduleProps) => {
     const dialog = dialogRef.current
     if (!dialog) return
 
-    dialog.showModal()
+    if (!dialog.open) dialog.showModal()
 
     const handleClose = () => onCloseRef.current()
     dialog.addEventListener("close", handleClose)
-    return () => dialog.removeEventListener("close", handleClose)
+    return () => {
+      dialog.removeEventListener("close", handleClose)
+      if (dialog.open) dialog.close()
+    }
   }, [])
 
   const toggleAbstract = (id: string) => {
