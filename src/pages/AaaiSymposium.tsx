@@ -12,7 +12,8 @@ import { PageHeroGraphic } from "../components/PageHeroGraphic"
 import LinkIcon from "../components/icons/LinkIcon"
 import LinkedInIcon from "../components/icons/LinkedInIcon"
 import XIcon from "../components/icons/XIcon"
-import speakers, { type SpeakerLink } from "../data/speakers"
+import speakers from "../data/speakers"
+import type { SpeakerLink } from "../types/speaker"
 
 const AaaiSymposiumSchedule = lazy(() => import("./AaaiSymposiumSchedule"))
 
@@ -948,7 +949,7 @@ const AaaiSymposium = () => {
       </FloatingTocButton>
 
       {isScheduleOpen && (
-        <Suspense>
+        <Suspense fallback={null}>
           <AaaiSymposiumSchedule onClose={() => setIsScheduleOpen(false)} />
         </Suspense>
       )}

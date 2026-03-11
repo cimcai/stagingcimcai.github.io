@@ -2,37 +2,12 @@ import { useEffect, useRef, useState } from "react"
 import styled from "styled-components"
 import tw from "twin.macro"
 import scheduleData from "../data/symposiumSchedule"
-
-/* ------------------------------------------------------------------ */
-/*  Interfaces                                                         */
-/* ------------------------------------------------------------------ */
-
-export interface ScheduleEntry {
-  title: string
-  speaker: string
-  abstract?: string
-}
-
-export interface ScheduleRow {
-  time: string
-  rowType: "keynote" | "paper" | "lightning" | "discussion" | "break"
-  content?: string
-  activityLabel?: string
-  title?: string
-  speaker?: string
-  abstract?: string
-  entries?: ScheduleEntry[]
-}
-
-export interface ScheduleSession {
-  title: string
-  rows: ScheduleRow[]
-}
-
-export interface ScheduleDay {
-  label: string
-  sessions: ScheduleSession[]
-}
+import type {
+  ScheduleDay,
+  ScheduleEntry,
+  ScheduleRow,
+  ScheduleSession,
+} from "../types/schedule"
 
 /* ------------------------------------------------------------------ */
 /*  Overlay chrome                                                      */
@@ -234,7 +209,7 @@ const SessionTitleDiv = styled.div`
 
 /* -- Schedule Row ------------------------------------------------- */
 
-const ScheduleRowDiv = styled.div<{ $rowType: string }>`
+const ScheduleRowDiv = styled.div<{ $rowType: ScheduleRow["rowType"] }>`
   display: grid;
   grid-template-columns: 160px 1fr;
   border-bottom: 1px solid #e2e8f0;
@@ -301,7 +276,7 @@ const BreakContent = styled.div`
 
 /* -- Activity badges ---------------------------------------------- */
 
-const ActivityType = styled.span<{ $type: string }>`
+const ActivityType = styled.span<{ $type: ScheduleRow["rowType"] }>`
   display: inline-block;
   font-size: 0.7rem;
   font-weight: 600;
@@ -546,10 +521,14 @@ const AaaiSymposiumSchedule = ({ onClose }: AaaiSymposiumScheduleProps) => {
       ref={dialogRef}
       aria-labelledby="schedule-dialog-title"
       onClick={(e) => {
-        if (e.target === dialogRef.current) onClose()
+        if (e.target === dialogRef.current) dialogRef.current?.close()
       }}
     >
-      <CloseButton type="button" onClick={onClose} aria-label="Close schedule">
+      <CloseButton
+        type="button"
+        onClick={() => dialogRef.current?.close()}
+        aria-label="Close schedule"
+      >
         <svg
           width="16"
           height="16"

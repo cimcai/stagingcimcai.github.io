@@ -1,4 +1,4 @@
-import type { ScheduleDay } from "../pages/AaaiSymposiumSchedule"
+import type { ScheduleDay } from "../types/schedule"
 
 const scheduleData: ScheduleDay[] = [
   {
