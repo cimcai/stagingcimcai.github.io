@@ -1,25 +1,21 @@
-import { type MouseEvent, useEffect, useRef, useState } from "react"
+import {
+  type MouseEvent,
+  Suspense,
+  lazy,
+  useEffect,
+  useRef,
+  useState,
+} from "react"
 import styled from "styled-components"
 import tw from "twin.macro"
 import { PageHeroGraphic } from "../components/PageHeroGraphic"
 import LinkIcon from "../components/icons/LinkIcon"
 import LinkedInIcon from "../components/icons/LinkedInIcon"
 import XIcon from "../components/icons/XIcon"
-import speakers from "../data/speakers.json"
+import speakers from "../data/speakers"
+import type { SpeakerLink } from "../types/speaker"
 
-interface SpeakerLink {
-  label?: string
-  url: string
-}
-
-interface Speaker {
-  name: string
-  image?: string
-  links?: SpeakerLink[]
-  bio: string
-  talkTitle?: string
-  abstract?: string[]
-}
+const AaaiSymposiumSchedule = lazy(() => import("./AaaiSymposiumSchedule"))
 
 const Container = styled.div`
   ${tw`
@@ -382,7 +378,7 @@ const FloatingTocButton = styled.button.withConfig({
     transition-all
     duration-200
     shadow-[0px_2px_8px_rgba(10,13,18,0.18)]
-    hover:opacity-85
+    hover:opacity-80
   `}
   color: rgba(24, 29, 39, 0.6);
 
@@ -402,6 +398,7 @@ const FloatingTocButton = styled.button.withConfig({
 const AaaiSymposium = () => {
   const tocRef = useRef<HTMLDivElement | null>(null)
   const [isBackToTocVisible, setIsBackToTocVisible] = useState(false)
+  const [isScheduleOpen, setIsScheduleOpen] = useState(false)
 
   const scrollToSection = (targetId: string) => {
     const target = document.getElementById(targetId)
@@ -502,22 +499,20 @@ const AaaiSymposium = () => {
                 </TocItem>
                 <TocItem>
                   <TocLink
-                    href="#call-for-participation"
-                    onClick={(event) =>
-                      handleTocClick(event, "call-for-participation")
-                    }
+                    href="#registration"
+                    onClick={(event) => handleTocClick(event, "registration")}
                   >
                     Registration
                   </TocLink>
                 </TocItem>
                 <TocItem>
                   <TocLink
-                    href="#tentative-schedule"
+                    href="#program-schedule"
                     onClick={(event) =>
-                      handleTocClick(event, "tentative-schedule")
+                      handleTocClick(event, "program-schedule")
                     }
                   >
-                    Tentative Schedule
+                    Program Schedule
                   </TocLink>
                 </TocItem>
                 <TocItem>
@@ -771,9 +766,7 @@ const AaaiSymposium = () => {
             </ContentSection>
 
             <ContentSection>
-              <SectionHeading id="call-for-participation">
-                Registration
-              </SectionHeading>
+              <SectionHeading id="registration">Registration</SectionHeading>
               <Paragraph>
                 How to register and pricing:
                 <br />
@@ -808,22 +801,26 @@ const AaaiSymposium = () => {
             </ContentSection>
 
             <ContentSection>
-              <SectionHeading id="tentative-schedule">
-                Tentative Schedule
+              <SectionHeading id="program-schedule">
+                Program Schedule
               </SectionHeading>
-              <Paragraph>(On website)</Paragraph>
+              <Paragraph>
+                <button
+                  type="button"
+                  onClick={() => setIsScheduleOpen(true)}
+                  aria-haspopup="dialog"
+                  className="text-cimc_blue hover:underline cursor-pointer bg-transparent border-none p-0 text-inherit font-inherit"
+                  style={{ fontSize: "inherit" }}
+                >
+                  View the full program schedule &rarr;
+                </button>
+              </Paragraph>
             </ContentSection>
 
             <ContentSection>
               <SectionHeading id="speakers">Speakers</SectionHeading>
 
-              {(speakers as Speaker[]).map((sp, idx) => {
-                const base = (sp.image || "").split("/").pop() || ""
-                const filename = base.replace(/^image/, "speaker")
-                const imgSrc = sp.image?.startsWith("/")
-                  ? sp.image
-                  : `/speakers/${filename}`
-
+              {speakers.map((sp, idx) => {
                 const website = (sp.links || []).find(
                   (l: SpeakerLink) =>
                     (l.label && /website/i.test(l.label)) ||
@@ -842,7 +839,7 @@ const AaaiSymposium = () => {
                   <div key={sp.name || idx}>
                     <SpeakerCard>
                       <SpeakerImageWrap>
-                        <SpeakerImg src={imgSrc} alt={sp.name} />
+                        <SpeakerImg src={sp.image} alt={sp.name} />
                       </SpeakerImageWrap>
                       <SpeakerInfoCol>
                         <SpeakerNameRow>
@@ -944,6 +941,12 @@ const AaaiSymposium = () => {
           />
         </svg>
       </FloatingTocButton>
+
+      {isScheduleOpen && (
+        <Suspense fallback={null}>
+          <AaaiSymposiumSchedule onClose={() => setIsScheduleOpen(false)} />
+        </Suspense>
+      )}
     </Container>
   )
 }
