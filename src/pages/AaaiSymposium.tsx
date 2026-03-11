@@ -821,12 +821,6 @@ const AaaiSymposium = () => {
               <SectionHeading id="speakers">Speakers</SectionHeading>
 
               {speakers.map((sp, idx) => {
-                const base = (sp.image || "").split("/").pop() || ""
-                const filename = base.replace(/^image/, "speaker")
-                const imgSrc = sp.image?.startsWith("/")
-                  ? sp.image
-                  : `/speakers/${filename}`
-
                 const website = (sp.links || []).find(
                   (l: SpeakerLink) =>
                     (l.label && /website/i.test(l.label)) ||
@@ -845,7 +839,7 @@ const AaaiSymposium = () => {
                   <div key={sp.name || idx}>
                     <SpeakerCard>
                       <SpeakerImageWrap>
-                        <SpeakerImg src={imgSrc} alt={sp.name} />
+                        <SpeakerImg src={sp.image} alt={sp.name} />
                       </SpeakerImageWrap>
                       <SpeakerInfoCol>
                         <SpeakerNameRow>

@@ -3,7 +3,7 @@ import type { Speaker } from "../types/speaker"
 const speakers: Speaker[] = [
   {
     name: "Ryota Kanai",
-    image: "speaker/ryota.jpg",
+    image: "/speakers/ryota.jpg",
     links: [
       {
         label: "LinkedIn",
@@ -25,7 +25,7 @@ const speakers: Speaker[] = [
   },
   {
     name: "Michael Timothy Bennett",
-    image: "speaker/michael.jpg",
+    image: "/speakers/michael.jpg",
     links: [
       { label: "Website", url: "https://michaeltimothybennett.com/" },
       {
@@ -39,7 +39,7 @@ const speakers: Speaker[] = [
   },
   {
     name: "Blaise Ag\u00fcera y Arcas",
-    image: "speaker/blaise.jpg",
+    image: "/speakers/blaise.jpg",
     links: [
       { label: "Website", url: "https://www.blaiseaguera.com/" },
       {
@@ -53,7 +53,7 @@ const speakers: Speaker[] = [
   },
   {
     name: "Takashi Ikegami",
-    image: "speaker/takashi.jpg",
+    image: "/speakers/takashi.jpg",
     links: [
       {
         label: "Website",
