@@ -26,7 +26,6 @@ const Dialog = styled.dialog`
     md:h-[90vh]
     md:m-auto
     md:rounded-[12px]
-    relative
   `}
   box-shadow: 0 8px 40px rgba(0, 0, 0, 0.18);
   border: none;
