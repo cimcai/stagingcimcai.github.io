@@ -134,7 +134,7 @@ const profilesData: ProfilesData = {
           description: "",
           institutionUrl: "",
           xUrl: "https://x.com/lifeext",
-          linkedInUrl: "https://www.linkedin.com/in/christine-peterson-3b81/  ",
+          linkedInUrl: "https://www.linkedin.com/in/christine-peterson-3b81/",
           portraitUrl: "/portraitChristine.jpg",
         },
       ],
