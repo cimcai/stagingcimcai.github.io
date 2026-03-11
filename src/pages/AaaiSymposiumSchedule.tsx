@@ -52,7 +52,7 @@ const Backdrop = styled.div`
   background: rgba(0, 0, 0, 0.5);
 `
 
-const Panel = styled.div`
+const Panel = styled.dialog`
   ${tw`
     bg-white
     w-full
@@ -64,6 +64,10 @@ const Panel = styled.div`
     relative
   `}
   box-shadow: 0 8px 40px rgba(0, 0, 0, 0.18);
+  border: none;
+  padding: 0;
+  max-width: none;
+  max-height: none;
 `
 
 const CloseButton = styled.button`
@@ -441,10 +445,7 @@ const AaaiSymposiumSchedule = ({
     </>
   )
 
-  const renderEntry = (
-    entry: ScheduleEntry,
-    absId: string,
-  ) => (
+  const renderEntry = (entry: ScheduleEntry, absId: string) => (
     <EntryItemDiv key={absId}>
       <div>
         <ActivityTitle>{entry.title}</ActivityTitle>
@@ -539,7 +540,7 @@ const AaaiSymposiumSchedule = ({
   return (
     <Backdrop onClick={onClose}>
       <Panel
-        role="dialog"
+        open
         aria-modal="true"
         aria-labelledby="schedule-dialog-title"
         onClick={(e) => e.stopPropagation()}
