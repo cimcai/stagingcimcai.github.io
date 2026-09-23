@@ -1,0 +1,70 @@
+# Managed by cimcai/website-main. Edit the source template, not this deployed copy.
+name: Sync published PDFs
+
+on:
+  schedule:
+    - cron: "7,22,37,52 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: publication-pdf-artifacts-main
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    if: github.repository == 'cimcai/stagingcimcai.github.io' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: main
+          fetch-depth: 1
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+      - name: Sync current public snapshots
+        shell: bash
+        run: |
+          set -euo pipefail
+          for attempt in 1 2 3; do
+            test "$(cat CNAME)" = "staging.cimc.ai"
+            base="$(git rev-parse HEAD)"
+            node .github/scripts/sync-publication-pdfs.mjs \
+              --target . --config .github/publication-pdf-sync.json
+            git add -- publications
+            if git diff --cached --quiet; then
+              break
+            fi
+            git -c user.name='github-actions[bot]' \
+              -c user.email='41898282+github-actions[bot]@users.noreply.github.com' \
+              commit -m 'Sync published PDFs'
+            if git push origin HEAD:main; then
+              break
+            fi
+            # A source deployment may have advanced main. Recompute on its files;
+            # never force-push or replay stale PDFs over a newer website build.
+            git fetch --depth=1 origin main
+            test "$(git rev-parse origin/main)" != "$base"
+            test "$attempt" -lt 3
+            git reset --hard origin/main
+          done
+      - name: Request Pages build when needed
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          # GITHUB_TOKEN pushes do not themselves trigger branch-based Pages.
+          # Also recover a prior push whose subsequent build request failed.
+          latest="$(gh api 'repos/cimcai/stagingcimcai.github.io/pages/builds/latest')"
+          head="$(git rev-parse HEAD)"
+          if [[ "$GITHUB_EVENT_NAME" == "workflow_dispatch" ]] || \
+             [[ "$(jq -r .commit <<<"$latest")" != "$head" ]] || \
+             [[ "$(jq -r .status <<<"$latest")" == "errored" ]]; then
+            gh api --method POST 'repos/cimcai/stagingcimcai.github.io/pages/builds' --silent
+          fi
