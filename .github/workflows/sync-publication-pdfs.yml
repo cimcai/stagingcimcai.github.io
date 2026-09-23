@@ -2,8 +2,6 @@
 name: Sync published PDFs
 
 on:
-  schedule:
-    - cron: "7,22,37,52 * * * *"
   workflow_dispatch:
 
 permissions:
