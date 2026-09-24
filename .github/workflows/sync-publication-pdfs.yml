@@ -1,8 +1,14 @@
 # Managed by cimcai/website-main. Edit the source template, not this deployed copy.
 name: Sync published PDFs
+run-name: "Sync published PDFs — ${{ inputs.publication_event_id || 'manual' }}"
 
 on:
   workflow_dispatch:
+    inputs:
+      publication_event_id:
+        description: Publication delivery UUID (blank for manual recovery)
+        required: false
+        type: string
 
 permissions:
   contents: write
@@ -11,12 +17,13 @@ permissions:
 concurrency:
   group: publication-pdf-artifacts-main
   cancel-in-progress: false
+  queue: max
 
 jobs:
   sync:
     if: github.repository == 'cimcai/stagingcimcai.github.io' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
-    timeout-minutes: 8
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v5
         with:
@@ -25,6 +32,10 @@ jobs:
       - uses: actions/setup-node@v5
         with:
           node-version: 22
+      - name: Validate publication event
+        env:
+          PUBLICATION_EVENT_ID: ${{ inputs.publication_event_id }}
+        run: node --input-type=module -e 'import {validatePublicationEventId} from "./.github/scripts/verify-publication-pdfs.mjs"; validatePublicationEventId(process.env.PUBLICATION_EVENT_ID || "")'
       - name: Sync current public snapshots
         shell: bash
         run: |
@@ -66,3 +77,13 @@ jobs:
              [[ "$(jq -r .status <<<"$latest")" == "errored" ]]; then
             gh api --method POST 'repos/cimcai/stagingcimcai.github.io/pages/builds' --silent
           fi
+      - name: Verify Pages build and served publication manifest
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PUBLICATION_EVENT_ID: ${{ inputs.publication_event_id }}
+          PDF_DEPLOY_REPOSITORY: cimcai/stagingcimcai.github.io
+          PDF_DEPLOY_SITE_ORIGIN: https://staging.cimc.ai
+        run: |
+          set -euo pipefail
+          export PDF_DEPLOY_COMMIT="$(git rev-parse HEAD)"
+          node .github/scripts/verify-publication-pdfs.mjs
