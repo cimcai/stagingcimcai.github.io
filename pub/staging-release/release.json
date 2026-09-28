@@ -22,7 +22,7 @@
           "philosophy"
         ],
         "summary": "",
-        "readingTimeMin": 48
+        "readingTimeMin": 39
       },
       "doc": {
         "type": "doc",
@@ -40,12 +40,12 @@
             },
             "provenance": {
               "mode": "external",
-              "source": "custom-web:ea4e36c078fe90a0be672f983e9d31fc44cba868613d3ed0e3d930e22448207a"
+              "source": "custom-web:c9e065bac8ca284821dd5fe2562574fce2354d246407c65bd3ec0dae8707c4e9"
             },
             "pdf": {
               "path": "cfc2cdcb-e4ae-8b49-a576-95f03f774afe/68e89a05766f76d82ea2115455129f30a8647294b137d5ccbd528aa733e780bc.pdf",
               "sha256": "68e89a05766f76d82ea2115455129f30a8647294b137d5ccbd528aa733e780bc",
-              "manuscriptHash": "824bec2883531f1c89481c39271e169e9d5738ff33a349ae9d18526436f1d643",
+              "manuscriptHash": "d443e7d3dcce25636d57e5dadf948027dec49ac05deab9bb49775527e7930391",
               "bytes": 399551,
               "filename": "the-machine-consciousness-hypothesis.pdf"
             }
@@ -56,9 +56,9 @@
             "sha256": "130ea881c5446f676478df8f15d212f9e61650974ae7ff54e6a78a4e288d4225",
             "bytes": 2318557,
             "filename": "machine-consciousness-web.zip",
-            "sourcePath": "cfc2cdcb-e4ae-8b49-a576-95f03f774afe/ea4e36c078fe90a0be672f983e9d31fc44cba868613d3ed0e3d930e22448207a.zip",
-            "sourceSha256": "ea4e36c078fe90a0be672f983e9d31fc44cba868613d3ed0e3d930e22448207a",
-            "sourceBytes": 3554323,
+            "sourcePath": "cfc2cdcb-e4ae-8b49-a576-95f03f774afe/c9e065bac8ca284821dd5fe2562574fce2354d246407c65bd3ec0dae8707c4e9.zip",
+            "sourceSha256": "c9e065bac8ca284821dd5fe2562574fce2354d246407c65bd3ec0dae8707c4e9",
+            "sourceBytes": 3554408,
             "entrypoint": "machine-consciousness-web/index.html"
           }
         },
