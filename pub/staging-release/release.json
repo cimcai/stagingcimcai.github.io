@@ -40,25 +40,25 @@
             },
             "provenance": {
               "mode": "external",
-              "source": "custom-web:4197f2047bb589d91de159921e3e6116a2e7781b47b3a38336c7d01fe9f0ca63"
+              "source": "custom-web:3bc00651386b6f1a8b8f586e9cf62883bd2c60252be6291cba0b849165ed7b98"
             },
             "pdf": {
               "path": "cfc2cdcb-e4ae-8b49-a576-95f03f774afe/68e89a05766f76d82ea2115455129f30a8647294b137d5ccbd528aa733e780bc.pdf",
               "sha256": "68e89a05766f76d82ea2115455129f30a8647294b137d5ccbd528aa733e780bc",
-              "manuscriptHash": "626fba3d2d425f0260591d66930368399f6721c04ff26be481456724a2ff9883",
+              "manuscriptHash": "3096adb9041e640c32e800f1b99f830e244abc9da76d4ddfe58fec73d7e01b75",
               "bytes": 399551,
               "filename": "the-machine-consciousness-hypothesis.pdf"
             }
           },
           "webEdition": {
             "version": 1,
-            "path": "cfc2cdcb-e4ae-8b49-a576-95f03f774afe/c230b448ecdcc0f9fd3ed398b14b01c108667bc30ab57329f6e7b7ae0a261790.html",
-            "sha256": "c230b448ecdcc0f9fd3ed398b14b01c108667bc30ab57329f6e7b7ae0a261790",
-            "bytes": 2314822,
+            "path": "cfc2cdcb-e4ae-8b49-a576-95f03f774afe/2be88139dfff36ee7f3c80d199c352cb8f96d2d2ed8502afa0f8f9d0c5934b63.html",
+            "sha256": "2be88139dfff36ee7f3c80d199c352cb8f96d2d2ed8502afa0f8f9d0c5934b63",
+            "bytes": 2314675,
             "filename": "machine-consciousness-web.zip",
-            "sourcePath": "cfc2cdcb-e4ae-8b49-a576-95f03f774afe/4197f2047bb589d91de159921e3e6116a2e7781b47b3a38336c7d01fe9f0ca63.zip",
-            "sourceSha256": "4197f2047bb589d91de159921e3e6116a2e7781b47b3a38336c7d01fe9f0ca63",
-            "sourceBytes": 3550932,
+            "sourcePath": "cfc2cdcb-e4ae-8b49-a576-95f03f774afe/3bc00651386b6f1a8b8f586e9cf62883bd2c60252be6291cba0b849165ed7b98.zip",
+            "sourceSha256": "3bc00651386b6f1a8b8f586e9cf62883bd2c60252be6291cba0b849165ed7b98",
+            "sourceBytes": 3550848,
             "entrypoint": "machine-consciousness-web/index.html"
           }
         },
@@ -77,6 +77,6 @@
     }
   ],
   "webEditions": {
-    "cfc2cdcb-e4ae-8b49-a576-95f03f774afe/c230b448ecdcc0f9fd3ed398b14b01c108667bc30ab57329f6e7b7ae0a261790.html": "/pub/staging-release/edition.html"
+    "cfc2cdcb-e4ae-8b49-a576-95f03f774afe/2be88139dfff36ee7f3c80d199c352cb8f96d2d2ed8502afa0f8f9d0c5934b63.html": "/pub/staging-release/edition.html"
   }
 }
