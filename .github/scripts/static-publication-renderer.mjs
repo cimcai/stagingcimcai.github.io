@@ -118116,7 +118116,7 @@ function prepareEdition(html, origin, pdf) {
     enabled: false,
     siteOrigin: origin
   });
-  return prepareWebEditionHtml(html, void 0, pdf, true);
+  return prepareWebEditionHtml(html, void 0, pdf, true).replace('<base href="about:srcdoc">', "");
 }
 export {
   getWebEdition,

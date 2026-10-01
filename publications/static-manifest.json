@@ -7,9 +7,9 @@
   ],
   "files": [
     {
-      "path": "pub/static-editions/495f80c52ccaa0002bdb57b8711d8cb8884c4b9a88a0551490ea8a734c38904b.html",
-      "sha256": "495f80c52ccaa0002bdb57b8711d8cb8884c4b9a88a0551490ea8a734c38904b",
-      "bytes": 1253233
+      "path": "pub/static-editions/4beaa222e622c74969de3fa655a520ecd9d759512e76cb7780d8bd999658d505.html",
+      "sha256": "4beaa222e622c74969de3fa655a520ecd9d759512e76cb7780d8bd999658d505",
+      "bytes": 1253207
     },
     {
       "path": "publications/index.html",
@@ -28,7 +28,7 @@
     },
     {
       "path": "publications/the-machine-consciousness-hypothesis/index.html",
-      "sha256": "069a323c19b57f41db23830f54530bf3fcae61c24cafd0223cc142492ab552b3",
+      "sha256": "462ecbe8ca34262bbb3b08d061ad0c5738800bfdbfcd7daa9d8794e6dc0f680c",
       "bytes": 232981
     },
     {
