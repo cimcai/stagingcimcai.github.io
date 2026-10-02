@@ -1730,7 +1730,42 @@ body {
   
   
   
-</head>
+<style>/* Screen reading sizes shared by native articles and hosted custom editions. */
+@media screen {
+  .pub-reading-view .pub-article-body,
+  .pub-reading-view .pub-article-body blockquote,
+  .essay,
+  .essay blockquote {
+    font-size: 18px;
+  }
+
+  .introduction,
+  .genesis-passage {
+    font-size: 17px;
+  }
+
+  @container publication (max-width: 600px) {
+    .pub-reading-view .pub-article-body,
+    .pub-reading-view .pub-article-body blockquote {
+      font-size: 16px;
+    }
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .introduction {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .essay,
+  .essay blockquote,
+  .genesis-passage {
+    font-size: 16px;
+  }
+}
+</style></head>
 <body>
   <a class="skip-link" href="#introduction">Skip to the essay</a>
   <header class="site-header">

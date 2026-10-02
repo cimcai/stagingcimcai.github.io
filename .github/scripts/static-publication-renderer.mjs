@@ -118109,6 +118109,7 @@ function StaticPublicationPage({
     /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(Footer, { routes: navigation })
   ] });
 }
+var readingStyles = "/* Screen reading sizes shared by native articles and hosted custom editions. */\n@media screen {\n  .pub-reading-view .pub-article-body,\n  .pub-reading-view .pub-article-body blockquote,\n  .essay,\n  .essay blockquote {\n    font-size: 18px;\n  }\n\n  .introduction,\n  .genesis-passage {\n    font-size: 17px;\n  }\n\n  @container publication (max-width: 600px) {\n    .pub-reading-view .pub-article-body,\n    .pub-reading-view .pub-article-body blockquote {\n      font-size: 16px;\n    }\n  }\n}\n\n@media screen and (max-width: 900px) {\n  .introduction {\n    font-size: 16px;\n  }\n}\n\n@media screen and (max-width: 600px) {\n  .essay,\n  .essay blockquote,\n  .genesis-passage {\n    font-size: 16px;\n  }\n}\n";
 function renderPublication(data2) {
   const sheet = new gt();
   try {
@@ -118126,7 +118127,7 @@ function prepareEdition(html, origin, pdf) {
     enabled: false,
     siteOrigin: origin
   });
-  return prepareWebEditionHtml(html, void 0, pdf, true).replace('<base href="about:srcdoc">', "");
+  return prepareWebEditionHtml(html, void 0, pdf, true).replace('<base href="about:srcdoc">', "").replace("</head>", `<style>${readingStyles}</style></head>`);
 }
 export {
   getWebEdition,
