@@ -8,6 +8,11 @@
   "adoptedReleaseSlugs": [],
   "files": [
     {
+      "path": "publications/the-machine-consciousness-hypothesis.pdf",
+      "sha256": "68e89a05766f76d82ea2115455129f30a8647294b137d5ccbd528aa733e780bc",
+      "bytes": 399551
+    },
+    {
       "path": "pub/static-editions/6b330fa51dacee40fcca528bb731a4f98bd77349cfbe9c75ac233fb7667149ec.html",
       "sha256": "6b330fa51dacee40fcca528bb731a4f98bd77349cfbe9c75ac233fb7667149ec",
       "bytes": 1255339
