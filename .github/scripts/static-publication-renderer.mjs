@@ -106048,6 +106048,13 @@ var import_react_dom = __toESM(require_react_dom(), 1);
 // node_modules/@cimc/publishing-reader/dist/manuscript.js
 var CITATION_KEY = /^[A-Za-z0-9][A-Za-z0-9_:.-]{0,99}$/;
 var MANUSCRIPT_ID = /^[A-Za-z][A-Za-z0-9_-]{0,79}$/;
+var CALLOUT_COLORS = ["pink", "blue", "green", "amber"];
+function getCalloutColor(node2) {
+  if (node2.type !== "blockquote" || node2.attrs?.variant !== "callout")
+    return void 0;
+  const color = node2.attrs.color;
+  return CALLOUT_COLORS.includes(color) ? color : "pink";
+}
 var HASH = /^[a-f0-9]{64}$/;
 var INLINE = /* @__PURE__ */ new Set([
   "text",
@@ -106358,6 +106365,12 @@ function validateRichDocument(doc, complete = false) {
       return;
     }
     const attrs = node2.attrs || {};
+    if (node2.type === "blockquote") {
+      if (attrs.variant != null && attrs.variant !== "callout")
+        issue("The blockquote variant must be callout or empty.");
+      if (attrs.color != null && (attrs.variant !== "callout" || !CALLOUT_COLORS.includes(attrs.color)))
+        issue("Choose pink, blue, green or amber for a colored block.");
+    }
     if (attrs.manuscript != null && (depth !== 0 || note || node2.type !== "doc"))
       issue("Only the main document can contain a manuscript envelope.");
     const children = node2.content || [];
@@ -106839,8 +106852,21 @@ function renderNode(node2, key, context) {
     }
     case "listItem":
       return /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("li", { children: renderChildren(node2.content, key, context) }, key);
-    case "blockquote":
+    case "blockquote": {
+      const color = getCalloutColor(node2);
+      if (color)
+        return /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(
+          "aside",
+          {
+            className: `pub-callout pub-callout-${color}`,
+            "data-callout": "true",
+            "data-callout-color": color,
+            children: renderChildren(node2.content, key, context)
+          },
+          key
+        );
       return /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("blockquote", { children: renderChildren(node2.content, key, context) }, key);
+    }
     case "horizontalRule":
       return /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("hr", {}, key);
     case "codeBlock": {
