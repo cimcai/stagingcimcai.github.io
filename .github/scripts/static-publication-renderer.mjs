@@ -106156,26 +106156,19 @@ function citationAuthor(reference) {
   const names = contributors.names.map((author) => author.literal || author.family).filter(Boolean);
   return names.length && (contributors.abbreviated || names.length > 2) ? `${names[0]} et al.` : names.length === 2 ? names.join(" & ") : names[0] || referenceText(reference.title);
 }
-function getCitedReferences(doc) {
-  const manuscript = getManuscript(doc);
-  const cited = /* @__PURE__ */ new Set();
-  const visitedNotes = /* @__PURE__ */ new Set();
-  const visit = (node2) => {
-    if (node2.type === "citation")
-      cited.add(String(node2.attrs?.referenceId || ""));
-    if (node2.type === "footnoteRef") {
-      const id = String(node2.attrs?.noteId || "");
-      if (!visitedNotes.has(id)) {
-        visitedNotes.add(id);
-        const note = manuscript?.notes[id];
-        if (note) visit(note);
-      }
-    }
-    for (const child of node2.content || []) visit(child);
-  };
-  visit(doc);
-  return [...cited].flatMap(
-    (id) => manuscript?.references.find((reference) => reference.id === id) || []
+function getBibliographyReferences(doc) {
+  const collator = new Intl.Collator("en", {
+    sensitivity: "base",
+    numeric: false
+  });
+  const initials = (given) => given.trim().split(/[\s~-]+/).filter(Boolean).map((part) => Array.from(part)[0]).join(" ");
+  const author = (reference) => getReferenceContributors(reference).names.map(
+    (name) => referenceText(
+      name.literal || `${name.family}, ${initials(name.given || "")}`
+    )
+  ).join("; ") || referenceText(reference.title);
+  return [...getManuscript(doc)?.references || []].sort(
+    (left, right) => collator.compare(author(left), author(right)) || collator.compare(left.year || "n.d.", right.year || "n.d.") || collator.compare(referenceText(left.title), referenceText(right.title)) || collator.compare(left.key, right.key) || left.key.localeCompare(right.key, "en")
   );
 }
 function referenceYear(reference, cited = []) {
@@ -106207,7 +106200,7 @@ function getHeadingLevel(node2) {
 }
 function getHeadingNumbering(doc) {
   const result = /* @__PURE__ */ new Map();
-  const hasBibliography = getCitedReferences(doc).length > 0;
+  const hasBibliography = getBibliographyReferences(doc).length > 0;
   let afterBibliography = false;
   let section = 0;
   const subsections = [];
@@ -107281,7 +107274,7 @@ function buildRenderContext(doc, contextDoc) {
       collect(child, `${key}-${index2}`, inNote);
   };
   collect(source2, "doc");
-  context.bibliography = getCitedReferences(source2);
+  context.bibliography = getBibliographyReferences(source2);
   return { context, manuscript, hasBibliography };
 }
 function ArticleRenderer({
@@ -107591,7 +107584,7 @@ var APPENDIX_CONTENTS_MAX_LEVEL = 3;
 function getArticleOutline(doc) {
   const headings = getArticleHeadings(doc);
   const byKey = new Map(headings.map((heading) => [heading.key, heading]));
-  const bibliography = getCitedReferences(doc).length > 0;
+  const bibliography = getBibliographyReferences(doc).length > 0;
   const outline = [];
   let hasBibliography = false;
   let hasNotes = false;
