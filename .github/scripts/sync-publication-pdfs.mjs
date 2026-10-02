@@ -232,6 +232,48 @@ async function readOwned(directory) {
   return manifest.pdfs
 }
 
+async function readStaticPdfOwnership(directory, filenames) {
+  if (filenames.size === 0) return []
+  const manifestPath = join(directory, "static-manifest.json")
+  const stat = await statIfPresent(manifestPath)
+  if (!stat) return []
+  if (!stat.isFile() || stat.size > 4 * 1024 * 1024)
+    throw new Error("Unsafe static publication manifest")
+  const manifest = JSON.parse(await readFile(manifestPath, "utf8"))
+  if (
+    manifest.managedBy !== "cimc-static-publications" ||
+    manifest.version !== 1 ||
+    !Array.isArray(manifest.files)
+  )
+    throw new Error("Unrecognized static publication manifest")
+  const adopted = new Map()
+  for (const receipt of manifest.files) {
+    // Only a canonical filename demanded by the current public catalog can
+    // transfer from a previously approved static release to PDF ownership.
+    const filename =
+      typeof receipt?.path === "string" &&
+      receipt.path.startsWith("publications/")
+        ? receipt.path.slice("publications/".length)
+        : null
+    if (!filenames.has(filename)) continue
+    validateFilename(filename)
+    if (
+      adopted.has(filename) ||
+      !SHA256.test(receipt.sha256) ||
+      !Number.isSafeInteger(receipt.bytes) ||
+      receipt.bytes < 5 ||
+      receipt.bytes > MAX_PDF_BYTES
+    )
+      throw new Error("Invalid static PDF ownership receipt")
+    adopted.set(filename, {
+      filename,
+      sha256: receipt.sha256,
+      bytes: receipt.bytes,
+    })
+  }
+  return [...adopted.values()]
+}
+
 export async function synchronize({ targetDir, config, fetcher = fetch }) {
   const validated = validateConfig(config)
   const target = resolve(targetDir)
@@ -267,6 +309,32 @@ export async function synchronize({ targetDir, config, fetcher = fetch }) {
     cached.set(file.filename, bytes)
   }
   const files = await readCatalog(validated, fetcher)
+  const staticCandidates = new Set(
+    files
+      .filter((file) => {
+        const entry = existing.get(file.filename.toLowerCase())
+        return (
+          entry?.name === file.filename &&
+          entry.isFile() &&
+          !ownedByName.has(file.filename)
+        )
+      })
+      .map((file) => file.filename),
+  )
+  for (const file of await readStaticPdfOwnership(
+    directory,
+    staticCandidates,
+  )) {
+    const path = join(directory, file.filename)
+    const stat = await lstat(path)
+    if (!stat.isFile()) throw new Error("Refusing an unsafe static PDF file")
+    if (stat.size !== file.bytes)
+      throw new Error(`Canonical PDF integrity check failed: ${file.filename}`)
+    const bytes = await readFile(path)
+    verifyBytes(bytes, file)
+    ownedByName.set(file.filename, file)
+    cached.set(file.filename, bytes)
+  }
   const prepared = new Map()
   for (const file of files) {
     const entry = existing.get(file.filename.toLowerCase())

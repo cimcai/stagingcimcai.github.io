@@ -5,21 +5,22 @@
     "research-program-whitepaper",
     "the-machine-consciousness-hypothesis"
   ],
+  "adoptedReleaseSlugs": [],
   "files": [
     {
-      "path": "pub/static-editions/15c421a8731e717c379f06d9c6127cedda1cb9f4630b0108483f00b3d5fe932b.html",
-      "sha256": "15c421a8731e717c379f06d9c6127cedda1cb9f4630b0108483f00b3d5fe932b",
-      "bytes": 1254739
+      "path": "pub/static-editions/6b330fa51dacee40fcca528bb731a4f98bd77349cfbe9c75ac233fb7667149ec.html",
+      "sha256": "6b330fa51dacee40fcca528bb731a4f98bd77349cfbe9c75ac233fb7667149ec",
+      "bytes": 1255339
     },
     {
       "path": "publications/index.html",
-      "sha256": "1fc75b4cf5bbddbc03deb4565e836baa4544cf790f6188559abbe2bfa89ec8fb",
-      "bytes": 87146
+      "sha256": "11133c66e6a207120ca1d5fc7bfc8da4c8fd8b92f130d0a4590cb7f15c3b4a4a",
+      "bytes": 87156
     },
     {
       "path": "publications/research-program-whitepaper/index.html",
-      "sha256": "08786c637c20fad5d9b61d7741f859578c85ba3b8353dc28a29a9b4df842e139",
-      "bytes": 395553
+      "sha256": "5aa2d553b8ae70a03ea59174a5a521124a25f94d292754a045f709fdff9bc451",
+      "bytes": 395563
     },
     {
       "path": "writing/research-program-whitepaper/index.html",
@@ -28,8 +29,8 @@
     },
     {
       "path": "publications/the-machine-consciousness-hypothesis/index.html",
-      "sha256": "cdeee723e75a6e1b79d63e8eeaaf4d26b847e01f2b69727b461d563b9a29f151",
-      "bytes": 232662
+      "sha256": "51459c39c22be323f782e48eea9c24becf89e143218008eaeaf357f31c31ed7f",
+      "bytes": 232672
     },
     {
       "path": "writing/the-machine-consciousness-hypothesis/index.html",

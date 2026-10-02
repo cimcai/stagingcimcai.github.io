@@ -9,6 +9,29 @@ const hash = (bytes) => createHash("sha256").update(bytes).digest("hex")
 const slugPattern = /^[a-z0-9](?:[a-z0-9-]{1,78})[a-z0-9]$/
 const uuidPattern =
   /^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/
+const pdfFilename = (name) =>
+  typeof name === "string" &&
+  name.length <= 200 &&
+  /^[A-Za-z0-9][A-Za-z0-9._-]*\.pdf$/i.test(name) &&
+  !name.includes("..")
+const safePath = (path) =>
+  typeof path === "string" &&
+  (/^(?:publications\/(?:[a-z0-9-]+\/)?index\.html|writing\/(?:[a-z0-9-]+\/)?index\.html|pub\/feed\.xml|pub\/static-(?:assets|editions)\/[a-f0-9]{64}\.[a-z]+)$/.test(
+    path,
+  ) ||
+    (path.startsWith("publications/") && pdfFilename(path.slice(13))))
+async function assertSafeFile(target, path) {
+  let current = target
+  for (const part of path.split("/")) {
+    current = join(current, part)
+    try {
+      if ((await lstat(current)).isSymbolicLink())
+        throw new Error("Refusing symlink in static output")
+    } catch (e) {
+      if (e.code !== "ENOENT") throw e
+    }
+  }
+}
 const htmlEscape = (s) =>
   String(s ?? "").replace(
     /[&<>"']/g,
@@ -107,6 +130,48 @@ export async function buildPublications({
   if (!["cimc.ai", "staging.cimc.ai"].includes(site))
     throw new Error("Unexpected static publication destination")
   const origin = `https://${site}`
+  const manifestPath = join(target, "publications/static-manifest.json")
+  await assertSafeFile(target, "publications/static-manifest.json")
+  const previous = await optionalJson(manifestPath)
+  if (
+    previous &&
+    (previous.managedBy !== "cimc-static-publications" ||
+      previous.version !== 1 ||
+      !Array.isArray(previous.files) ||
+      previous.files.some(
+        (file) =>
+          !safePath(file.path) ||
+          !/^[a-f0-9]{64}$/.test(file.sha256) ||
+          !Number.isSafeInteger(file.bytes) ||
+          file.bytes < 0,
+      ) ||
+      (previous.adoptedReleaseSlugs !== undefined &&
+        (!Array.isArray(previous.adoptedReleaseSlugs) ||
+          previous.adoptedReleaseSlugs.some(
+            (slug) => !slugPattern.test(slug),
+          ))))
+  )
+    throw new Error("Unrecognized static publication manifest")
+  const adoptedReleaseSlugs = new Set(previous?.adoptedReleaseSlugs || [])
+  await assertSafeFile(target, ".github/publication-release.json")
+  const approvedRelease = await optionalJson(
+    join(target, ".github/publication-release.json"),
+  )
+  if (
+    approvedRelease &&
+    (site !== "cimc.ai" ||
+      approvedRelease.version !== 1 ||
+      approvedRelease.siteOrigin !== origin ||
+      typeof approvedRelease.approval !== "string" ||
+      !approvedRelease.approval.trim() ||
+      approvedRelease.approval.length > 2000 ||
+      !Array.isArray(approvedRelease.articles) ||
+      approvedRelease.articles.length > 100 ||
+      !approvedRelease.webEditions ||
+      typeof approvedRelease.webEditions !== "object" ||
+      Array.isArray(approvedRelease.webEditions))
+  )
+    throw new Error("Invalid approved production publication release")
   const settings = JSON.parse(
     await readFile(
       join(target, ".github/static-publication-build.json"),
@@ -128,6 +193,26 @@ export async function buildPublications({
   const articles = new Map(
     source.map((article) => [article.meta.slug, structuredClone(article)]),
   )
+  const bootstrapSlugs = new Set()
+  const releaseSlugs = new Set()
+  for (const article of approvedRelease?.articles || []) {
+    if (
+      !slugPattern.test(article.meta?.slug) ||
+      article.doc?.type !== "doc" ||
+      typeof article.meta.title !== "string" ||
+      !Array.isArray(article.meta.authors) ||
+      !Array.isArray(article.meta.tags) ||
+      releaseSlugs.has(article.meta.slug)
+    )
+      throw new Error("Invalid approved production article")
+    const slug = article.meta.slug
+    releaseSlugs.add(slug)
+    if (articles.has(slug)) adoptedReleaseSlugs.add(slug)
+    else if (!adoptedReleaseSlugs.has(slug)) {
+      articles.set(slug, structuredClone(article))
+      bootstrapSlugs.add(slug)
+    }
+  }
   if (snapshot) {
     if (snapshot.version !== 1 || !Array.isArray(snapshot.articles))
       throw new Error("Invalid approved staging snapshot")
@@ -140,17 +225,25 @@ export async function buildPublications({
   const prepared = new Map()
   const editionUrls = new Map()
   const assets = new Map()
+  const publicPdfPaths = new Set(
+    source.flatMap((article) => {
+      const pdf = article.doc.attrs?.manuscript?.pdf
+      return pdf && pdfFilename(pdf.filename)
+        ? [`publications/${pdf.filename}`]
+        : []
+    }),
+  )
   for (const article of articles.values()) {
     const canonicalPdf = article.doc.attrs?.manuscript?.pdf
     if (canonicalPdf) {
-      if (
-        !/^[A-Za-z0-9][A-Za-z0-9._-]*\.pdf$/i.test(canonicalPdf.filename) ||
-        canonicalPdf.filename.includes("..")
-      )
+      if (!pdfFilename(canonicalPdf.filename))
         throw new Error("Invalid canonical PDF filename")
-      const bytes = await readFile(
-        join(target, "publications", canonicalPdf.filename),
-      )
+      const canonicalPath = `publications/${canonicalPdf.filename}`
+      const sourcePath = bootstrapSlugs.has(article.meta.slug)
+        ? `pub/approved-release/${canonicalPdf.filename}`
+        : canonicalPath
+      await assertSafeFile(target, sourcePath)
+      const bytes = await readFile(join(target, sourcePath))
       if (
         bytes.length !== canonicalPdf.bytes ||
         hash(bytes) !== canonicalPdf.sha256 ||
@@ -159,14 +252,44 @@ export async function buildPublications({
         throw new Error(
           "Static article PDF does not match its approved snapshot",
         )
+      if (bootstrapSlugs.has(article.meta.slug)) {
+        await assertSafeFile(target, canonicalPath)
+        try {
+          const existing = await readFile(join(target, canonicalPath))
+          if (
+            !existing.equals(bytes) &&
+            !previous?.files.some((file) => file.path === canonicalPath)
+          )
+            throw new Error(
+              "Approved release PDF collides with an unrelated file",
+            )
+          if (publicPdfPaths.has(canonicalPath) && !existing.equals(bytes))
+            throw new Error(
+              "Approved release PDF conflicts with a public article",
+            )
+        } catch (e) {
+          if (e.code !== "ENOENT") throw e
+        }
+        if (!publicPdfPaths.has(canonicalPath))
+          prepared.set(canonicalPath, bytes)
+      }
     }
     const edition = renderer.getWebEdition(article.doc)
     if (edition) {
       let bytes
-      const local = snapshot?.webEditions?.[edition.path]
+      const bootstrap = bootstrapSlugs.has(article.meta.slug)
+      const local = bootstrap
+        ? approvedRelease.webEditions[edition.path]
+        : snapshot?.webEditions?.[edition.path]
+      if (bootstrap && !local)
+        throw new Error("Approved production web edition is missing")
       if (local) {
-        if (!/^\/pub\/staging-release\/[a-z0-9._-]+$/.test(local))
-          throw new Error("Invalid staging web edition path")
+        const pattern = bootstrap
+          ? /^\/pub\/approved-release\/[a-z0-9][a-z0-9._-]*\.html$/
+          : /^\/pub\/staging-release\/[a-z0-9._-]+$/
+        if (!pattern.test(local) || local.includes(".."))
+          throw new Error("Invalid release web edition path")
+        await assertSafeFile(target, local.slice(1))
         bytes = await readFile(join(target, local.slice(1)))
       } else
         bytes = (
@@ -310,35 +433,17 @@ export async function buildPublications({
     JSON.stringify(await readArticles(validated, fetcher))
   )
     throw new Error("Public archive changed during the build; retry")
-  const manifestPath = join(target, "publications/static-manifest.json")
-  const previous = await optionalJson(manifestPath)
-  if (
-    previous &&
-    (previous.managedBy !== "cimc-static-publications" ||
-      !Array.isArray(previous.files))
-  )
-    throw new Error("Unrecognized static publication manifest")
-  const safePath = (path) =>
-    /^(?:publications\/(?:[a-z0-9-]+\/)?index\.html|writing\/(?:[a-z0-9-]+\/)?index\.html|pub\/feed\.xml|pub\/static-(?:assets|editions)\/[a-f0-9]{64}\.[a-z]+)$/.test(
-      path,
-    )
   for (const file of [
     ...(previous?.files || []),
     ...[...prepared.keys()].map((path) => ({ path })),
   ]) {
     if (!safePath(file.path)) throw new Error("Invalid managed static path")
-    let current = target
-    for (const part of file.path.split("/")) {
-      current = join(current, part)
-      try {
-        if ((await lstat(current)).isSymbolicLink())
-          throw new Error("Refusing symlink in static output")
-      } catch (e) {
-        if (e.code !== "ENOENT") throw e
-      }
-    }
+    await assertSafeFile(target, file.path)
   }
   for (const file of previous?.files || []) {
+    // Current public PDFs were checked against their approved descriptor above;
+    // their bytes may have changed during the preceding backend PDF sync.
+    if (publicPdfPaths.has(file.path)) continue
     try {
       if (hash(await readFile(join(target, file.path))) !== file.sha256)
         throw new Error(
@@ -349,7 +454,8 @@ export async function buildPublications({
     }
   }
   for (const file of previous?.files || [])
-    if (!prepared.has(file.path)) await rm(join(target, file.path))
+    if (!prepared.has(file.path) && !publicPdfPaths.has(file.path))
+      await rm(join(target, file.path), { force: true })
   for (const [path, bytes] of prepared) {
     await mkdir(dirname(join(target, path)), { recursive: true })
     await writeFile(join(target, path), bytes)
@@ -358,6 +464,7 @@ export async function buildPublications({
     managedBy: "cimc-static-publications",
     version: 1,
     articles: list.map((a) => a.slug),
+    adoptedReleaseSlugs: [...adoptedReleaseSlugs].sort(),
     files: [...prepared].map(([path, bytes]) => ({
       path,
       sha256: hash(bytes),
