@@ -117975,8 +117975,9 @@ function Archive({
     const params = new URLSearchParams(window.location.search);
     setTag(params.get("tag") || "");
     setQuery(params.get("q") || "");
+    setSort(params.get("sort") || "newest");
   }, []);
-  const filtered = articles.filter((article) => (!tag || article.tags.includes(tag)) && [article.title, article.summary, ...article.tags, ...article.authors.map((a2) => a2.name)].join(" ").toLowerCase().includes(query.toLowerCase())).sort((a2, b) => sort === "newest" ? b.publishedAt.localeCompare(a2.publishedAt) : a2.publishedAt.localeCompare(b.publishedAt));
+  const filtered = articles.filter((article) => (!tag || article.tags.includes(tag)) && [article.title, article.summary, ...article.tags, ...article.authors.map((a2) => a2.name)].join(" ").toLowerCase().includes(query.toLowerCase().trim())).sort((a2, b) => sort === "newest" ? b.publishedAt.localeCompare(a2.publishedAt) : a2.publishedAt.localeCompare(b.publishedAt));
   const tags = [...new Set(articles.flatMap((article) => article.tags))].sort();
   return /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("main", { className: "writing-page", id: "writing", children: [
     /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(PageHeroGraphic, {}),
@@ -117986,32 +117987,23 @@ function Archive({
           /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("h1", { className: "writing-title", children: "Publications" }),
           /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("p", { className: "writing-tagline", children: "Research papers, essays, and articles from CIMC." })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("a", { className: "pub-btn", href: "/pub/feed.xml", children: "RSS feed" })
+        /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("a", { className: "writing-rss", href: "/pub/feed.xml", target: "_blank", rel: "noreferrer", children: "RSS Feed" })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "static-filters", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("label", { children: [
-          "Search",
-          " ",
-          /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("input", { type: "search", "aria-label": "Search articles, authors, or topics", value: query, onChange: (event) => {
+      tags.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("fieldset", { className: "writing-tags", "aria-label": "Filter by topic", children: tags.map((name) => /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("button", { type: "button", className: `writing-tag${tag === name ? " is-active" : ""}`, "aria-pressed": tag === name, onClick: () => {
+        setTag(tag === name ? "" : name);
+        setPage(1);
+      }, children: name }, name)) }),
+      articles.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "writing-controls", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("label", { className: "writing-search", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("span", { children: "Search" }),
+          /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("input", { type: "search", "aria-label": "Search articles, authors, or topics", placeholder: "Titles, authors, topics", value: query, onChange: (event) => {
             setQuery(event.target.value);
             setPage(1);
           } })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("label", { children: [
-          "Topic",
-          " ",
-          /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("select", { value: tag, onChange: (event) => {
-            setTag(event.target.value);
-            setPage(1);
-          }, children: [
-            /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("option", { value: "", children: "All topics" }),
-            tags.map((name) => /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("option", { children: name }, name))
-          ] })
-        ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("label", { children: [
-          "Sort",
-          " ",
-          /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("select", { value: sort, onChange: (event) => {
+        /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("label", { className: "writing-sort", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("span", { children: "Sort" }),
+          /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("select", { "aria-label": "Sort articles", value: sort, onChange: (event) => {
             setSort(event.target.value);
             setPage(1);
           }, children: [
@@ -118020,37 +118012,56 @@ function Archive({
           ] })
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("p", { "aria-live": "polite", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("output", { className: "writing-sr-only", children: [
         filtered.length,
         " ",
         filtered.length === 1 ? "article" : "articles",
         " ",
         "found."
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("div", { className: "writing-list", children: filtered.slice(0, page * 50).map((article) => /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("article", { className: "writing-row", children: /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "writing-row-main", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("a", { className: "writing-row-main", href: `/publications/${article.slug}/`, children: [
-          /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("h2", { className: "writing-row-title", children: article.title }),
-          /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("p", { className: "writing-row-summary", children: article.summary })
-        ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "writing-row-byline", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("span", { className: "writing-row-authors", children: article.authors.map((a2) => a2.name).join(", ") }),
-          /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("span", { className: "writing-row-details", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("time", { dateTime: article.publishedAt, children: (/* @__PURE__ */ new Date(`${article.publishedAt}T12:00:00Z`)).toLocaleDateString("en-US", {
-              timeZone: "UTC",
-              year: "numeric",
-              month: "long",
-              day: "numeric"
-            }) }),
-            " ",
-            "\xB7 ",
-            article.readingTimeMin,
-            " min read"
+      articles.length === 0 ? /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("p", { className: "writing-empty", children: "First essays are on their way." }) : filtered.length === 0 ? /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("p", { className: "writing-empty", children: [
+        "No essays match.",
+        /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("button", { type: "button", onClick: () => {
+          setQuery("");
+          setTag("");
+          setPage(1);
+        }, children: "Show all publications" })
+      ] }) : /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("div", { className: "writing-list", children: filtered.slice(0, page * 50).map((article) => /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("article", { className: "writing-row", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "writing-row-main", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("a", { className: "writing-row-main", href: `/publications/${article.slug}/`, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("h2", { className: "writing-row-title", children: article.title }),
+            /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("p", { className: "writing-row-summary", children: article.summary })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "writing-row-byline", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("span", { className: "writing-row-authors", children: article.authors.map((a2) => a2.name).join(", ") }),
+            /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("span", { className: "writing-row-details", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("time", { dateTime: article.publishedAt, children: (/* @__PURE__ */ new Date(`${article.publishedAt}T12:00:00Z`)).toLocaleDateString("en-US", {
+                timeZone: "UTC",
+                year: "numeric",
+                month: "long",
+                day: "numeric"
+              }) }),
+              " ",
+              "\xB7 ",
+              article.readingTimeMin,
+              " min read"
+            ] })
           ] })
-        ] })
-      ] }) }, article.slug)) }),
+        ] }),
+        article.heroImage && safeThumbnailUrl(article.heroImage) && /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("a", { className: "writing-row-thumb", href: `/publications/${article.slug}/`, "aria-label": `Read ${article.title}`, tabIndex: -1, children: /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("img", { src: article.heroImage, alt: "", loading: "lazy" }) })
+      ] }, article.slug)) }),
       filtered.length > page * 50 && /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("button", { className: "pub-btn", type: "button", onClick: () => setPage(page + 1), children: "Show more publications" })
     ] })
   ] });
+}
+function safeThumbnailUrl(value) {
+  const url = value.trim();
+  if (!url || /[\u0000-\u001f\u007f\\]/.test(url) || url.startsWith("//")) return false;
+  try {
+    return ["https:", "http:"].includes(new URL(url, "https://cimc.ai").protocol);
+  } catch {
+    return false;
+  }
 }
 function StaticPublicationPage({
   data: data2
@@ -118083,7 +118094,6 @@ function StaticPublicationPage({
     article ? /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "pub-page-wrapper pub-scope", style: {
       paddingTop: 96
     }, children: [
-      /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("div", { className: "static-article-links", children: /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("a", { href: "/publications/", children: "All publications" }) }),
       data2.editionUrl ? /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)(import_jsx_runtime9.Fragment, { children: [
         /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("iframe", { title: article.meta.title, src: data2.editionUrl, sandbox: "allow-scripts", className: "static-edition" }),
         /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("noscript", { children: [
