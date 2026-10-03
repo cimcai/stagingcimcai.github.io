@@ -20,13 +20,13 @@
     },
     {
       "path": "publications/index.html",
-      "sha256": "9bc6f3ae8c0820f9c5607f151c81e46f625e12cea9af47c1fe665752722742c4",
-      "bytes": 88481
+      "sha256": "f2e862ea56b146d2e952e5540f0d444c52bc46d01dd527b84b6c2c1cdb4532cf",
+      "bytes": 88506
     },
     {
       "path": "publications/research-program-whitepaper/index.html",
-      "sha256": "548bb2ab80defb2f602ff12e2f5de37065301b99fa93e4ac0ac65bc900ba671c",
-      "bytes": 412378
+      "sha256": "05ffb1a8a103a8a0496352b9c6688c314a748e3fb8c58ffe266d17b2cd17e3fc",
+      "bytes": 412403
     },
     {
       "path": "writing/research-program-whitepaper/index.html",
@@ -35,8 +35,8 @@
     },
     {
       "path": "publications/comp-func-and-against-intrinsic-properties/index.html",
-      "sha256": "839c0c0bfdd15b1044f8aef6183cec814ed97e162b254ad2bb974ba0076be1c2",
-      "bytes": 228816
+      "sha256": "703fc8eded5e6feab43c43889d87a9175be185a265621c5423613259f0e7a679",
+      "bytes": 225434
     },
     {
       "path": "writing/comp-func-and-against-intrinsic-properties/index.html",
@@ -45,8 +45,8 @@
     },
     {
       "path": "publications/the-machine-consciousness-hypothesis/index.html",
-      "sha256": "a80b6ae51d107182211a0309a03df17078defc16e2bb8d7f90d40a5aaa46d5ff",
-      "bytes": 233408
+      "sha256": "476176474faca31b399fd461f0988f25414673e8a2c69ea4bac4fd2a2e5b32cf",
+      "bytes": 233433
     },
     {
       "path": "writing/the-machine-consciousness-hypothesis/index.html",
