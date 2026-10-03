@@ -2,6 +2,7 @@
   "managedBy": "cimc-static-publications",
   "version": 1,
   "articles": [
+    "comp-func-and-against-intrinsic-properties",
     "research-program-whitepaper",
     "the-machine-consciousness-hypothesis"
   ],
@@ -19,13 +20,13 @@
     },
     {
       "path": "publications/index.html",
-      "sha256": "67d5cf8abba105ec06d65bed0af1869b6f9438b383cd45233628d5ed58fb4ba6",
-      "bytes": 87146
+      "sha256": "9bc6f3ae8c0820f9c5607f151c81e46f625e12cea9af47c1fe665752722742c4",
+      "bytes": 88481
     },
     {
       "path": "publications/research-program-whitepaper/index.html",
-      "sha256": "1151edd45b2e2b08535b17a58c7e8f32ec4b4bf1f2e3d144a5a706ea8d304a31",
-      "bytes": 411632
+      "sha256": "548bb2ab80defb2f602ff12e2f5de37065301b99fa93e4ac0ac65bc900ba671c",
+      "bytes": 412378
     },
     {
       "path": "writing/research-program-whitepaper/index.html",
@@ -33,9 +34,19 @@
       "bytes": 550
     },
     {
+      "path": "publications/comp-func-and-against-intrinsic-properties/index.html",
+      "sha256": "839c0c0bfdd15b1044f8aef6183cec814ed97e162b254ad2bb974ba0076be1c2",
+      "bytes": 228816
+    },
+    {
+      "path": "writing/comp-func-and-against-intrinsic-properties/index.html",
+      "sha256": "2e15e250ac9484ca380fd4813ea42621a73cb13dc99cd9ebddac6d606f5d647c",
+      "bytes": 561
+    },
+    {
       "path": "publications/the-machine-consciousness-hypothesis/index.html",
-      "sha256": "aedcaac487d4ead5d904364069ac0ca20f19739058550a33dfa68efc1d21cd00",
-      "bytes": 232662
+      "sha256": "a80b6ae51d107182211a0309a03df17078defc16e2bb8d7f90d40a5aaa46d5ff",
+      "bytes": 233408
     },
     {
       "path": "writing/the-machine-consciousness-hypothesis/index.html",
@@ -49,8 +60,8 @@
     },
     {
       "path": "pub/feed.xml",
-      "sha256": "b517de8929f1b5de0400f615072d9d295fc988702dfccb0493ceb482b540568b",
-      "bytes": 927
+      "sha256": "60bc84911d1417a138223ee83e9e62031fdeb5908a549a1b0353d3e278d092a3",
+      "bytes": 1383
     }
   ]
 }
