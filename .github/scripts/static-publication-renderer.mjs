@@ -73135,6 +73135,89 @@ function getPublishingConfiguration() {
 var import_jsx_runtime = __toESM(require_jsx_runtime(), 1);
 var import_react3 = __toESM(require_react(), 1);
 
+// node_modules/@cimc/publishing-reader/dist/managedAsset-Cuv79pAH.js
+function managedAssetPath(src, supabaseUrl) {
+  try {
+    if (/[\u0000-\u0020\u007f\\]/.test(src)) return null;
+    const base = new URL(supabaseUrl);
+    const url = new URL(src);
+    if (!["https:", "http:"].includes(base.protocol) || url.origin !== base.origin || url.username || url.password)
+      return null;
+    let path2 = url.pathname;
+    for (let pass = 0; pass < 3 && path2.includes("%"); pass++)
+      path2 = decodeURIComponent(path2);
+    const match2 = path2.match(
+      /^\/storage\/v1\/object\/(?:(?:public|authenticated|sign)\/)?publishing-assets\/([a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}\/[a-z0-9][a-z0-9._-]{0,119})$/
+    );
+    return match2?.[1] ?? null;
+  } catch {
+    return null;
+  }
+}
+function startPublishingMediaRequest(src, download, ready, failed) {
+  let disposed = false;
+  let objectUrl;
+  Promise.resolve().then(async () => {
+    if (disposed) return;
+    const blob = await download(src);
+    if (disposed) return;
+    objectUrl = URL.createObjectURL(blob);
+    ready(objectUrl);
+  }).catch(() => {
+    if (!disposed) failed();
+  });
+  return () => {
+    disposed = true;
+    if (objectUrl) URL.revokeObjectURL(objectUrl);
+    objectUrl = void 0;
+  };
+}
+async function downloadMediaAttachment(src, download) {
+  return new Blob([await download(src)], { type: "application/octet-stream" });
+}
+async function downloadMediaImage(src, download) {
+  const blob = await download(src);
+  const type = blob.type.split(";")[0].trim().toLowerCase();
+  if (type === "image/svg+xml") {
+    const source2 = URL.createObjectURL(blob);
+    try {
+      const image = new Image();
+      image.src = source2;
+      await image.decode();
+      const width = image.naturalWidth;
+      const height = image.naturalHeight;
+      if (!width || !height) throw new Error("This image has no dimensions.");
+      const scale = Math.min(
+        1,
+        8192 / width,
+        8192 / height,
+        Math.sqrt(16777216 / (width * height))
+      );
+      const canvas = document.createElement("canvas");
+      canvas.width = Math.max(1, Math.round(width * scale));
+      canvas.height = Math.max(1, Math.round(height * scale));
+      const context = canvas.getContext("2d");
+      if (!context) throw new Error("Image preview is unavailable.");
+      context.drawImage(image, 0, 0, canvas.width, canvas.height);
+      return await new Promise((resolve, reject) => {
+        canvas.toBlob(
+          (result) => result ? resolve(result) : reject(new Error("Image preview is unavailable.")),
+          "image/png"
+        );
+      });
+    } finally {
+      URL.revokeObjectURL(source2);
+    }
+  }
+  const header = new Uint8Array(await blob.slice(0, 64).arrayBuffer());
+  const ascii = String.fromCharCode(...header);
+  const raster = type === "image/png" && [137, 80, 78, 71, 13, 10, 26, 10].every(
+    (byte, index2) => header[index2] === byte
+  ) || type === "image/jpeg" && header[0] === 255 && header[1] === 216 && header[2] === 255 || type === "image/gif" && /^(GIF87a|GIF89a)/.test(ascii) || type === "image/webp" && ascii.startsWith("RIFF") && ascii.slice(8, 12) === "WEBP" || type === "image/avif" && ascii.slice(4, 8) === "ftyp" && /avif|avis/.test(ascii.slice(8)) || type === "image/bmp" && ascii.startsWith("BM");
+  if (!raster) throw new Error("This file is not a supported image.");
+  return blob;
+}
+
 // node_modules/@supabase/supabase-js/dist/module/index.js
 var module_exports = {};
 __export(module_exports, {
@@ -77655,88 +77738,7 @@ async function verifyWebEditionHtml(edition, data2) {
   return new TextDecoder("utf-8", { fatal: true }).decode(bytes);
 }
 
-// node_modules/@cimc/publishing-reader/dist/publicClient-CWmwdo1S.js
-function managedAssetPath(src, supabaseUrl) {
-  try {
-    if (/[\u0000-\u0020\u007f\\]/.test(src)) return null;
-    const base = new URL(supabaseUrl);
-    const url = new URL(src);
-    if (!["https:", "http:"].includes(base.protocol) || url.origin !== base.origin || url.username || url.password)
-      return null;
-    let path2 = url.pathname;
-    for (let pass = 0; pass < 3 && path2.includes("%"); pass++)
-      path2 = decodeURIComponent(path2);
-    const match2 = path2.match(
-      /^\/storage\/v1\/object\/(?:(?:public|authenticated|sign)\/)?publishing-assets\/([a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}\/[a-z0-9][a-z0-9._-]{0,119})$/
-    );
-    return match2?.[1] ?? null;
-  } catch {
-    return null;
-  }
-}
-function startPublishingMediaRequest(src, download, ready, failed) {
-  let disposed = false;
-  let objectUrl;
-  Promise.resolve().then(async () => {
-    if (disposed) return;
-    const blob = await download(src);
-    if (disposed) return;
-    objectUrl = URL.createObjectURL(blob);
-    ready(objectUrl);
-  }).catch(() => {
-    if (!disposed) failed();
-  });
-  return () => {
-    disposed = true;
-    if (objectUrl) URL.revokeObjectURL(objectUrl);
-    objectUrl = void 0;
-  };
-}
-async function downloadMediaAttachment(src, download) {
-  return new Blob([await download(src)], { type: "application/octet-stream" });
-}
-async function downloadMediaImage(src, download) {
-  const blob = await download(src);
-  const type = blob.type.split(";")[0].trim().toLowerCase();
-  if (type === "image/svg+xml") {
-    const source2 = URL.createObjectURL(blob);
-    try {
-      const image = new Image();
-      image.src = source2;
-      await image.decode();
-      const width = image.naturalWidth;
-      const height = image.naturalHeight;
-      if (!width || !height) throw new Error("This image has no dimensions.");
-      const scale = Math.min(
-        1,
-        8192 / width,
-        8192 / height,
-        Math.sqrt(16777216 / (width * height))
-      );
-      const canvas = document.createElement("canvas");
-      canvas.width = Math.max(1, Math.round(width * scale));
-      canvas.height = Math.max(1, Math.round(height * scale));
-      const context = canvas.getContext("2d");
-      if (!context) throw new Error("Image preview is unavailable.");
-      context.drawImage(image, 0, 0, canvas.width, canvas.height);
-      return await new Promise((resolve, reject) => {
-        canvas.toBlob(
-          (result) => result ? resolve(result) : reject(new Error("Image preview is unavailable.")),
-          "image/png"
-        );
-      });
-    } finally {
-      URL.revokeObjectURL(source2);
-    }
-  }
-  const header = new Uint8Array(await blob.slice(0, 64).arrayBuffer());
-  const ascii = String.fromCharCode(...header);
-  const raster = type === "image/png" && [137, 80, 78, 71, 13, 10, 26, 10].every(
-    (byte, index2) => header[index2] === byte
-  ) || type === "image/jpeg" && header[0] === 255 && header[1] === 216 && header[2] === 255 || type === "image/gif" && /^(GIF87a|GIF89a)/.test(ascii) || type === "image/webp" && ascii.startsWith("RIFF") && ascii.slice(8, 12) === "WEBP" || type === "image/avif" && ascii.slice(4, 8) === "ftyp" && /avif|avis/.test(ascii.slice(8)) || type === "image/bmp" && ascii.startsWith("BM");
-  if (!raster) throw new Error("This file is not a supported image.");
-  return blob;
-}
+// node_modules/@cimc/publishing-reader/dist/publicClient.js
 var MAX_RELEASE_MANIFEST_BYTES = 2 * 1024 * 1024;
 var manifestRequests = /* @__PURE__ */ new Map();
 function invalidManifest() {
@@ -78016,7 +78018,6 @@ function PublishingEmbed({
 // node_modules/@cimc/publishing-reader/dist/ArticleNavigation.js
 var import_jsx_runtime3 = __toESM(require_jsx_runtime(), 1);
 var import_react5 = __toESM(require_react(), 1);
-var import_react_dom2 = __toESM(require_react_dom(), 1);
 
 // node_modules/@cimc/publishing-reader/dist/ArticleRenderer.js
 var import_jsx_runtime2 = __toESM(require_jsx_runtime(), 1);
@@ -106232,8 +106233,21 @@ function referenceYear(reference, cited = []) {
     suffix = String.fromCharCode(97 + (value - 1) % 26) + suffix;
   return `${year}${suffix}`;
 }
+function isParenthesized(text2) {
+  if (!text2.startsWith("(") || !text2.endsWith(")")) return false;
+  let depth = 0;
+  for (let index2 = 0; index2 < text2.length; index2++) {
+    if (text2[index2] === "(") depth++;
+    else if (text2[index2] === ")" && --depth === 0)
+      return index2 === text2.length - 1;
+  }
+  return false;
+}
 function formatCitation(reference, attrs, cited = []) {
   if (!reference) return "[Missing reference]";
+  const custom = attrs.customText?.trim();
+  if (custom)
+    return attrs.mode === "narrative" || isParenthesized(custom) ? custom : `(${custom})`;
   const authors = citationAuthor(reference);
   const year = referenceYear(reference, cited);
   const locator = attrs.locator ? `, ${attrs.locatorType === "chapter" ? "ch." : attrs.locatorType === "section" ? "\xA7" : /[-–,]/.test(attrs.locator) ? "pp." : "p."} ${attrs.locator}` : "";
@@ -106518,7 +106532,7 @@ function validateRichDocument(doc, complete = false) {
     if (node2.type === "citation") {
       if (!MANUSCRIPT_ID.test(String(attrs.referenceId || "")) || !["parenthetical", "narrative"].includes(String(attrs.mode)))
         issue("A citation needs a reference ID and citation mode.");
-      for (const name of ["locator", "prefix", "suffix"])
+      for (const name of ["locator", "prefix", "suffix", "customText"])
         if (attrs[name] != null && typeof attrs[name] !== "string")
           issue("Citation details must be text.");
       if (attrs.locatorType != null && !["page", "chapter", "section"].includes(String(attrs.locatorType)))
@@ -106620,7 +106634,31 @@ function placeNoteCard(anchor, cardHeight, viewport) {
 }
 var useBrowserLayoutEffect = typeof window === "undefined" ? import_react4.useEffect : import_react4.useLayoutEffect;
 function Footnote({ noteId, markerId, number, children }) {
-  const marker = (0, import_react4.useRef)(null);
+  const [marker, setMarker] = (0, import_react4.useState)(null);
+  return /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(import_jsx_runtime2.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("sup", { className: "pub-note-marker", children: /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(
+      "a",
+      {
+        ref: setMarker,
+        id: markerId,
+        href: `#pub-note-${noteId}`,
+        role: "doc-noteref",
+        "aria-label": `Footnote ${number}`,
+        "aria-haspopup": "dialog",
+        "aria-expanded": "false",
+        children: number
+      }
+    ) }),
+    marker && /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(FootnoteCard, { marker, noteId, number, children })
+  ] });
+}
+function FootnoteCard({
+  marker,
+  noteId,
+  number,
+  children,
+  html
+}) {
   const card = (0, import_react4.useRef)(null);
   const heading = (0, import_react4.useRef)(null);
   const closeTimer = (0, import_react4.useRef)();
@@ -106635,42 +106673,85 @@ function Footnote({ noteId, markerId, number, children }) {
     width: 400,
     maxHeight: 560
   });
-  const cardId = `${markerId}-preview`;
+  const cardId = `${marker.id}-preview`;
   const contains = (0, import_react4.useCallback)(
-    (target) => target !== null && "nodeType" in target && (marker.current?.contains(target) || card.current?.contains(target)),
-    []
+    (target) => target !== null && "nodeType" in target && (marker.contains(target) || Boolean(card.current?.contains(target))),
+    [marker]
   );
-  const close2 = (0, import_react4.useCallback)((restore = false) => {
-    clearTimeout(closeTimer.current);
-    suppressed.current = true;
-    pinned.current = false;
-    setOpen(false);
-    setInteractive(false);
-    if (restore) marker.current?.focus({ preventScroll: true });
-  }, []);
-  const show = () => {
-    clearTimeout(closeTimer.current);
-    if (!suppressed.current) setOpen(true);
-  };
-  const leave = () => {
+  const close2 = (0, import_react4.useCallback)(
+    (restore = false) => {
+      clearTimeout(closeTimer.current);
+      suppressed.current = true;
+      pinned.current = false;
+      setOpen(false);
+      setInteractive(false);
+      if (restore) marker.focus({ preventScroll: true });
+    },
+    [marker]
+  );
+  const leave = (0, import_react4.useCallback)(() => {
     hovering.current = false;
-    if (!contains(marker.current?.ownerDocument.activeElement || null))
+    if (!contains(marker.ownerDocument.activeElement))
       suppressed.current = false;
     clearTimeout(closeTimer.current);
     closeTimer.current = setTimeout(() => {
-      if (!hovering.current && !pinned.current && !contains(marker.current?.ownerDocument.activeElement || null))
+      if (!hovering.current && !pinned.current && !contains(marker.ownerDocument.activeElement))
         setOpen(false);
     }, 200);
-  };
+  }, [contains, marker]);
+  (0, import_react4.useEffect)(() => {
+    const show = () => {
+      clearTimeout(closeTimer.current);
+      if (!suppressed.current) setOpen(true);
+    };
+    const enter = (event) => {
+      if (event.pointerType === "mouse") {
+        hovering.current = true;
+        show();
+      }
+    };
+    const blur = (event) => {
+      if (!contains(event.relatedTarget)) {
+        if (!hovering.current) suppressed.current = false;
+        leave();
+      }
+    };
+    const click = (event) => {
+      event.preventDefault();
+      if (pinned.current) {
+        close2(true);
+        return;
+      }
+      suppressed.current = false;
+      pinned.current = true;
+      setOpen(true);
+      setInteractive(true);
+    };
+    marker.addEventListener("pointerenter", enter);
+    marker.addEventListener("pointerleave", leave);
+    marker.addEventListener("focus", show);
+    marker.addEventListener("blur", blur);
+    marker.addEventListener("click", click);
+    return () => {
+      marker.removeEventListener("pointerenter", enter);
+      marker.removeEventListener("pointerleave", leave);
+      marker.removeEventListener("focus", show);
+      marker.removeEventListener("blur", blur);
+      marker.removeEventListener("click", click);
+    };
+  }, [marker, close2, contains, leave]);
+  (0, import_react4.useEffect)(() => {
+    marker.setAttribute("aria-expanded", open2 ? "true" : "false");
+    if (open2) marker.setAttribute("aria-controls", cardId);
+    else marker.removeAttribute("aria-controls");
+  }, [marker, open2, cardId]);
   (0, import_react4.useEffect)(() => () => clearTimeout(closeTimer.current), []);
   useBrowserLayoutEffect(() => {
-    const window2 = marker.current?.ownerDocument.defaultView;
+    const window2 = marker.ownerDocument.defaultView;
     if (!open2 || !window2) return;
     const positionCard = () => {
-      const anchor = marker.current?.getBoundingClientRect();
-      if (!anchor) return;
       const content = card.current?.scrollHeight || 240;
-      const next2 = placeNoteCard(anchor, content, {
+      const next2 = placeNoteCard(marker.getBoundingClientRect(), content, {
         width: window2.innerWidth,
         height: window2.innerHeight
       });
@@ -106688,26 +106769,20 @@ function Footnote({ noteId, markerId, number, children }) {
       window2.removeEventListener("resize", positionCard);
       window2.removeEventListener("scroll", positionCard, true);
     };
-  }, [open2]);
+  }, [open2, marker]);
   useBrowserLayoutEffect(() => {
     if (open2 && interactive) heading.current?.focus({ preventScroll: true });
   }, [open2, interactive]);
   (0, import_react4.useEffect)(() => {
-    const document2 = marker.current?.ownerDocument;
-    if (!open2 || !document2) return;
+    const document2 = marker.ownerDocument;
+    if (!open2) return;
     const outside = (event) => {
       if (!contains(event.target)) close2(false);
     };
     const dismissOnEscape = (event) => {
       if (event.key === "Escape") {
         event.preventDefault();
-        close2(
-          Boolean(
-            card.current?.contains(
-              marker.current?.ownerDocument.activeElement || null
-            )
-          )
-        );
+        close2(Boolean(card.current?.contains(document2.activeElement)));
       }
     };
     const focus = (event) => {
@@ -106724,106 +106799,141 @@ function Footnote({ noteId, markerId, number, children }) {
       document2.removeEventListener("keydown", dismissOnEscape);
       document2.removeEventListener("focusin", focus);
     };
-  }, [open2, close2, contains]);
-  return /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(import_jsx_runtime2.Fragment, { children: [
-    /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("sup", { className: "pub-note-marker", children: /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(
-      "a",
+  }, [open2, close2, contains, marker]);
+  if (!open2) return null;
+  return (0, import_react_dom.createPortal)(
+    /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(
+      "dialog",
       {
-        ref: marker,
-        id: markerId,
-        href: `#pub-note-${noteId}`,
-        role: "doc-noteref",
-        "aria-label": `Footnote ${number}`,
-        "aria-haspopup": "dialog",
-        "aria-expanded": open2,
-        "aria-controls": open2 ? cardId : void 0,
+        open: true,
+        ref: card,
+        id: cardId,
+        "aria-modal": "false",
+        "aria-labelledby": `${cardId}-title`,
+        className: "pub-scope pub-note-card",
+        style: position2,
         onPointerEnter: (event) => {
           if (event.pointerType === "mouse") {
             hovering.current = true;
-            show();
+            clearTimeout(closeTimer.current);
           }
         },
         onPointerLeave: leave,
-        onFocus: show,
-        onBlur: (event) => {
-          if (!contains(event.relatedTarget)) {
-            if (!hovering.current) suppressed.current = false;
-            leave();
-          }
-        },
-        onClick: (event) => {
-          event.preventDefault();
-          if (pinned.current) {
-            close2(true);
-            return;
-          }
-          suppressed.current = false;
-          pinned.current = true;
-          setOpen(true);
-          setInteractive(true);
-        },
-        children: number
-      }
-    ) }),
-    open2 && marker.current && (0, import_react_dom.createPortal)(
-      /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(
-        "dialog",
-        {
-          open: true,
-          ref: card,
-          id: cardId,
-          "aria-modal": "false",
-          "aria-labelledby": `${cardId}-title`,
-          className: "pub-scope pub-note-card",
-          style: position2,
-          onPointerEnter: (event) => {
-            if (event.pointerType === "mouse") {
-              hovering.current = true;
-              clearTimeout(closeTimer.current);
-            }
-          },
-          onPointerLeave: leave,
-          children: [
-            /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("div", { className: "pub-note-card-bar", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("h2", { ref: heading, id: `${cardId}-title`, tabIndex: -1, children: [
-                "Footnote ",
-                number
-              ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(
-                "button",
-                {
-                  type: "button",
-                  "aria-label": `Close footnote ${number}`,
-                  onClick: () => close2(true),
-                  children: "Close"
-                }
-              )
+        children: [
+          /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("div", { className: "pub-note-card-bar", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("h2", { ref: heading, id: `${cardId}-title`, tabIndex: -1, children: [
+              "Footnote ",
+              number
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("div", { className: "pub-article-body pub-note-card-body", children }),
-            /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(
-              "a",
+            /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(
+              "button",
               {
-                className: "pub-note-original",
-                href: `#pub-note-${noteId}`,
-                onClick: () => {
-                  close2(false);
-                  const document2 = marker.current?.ownerDocument;
-                  document2?.defaultView?.requestAnimationFrame(
-                    () => document2.getElementById(`pub-note-${noteId}`)?.focus()
-                  );
-                },
-                children: [
-                  "Go to note ",
-                  /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("span", { "aria-hidden": "true", children: "\u2193" })
-                ]
+                type: "button",
+                "aria-label": `Close footnote ${number}`,
+                onClick: () => close2(true),
+                children: "Close"
               }
             )
-          ]
+          ] }),
+          html === void 0 ? /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("div", { className: "pub-article-body pub-note-card-body", children }) : /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(
+            "div",
+            {
+              className: "pub-article-body pub-note-card-body",
+              dangerouslySetInnerHTML: { __html: html }
+            }
+          ),
+          /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(
+            "a",
+            {
+              className: "pub-note-original",
+              href: `#pub-note-${noteId}`,
+              onClick: () => {
+                close2(false);
+                const document2 = marker.ownerDocument;
+                document2.defaultView?.requestAnimationFrame(
+                  () => document2.getElementById(`pub-note-${noteId}`)?.focus()
+                );
+              },
+              children: [
+                "Go to note ",
+                /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("span", { "aria-hidden": "true", children: "\u2193" })
+              ]
+            }
+          )
+        ]
+      }
+    ),
+    marker.ownerDocument.body
+  );
+}
+var SIDENOTE_GAP = 14;
+function useSidenotePlacement(aside, bodyRef, markerIds) {
+  const markerKey = markerIds?.join("|");
+  (0, import_react4.useEffect)(() => {
+    const container = aside.current;
+    const body = bodyRef.current;
+    const view = container?.ownerDocument.defaultView;
+    if (!container || !body || !view) return;
+    const markers = () => {
+      if (markerKey !== void 0)
+        return markerKey.split("|").map((id) => id ? body.querySelector(`#${CSS.escape(id)}`) : null);
+      const seen = /* @__PURE__ */ new Set();
+      return Array.from(body.querySelectorAll('a[role="doc-noteref"]')).filter(
+        (marker) => {
+          const href2 = marker.getAttribute("href") || "";
+          if (seen.has(href2)) return false;
+          seen.add(href2);
+          return true;
         }
-      ),
-      marker.current.ownerDocument.body
-    )
-  ] });
+      );
+    };
+    let frame = 0;
+    let placed = null;
+    const measure = () => {
+      frame = 0;
+      const items = Array.from(container.children);
+      if (view.getComputedStyle(container).display === "none") {
+        if (placed)
+          for (const item of items) {
+            item.classList.remove("is-placed");
+            item.style.removeProperty("top");
+          }
+        placed = null;
+        return;
+      }
+      const origin = container.getBoundingClientRect().top;
+      const anchors = markers();
+      let floor = 0;
+      const next2 = items.map((item, index2) => {
+        const marker = anchors[index2];
+        const anchored = marker ? marker.getBoundingClientRect().top - origin - 4 : floor;
+        const top = Math.max(floor, anchored);
+        floor = top + (item.offsetHeight || 0) + SIDENOTE_GAP;
+        return Math.round(top);
+      });
+      if (placed && placed.length === next2.length && placed.every((value, index2) => value === next2[index2]))
+        return;
+      placed = next2;
+      items.forEach((item, index2) => {
+        item.classList.add("is-placed");
+        item.style.top = `${next2[index2]}px`;
+      });
+    };
+    const schedule = () => {
+      if (!frame) frame = view.requestAnimationFrame(measure);
+    };
+    measure();
+    const observer = new view.ResizeObserver(schedule);
+    observer.observe(body);
+    observer.observe(container);
+    view.addEventListener("resize", schedule);
+    void container.ownerDocument.fonts?.ready.then(schedule);
+    return () => {
+      observer.disconnect();
+      view.removeEventListener("resize", schedule);
+      view.cancelAnimationFrame(frame);
+    };
+  }, [aside, bodyRef, markerKey]);
 }
 var lowlight = createLowlight(grammars);
 function labelId(node2, context) {
@@ -107344,60 +107454,19 @@ function Bibliography({ context }) {
     }
   );
 }
-var SIDENOTE_GAP = 14;
 function ArticleSidenotes({
   doc,
   bodyRef
 }) {
   const container = (0, import_react4.useRef)(null);
-  const [tops, setTops] = (0, import_react4.useState)(null);
   const { context, manuscript } = buildRenderContext(doc);
   const notes = context.noteOrder;
-  const count = notes.length;
-  const markerKey = notes.map((id) => context.markers.get(id)?.[0] || "").join("|");
-  (0, import_react4.useEffect)(() => {
-    const aside = container.current;
-    const body = bodyRef.current;
-    const view = aside?.ownerDocument.defaultView;
-    if (!aside || !body || !view || !count) return;
-    const markerIds = markerKey.split("|");
-    let frame = 0;
-    const measure = () => {
-      frame = 0;
-      if (view.getComputedStyle(aside).display === "none") {
-        setTops(null);
-        return;
-      }
-      const origin = aside.getBoundingClientRect().top;
-      const items = Array.from(aside.children);
-      let floor = 0;
-      const next2 = markerIds.map((markerId, index2) => {
-        const marker = markerId ? body.querySelector(`#${CSS.escape(markerId)}`) : null;
-        const anchored = marker ? marker.getBoundingClientRect().top - origin - 4 : floor;
-        const top = Math.max(floor, anchored);
-        floor = top + (items[index2]?.offsetHeight || 0) + SIDENOTE_GAP;
-        return Math.round(top);
-      });
-      setTops(
-        (current) => current && current.length === next2.length && current.every((value, index2) => value === next2[index2]) ? current : next2
-      );
-    };
-    const schedule = () => {
-      if (!frame) frame = view.requestAnimationFrame(measure);
-    };
-    measure();
-    const observer = new view.ResizeObserver(schedule);
-    observer.observe(body);
-    observer.observe(aside);
-    view.addEventListener("resize", schedule);
-    void aside.ownerDocument.fonts?.ready.then(schedule);
-    return () => {
-      observer.disconnect();
-      view.removeEventListener("resize", schedule);
-      view.cancelAnimationFrame(frame);
-    };
-  }, [bodyRef, markerKey, count]);
-  if (!count) return null;
+  useSidenotePlacement(
+    container,
+    bodyRef,
+    notes.map((id) => context.markers.get(id)?.[0] || "")
+  );
+  if (!notes.length) return null;
   return /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(
     "aside",
     {
@@ -107405,21 +107474,13 @@ function ArticleSidenotes({
       className: "pub-margin-notes",
       "aria-hidden": "true",
       ...{ inert: "" },
-      children: notes.map((id, index2) => /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(
-        "div",
-        {
-          className: `pub-sidenote${tops ? " is-placed" : ""}`,
-          style: tops ? { top: tops[index2] } : void 0,
-          children: [
-            /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("span", { className: "pub-sidenote-number", children: index2 + 1 }),
-            /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("div", { className: "pub-sidenote-body", children: manuscript?.notes[id] ? renderChildren(manuscript.notes[id].content, `side-${id}`, {
-              ...context,
-              preview: true
-            }) : null })
-          ]
-        },
-        id
-      ))
+      children: notes.map((id, index2) => /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("div", { className: "pub-sidenote", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("span", { className: "pub-sidenote-number", children: index2 + 1 }),
+        /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("div", { className: "pub-sidenote-body", children: manuscript?.notes[id] ? renderChildren(manuscript.notes[id].content, `side-${id}`, {
+          ...context,
+          preview: true
+        }) : null })
+      ] }, id))
     }
   );
 }
@@ -107515,6 +107576,7 @@ function ArticleRenderer({
 }
 
 // node_modules/@cimc/publishing-reader/dist/ArticleNavigation.js
+var import_react_dom2 = __toESM(require_react_dom(), 1);
 var RAIL_ROW_GAP = 2;
 var RAIL_WINDOW_MIN = 10;
 function round(value) {
@@ -107828,58 +107890,17 @@ function ArticleReadingBar({
     }
   );
 }
-function getArticleOutline(doc) {
-  const headings = getArticleHeadings(doc);
-  const byKey = new Map(headings.map((heading) => [heading.key, heading]));
-  const bibliography = getBibliographyReferences(doc).length > 0;
-  const bibliographyTitle = getBibliographyTitle();
-  const outline = [];
-  let hasBibliography = false;
-  let hasNotes = false;
-  function visit(node2, key) {
-    const heading = byKey.get(key);
-    if (heading) outline.push(heading);
-    if (node2.type === "footnoteRef") hasNotes = true;
-    if (node2.type === "bibliography" && bibliography && !hasBibliography) {
-      outline.push({
-        id: "pub-bibliography",
-        key: "bibliography",
-        text: bibliographyTitle,
-        level: 2
-      });
-      hasBibliography = true;
-    }
-    node2.content?.forEach((child, index2) => visit(child, `${key}-${index2}`));
-  }
-  visit(doc, "doc");
-  if (bibliography && !hasBibliography)
-    outline.push({
-      id: "pub-bibliography",
-      key: "bibliography",
-      text: bibliographyTitle,
-      level: 2
-    });
-  if (hasNotes)
-    outline.push({
-      id: "pub-endnotes",
-      key: "endnotes",
-      text: "Notes",
-      level: 2
-    });
-  return outline;
-}
 var RAIL_BOTTOM_INSET = 32;
 function samePlan(a2, b) {
   const same = (x2, y2) => x2.length === y2.length && x2.every((value, index2) => value === y2[index2]);
   return a2.height === b.height && a2.windowTop === b.windowTop && a2.windowHeight === b.windowHeight && same(a2.branch, b.branch) && same(a2.tops, b.tops) && same(a2.parked, b.parked) && same(a2.ticks, b.ticks);
 }
-function ArticleNavigation({
-  doc,
+function ContentsNavigation({
+  headings,
   bodyRef,
   mobileTarget,
   progressTarget
 }) {
-  const headings = (0, import_react5.useMemo)(() => getArticleOutline(doc), [doc]);
   const [activeId, setActiveId] = (0, import_react5.useState)("");
   const [progress, setProgress] = (0, import_react5.useState)(0);
   const [fraction, setFraction] = (0, import_react5.useState)(0);
@@ -108359,6 +108380,53 @@ function ArticleNavigation({
       contentsDialog
     ] })
   ] });
+}
+function getArticleOutline(doc) {
+  const headings = getArticleHeadings(doc);
+  const byKey = new Map(headings.map((heading) => [heading.key, heading]));
+  const bibliography = getBibliographyReferences(doc).length > 0;
+  const bibliographyTitle = getBibliographyTitle();
+  const outline = [];
+  let hasBibliography = false;
+  let hasNotes = false;
+  function visit(node2, key) {
+    const heading = byKey.get(key);
+    if (heading) outline.push(heading);
+    if (node2.type === "footnoteRef") hasNotes = true;
+    if (node2.type === "bibliography" && bibliography && !hasBibliography) {
+      outline.push({
+        id: "pub-bibliography",
+        key: "bibliography",
+        text: bibliographyTitle,
+        level: 2
+      });
+      hasBibliography = true;
+    }
+    node2.content?.forEach((child, index2) => visit(child, `${key}-${index2}`));
+  }
+  visit(doc, "doc");
+  if (bibliography && !hasBibliography)
+    outline.push({
+      id: "pub-bibliography",
+      key: "bibliography",
+      text: bibliographyTitle,
+      level: 2
+    });
+  if (hasNotes)
+    outline.push({
+      id: "pub-endnotes",
+      key: "endnotes",
+      text: "Notes",
+      level: 2
+    });
+  return outline;
+}
+function ArticleNavigation({
+  doc,
+  ...props
+}) {
+  const headings = (0, import_react5.useMemo)(() => getArticleOutline(doc), [doc]);
+  return /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(ContentsNavigation, { headings, ...props });
 }
 
 // node_modules/@cimc/publishing-reader/dist/ArticleReadingView.js
