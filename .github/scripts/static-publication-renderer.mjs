@@ -118636,18 +118636,12 @@ function Archive({
           ] }),
           /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "writing-row-byline", children: [
             /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("span", { className: "writing-row-authors", children: article.authors.map((a2) => a2.name).join(", ") }),
-            /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("span", { className: "writing-row-details", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("time", { dateTime: article.publishedAt, children: (/* @__PURE__ */ new Date(`${article.publishedAt}T12:00:00Z`)).toLocaleDateString("en-US", {
-                timeZone: "UTC",
-                year: "numeric",
-                month: "long",
-                day: "numeric"
-              }) }),
-              " ",
-              "\xB7 ",
-              article.readingTimeMin,
-              " min read"
-            ] })
+            /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("span", { className: "writing-row-details", children: /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("time", { dateTime: article.publishedAt, children: (/* @__PURE__ */ new Date(`${article.publishedAt}T12:00:00Z`)).toLocaleDateString("en-US", {
+              timeZone: "UTC",
+              year: "numeric",
+              month: "long",
+              day: "numeric"
+            }) }) })
           ] })
         ] }),
         article.heroImage && safeThumbnailUrl(article.heroImage) && /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("a", { className: "writing-row-thumb", href: `/publications/${article.slug}/`, "aria-label": `Read ${article.title}`, tabIndex: -1, children: /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("img", { src: article.heroImage, alt: "", loading: "lazy" }) })
