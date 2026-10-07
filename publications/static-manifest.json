@@ -140,8 +140,8 @@
       "bytes": 67940
     },
     {
-      "path": "pub/static-assets/cd9d010018bc8c3f1064d962a4e9f4f24d559420fe69b6c422016727e4c8d716.js",
-      "sha256": "cd9d010018bc8c3f1064d962a4e9f4f24d559420fe69b6c422016727e4c8d716",
+      "path": "pub/static-assets/5b79d1a09e67b9d7d145e62bf0cacef0e71f8a575f02fd96ac23fa139fe5a033.js",
+      "sha256": "5b79d1a09e67b9d7d145e62bf0cacef0e71f8a575f02fd96ac23fa139fe5a033",
       "bytes": 171682
     },
     {
@@ -151,7 +151,7 @@
     },
     {
       "path": "publications/research-program-whitepaper/index.html",
-      "sha256": "e0e67690ed893f89d13354093acf3f4ca1388559d2a4bb03da7fa9021699adf6",
+      "sha256": "ed30d48c476e3ff7b83bb10a35de8a75f3b5bf2bfe8b47052270ca1481449428",
       "bytes": 261175
     },
     {
@@ -161,7 +161,7 @@
     },
     {
       "path": "publications/against-intrinsic-properties/index.html",
-      "sha256": "6007dd2696bdacc4cc4de4b08885756127a634ee62c75fa34ce6f5cc3d4b4951",
+      "sha256": "84c90d3e837c9c0055b8110772955d29e8c35005be8122673709748c90b6ddeb",
       "bytes": 167810
     },
     {
@@ -171,7 +171,7 @@
     },
     {
       "path": "publications/prime-hypostasis/index.html",
-      "sha256": "82f8b4d1abf97f09b57aea7427283a36767cc1a39016bb8536715efb61678ca7",
+      "sha256": "028d3c2fe8036f692e2d82a36d939993e762bbc2af3a1a4c24f1dc6497ead13b",
       "bytes": 128370
     },
     {
