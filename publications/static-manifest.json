@@ -2,6 +2,7 @@
   "managedBy": "cimc-static-publications",
   "version": 1,
   "articles": [
+    "prime-hypostasis",
     "research-program-whitepaper",
     "the-machine-consciousness-hypothesis"
   ],
@@ -19,13 +20,13 @@
     },
     {
       "path": "publications/index.html",
-      "sha256": "3ca69102a195ec4fe54e713c043edb791955897bd9b0cb16abd7b5585821c59d",
-      "bytes": 87146
+      "sha256": "956f0c6603a3fad7e60a84c1a4ecbef1708dda7c107fc02fecca554c2c5b43f1",
+      "bytes": 88353
     },
     {
       "path": "publications/research-program-whitepaper/index.html",
-      "sha256": "96b2b72398efcc7ae5f1481684f5ae6ca1aa4fb87aa66eedb7f9063e0a64b4d4",
-      "bytes": 411632
+      "sha256": "ca0ab5c8686cddc3894432e75017085900cdf62baad2aca4de02c7ea39874eab",
+      "bytes": 417082
     },
     {
       "path": "writing/research-program-whitepaper/index.html",
@@ -33,9 +34,19 @@
       "bytes": 550
     },
     {
+      "path": "publications/prime-hypostasis/index.html",
+      "sha256": "106c70f71080a43527ca3f30d92f4aef82884f929699c8133cac369c1e6f94a4",
+      "bytes": 154727
+    },
+    {
+      "path": "writing/prime-hypostasis/index.html",
+      "sha256": "dbcf32398a34654d533d882090fc2a01ef151dde649ad012300178c1be82d42a",
+      "bytes": 393
+    },
+    {
       "path": "publications/the-machine-consciousness-hypothesis/index.html",
-      "sha256": "37aff81f8c040112794dd389ed30ced9f336a02f3ed722c4d8450ab981d6182c",
-      "bytes": 232662
+      "sha256": "b82201a7517267d43f5730772d5655d63df60214b3b08940c689a2328350fbb0",
+      "bytes": 233287
     },
     {
       "path": "writing/the-machine-consciousness-hypothesis/index.html",
@@ -49,8 +60,8 @@
     },
     {
       "path": "pub/feed.xml",
-      "sha256": "b517de8929f1b5de0400f615072d9d295fc988702dfccb0493ceb482b540568b",
-      "bytes": 927
+      "sha256": "f5cb01b686b03fbf43cc70d16c124376700be317510ec1a994fe75c3f40a6119",
+      "bytes": 1282
     }
   ]
 }

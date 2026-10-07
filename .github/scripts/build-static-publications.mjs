@@ -80,7 +80,7 @@ export async function readArticles(config, fetcher = fetch) {
   const slugs = new Set()
   for (let page = 0; page < 1000; page++) {
     const url = new URL(`${validated.url}/rest/v1/publishing_articles`)
-    url.searchParams.set("select", "draft_id,slug,meta,doc")
+    url.searchParams.set("select", "draft_id,slug,meta,doc,source_revision")
     url.searchParams.set("order", "draft_id.asc")
     url.searchParams.set("limit", "100")
     if (cursor) url.searchParams.set("draft_id", `gt.${cursor}`)
@@ -103,10 +103,65 @@ export async function readArticles(config, fetcher = fetch) {
         throw new Error("Invalid approved public article")
       cursor = row.draft_id
       slugs.add(row.slug)
-      articles.push({ meta: row.meta, doc: row.doc })
+      articles.push({
+        meta: row.meta,
+        doc: row.doc,
+        draftId: row.draft_id,
+        sourceRevision: row.source_revision,
+      })
     }
   }
   throw new Error("Public archive exceeded the pagination limit")
+}
+/**
+ * The Studio's current stored renderings of published revisions, keyed by
+ * draft. Row access (current rendering of the published revision) is enforced
+ * by the database; the build verifies content before serving it.
+ */
+export async function readRenderings(config, fetcher = fetch) {
+  const validated = validateConfig(config)
+  const renderings = new Map()
+  let cursor = ""
+  for (let page = 0; page < 1000; page++) {
+    const url = new URL(
+      `${validated.url}/rest/v1/publishing_article_renderings`,
+    )
+    url.searchParams.set(
+      "select",
+      "draft_id,slug,source_revision,reader_version,body_html,sha256",
+    )
+    url.searchParams.set("is_current", "eq.true")
+    url.searchParams.set("order", "draft_id.asc")
+    url.searchParams.set("limit", "50")
+    if (cursor) url.searchParams.set("draft_id", `gt.${cursor}`)
+    let rows
+    try {
+      rows = JSON.parse(
+        (await download(url, validated, fetcher, 64 * 1024 * 1024)).bytes,
+      )
+    } catch (e) {
+      // Projects without stored renderings yet build every article themselves.
+      if (/\((404)\)/.test(e.message) && !page) return renderings
+      throw e
+    }
+    if (!Array.isArray(rows))
+      throw new Error("Stored renderings response was not an array")
+    if (!rows.length) return renderings
+    for (const row of rows) {
+      if (
+        !uuidPattern.test(row.draft_id) ||
+        row.draft_id <= cursor ||
+        !slugPattern.test(row.slug) ||
+        !Number.isSafeInteger(Number(row.source_revision)) ||
+        typeof row.body_html !== "string" ||
+        !/^[a-f0-9]{64}$/.test(row.sha256)
+      )
+        throw new Error("Invalid stored rendering")
+      cursor = row.draft_id
+      renderings.set(row.draft_id, row)
+    }
+  }
+  throw new Error("Stored renderings exceeded the pagination limit")
 }
 async function optionalJson(path) {
   try {
@@ -186,6 +241,42 @@ export async function buildPublications({
     throw new Error("Invalid static renderer assets")
   const validated = validateConfig(config)
   const source = await readArticles(validated, fetcher)
+  // Stored renderings are used only with a renderer that can verify them.
+  const storedRenderings = renderer.checkStoredRendering
+    ? await readRenderings(validated, fetcher)
+    : new Map()
+  const servedRenderings = new Map()
+  /**
+   * Why a stored rendering cannot be served, or nothing. Altered content
+   * fails the build; renderings for another reader version, a website-only
+   * citation override or unmirrored media fall back to building the page.
+   */
+  const storedRenderingProblem = (stored, article, mirrored) => {
+    if (hash(Buffer.from(stored.body_html, "utf8")) !== stored.sha256)
+      throw new Error(
+        `The stored rendering of ${article.meta.slug} does not match its checksum`,
+      )
+    // Throws for anything the reader would not render.
+    const { readerVersion } = renderer.checkStoredRendering(stored.body_html)
+    if (
+      stored.slug !== article.meta.slug ||
+      Number(stored.source_revision) !== Number(article.sourceRevision)
+    )
+      return "is for another revision"
+    if (readerVersion !== stored.reader_version)
+      throw new Error(
+        `The stored rendering of ${article.meta.slug} has an inconsistent reader version`,
+      )
+    if (readerVersion !== renderer.READER_VERSION)
+      return `was made with reader ${readerVersion}, not ${renderer.READER_VERSION}`
+    if (settings.citationAuthors?.[article.meta.slug])
+      return "lacks this website's citation author"
+    for (const [match] of stored.body_html.matchAll(
+      /\/pub\/static-assets\/[a-f0-9]{64}\.[a-z]+/g,
+    ))
+      if (!mirrored.has(match)) return `refers to unmirrored media ${match}`
+    return ""
+  }
   const snapshot =
     site === "staging.cimc.ai"
       ? await optionalJson(join(target, "pub/staging-release/release.json"))
@@ -335,11 +426,15 @@ export async function buildPublications({
       prepared.set(path, Buffer.from(html))
       editionUrls.set(article.meta.slug, `/${path}`)
     }
+    const mirrored = new Set()
     const rewrite = async (value) => {
       if (typeof value === "string") {
         const path = renderer.managedAssetPath(value, validated.url)
         if (!path) return value
-        if (assets.has(path)) return assets.get(path)
+        if (assets.has(path)) {
+          mirrored.add(assets.get(path))
+          return assets.get(path)
+        }
         const asset = await download(
           `${validated.url}/storage/v1/object/authenticated/publishing-assets/${path}`,
           validated,
@@ -359,6 +454,7 @@ export async function buildPublications({
         const dest = `pub/static-assets/${hash(asset.bytes)}.${extension}`
         prepared.set(dest, asset.bytes)
         assets.set(path, `/${dest}`)
+        mirrored.add(`/${dest}`)
         return `/${dest}`
       }
       if (Array.isArray(value)) return Promise.all(value.map(rewrite))
@@ -372,12 +468,30 @@ export async function buildPublications({
     }
     article.meta = await rewrite(article.meta)
     article.doc = await rewrite(article.doc)
+    const stored = article.draftId && storedRenderings.get(article.draftId)
+    if (stored && !edition) {
+      const reason = storedRenderingProblem(stored, article, mirrored)
+      if (reason)
+        console.warn(
+          `Building ${article.meta.slug} itself: the stored rendering ${reason}.`,
+        )
+      else servedRenderings.set(article.meta.slug, stored.body_html)
+    }
   }
   const list = [...articles.values()]
     .map((article) => article.meta)
     .sort((a, b) => b.publishedAt.localeCompare(a.publishedAt))
   const page = (data) => {
     const { html, styles } = renderer.renderPublication(data)
+    // A stored article is in the page once: the client reads it from the DOM.
+    const clientData = data.rendering
+      ? {
+          ...data,
+          rendering: undefined,
+          article: { meta: data.article.meta },
+          storedRendering: true,
+        }
+      : data
     const title = data.article ? data.article.meta.title : "Publications"
     const canonical = `${origin}${data.path}`
     const meta = data.article?.meta
@@ -411,7 +525,7 @@ export async function buildPublications({
           url: canonical,
         }
     return Buffer.from(
-      `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${htmlEscape(title)} — CIMC</title><meta name="description" content="${htmlEscape(meta?.summary || "Research papers, essays, and articles from CIMC.")}"><link rel="canonical" href="${canonical}"><link rel="icon" href="/favicon.png"><link rel="alternate" type="application/rss+xml" title="CIMC Publications" href="/pub/feed.xml">${settings.css.map((s) => `<link rel="stylesheet" href="${s}">`).join("")}${styles}<style>.static-related{max-width:1100px;margin:auto;padding:16px 24px}.static-edition{display:block;width:100%;height:calc(100dvh - 96px);border:0}.static-related h2{font-size:24px}.static-related a{text-decoration:underline}</style><script type="application/ld+json">${json(structured)}</script></head><body><div id="static-publication-root">${html}</div><script id="static-publication-data" type="application/json">${json(data)}</script><script type="module" src="${settings.client}"></script></body></html>`,
+      `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${htmlEscape(title)} — CIMC</title><meta name="description" content="${htmlEscape(meta?.summary || "Research papers, essays, and articles from CIMC.")}"><link rel="canonical" href="${canonical}"><link rel="icon" href="/favicon.png"><link rel="alternate" type="application/rss+xml" title="CIMC Publications" href="/pub/feed.xml">${settings.css.map((s) => `<link rel="stylesheet" href="${s}">`).join("")}${styles}<style>.static-related{max-width:1100px;margin:auto;padding:16px 24px}.static-edition{display:block;width:100%;height:calc(100dvh - 96px);border:0}.static-related h2{font-size:24px}.static-related a{text-decoration:underline}</style><script type="application/ld+json">${json(structured)}</script></head><body><div id="static-publication-root">${html}</div><script id="static-publication-data" type="application/json">${json(clientData)}</script><script type="module" src="${settings.client}"></script></body></html>`,
     )
   }
   prepared.set(
@@ -426,8 +540,9 @@ export async function buildPublications({
         origin,
         path,
         articles: list,
-        article,
+        article: { meta: article.meta, doc: article.doc },
         editionUrl: editionUrls.get(article.meta.slug),
+        rendering: servedRenderings.get(article.meta.slug),
       }),
     )
     const legacy = `${origin}${path}`
