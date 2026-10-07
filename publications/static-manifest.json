@@ -140,13 +140,8 @@
       "bytes": 67940
     },
     {
-      "path": "pub/static-assets/ae5360349481ff3f6102c03fcb819e3191621904d34f7e98cd943ffda098785d.js",
-      "sha256": "ae5360349481ff3f6102c03fcb819e3191621904d34f7e98cd943ffda098785d",
-      "bytes": 171682
-    },
-    {
-      "path": "pub/static-assets/dcce83b9af2f5c12c2f1cece5c678aba5202f9c753218660c58f013e0b4813c5.js",
-      "sha256": "dcce83b9af2f5c12c2f1cece5c678aba5202f9c753218660c58f013e0b4813c5",
+      "path": "pub/static-assets/cd9d010018bc8c3f1064d962a4e9f4f24d559420fe69b6c422016727e4c8d716.js",
+      "sha256": "cd9d010018bc8c3f1064d962a4e9f4f24d559420fe69b6c422016727e4c8d716",
       "bytes": 171682
     },
     {
@@ -156,8 +151,8 @@
     },
     {
       "path": "publications/research-program-whitepaper/index.html",
-      "sha256": "289c36f599a44dd90efa6ab889093f02d1e4f9dd307f1da5da8e480b0a73c1f0",
-      "bytes": 261219
+      "sha256": "809bc4f2a02bedde24a68315a8f670bcfe3519bff60b620b5dc16e461f18e9c2",
+      "bytes": 261175
     },
     {
       "path": "writing/research-program-whitepaper/index.html",
@@ -166,8 +161,8 @@
     },
     {
       "path": "publications/against-intrinsic-properties/index.html",
-      "sha256": "cf639f32ab9982380d1bc34c849523157079d98db6ec661d6d456b1efc5ad36b",
-      "bytes": 167854
+      "sha256": "a76059b8641c8be63d14b93a71463bff4dc6e3e2ff83858f3f3c3fc634f782a5",
+      "bytes": 167810
     },
     {
       "path": "writing/against-intrinsic-properties/index.html",
@@ -176,8 +171,8 @@
     },
     {
       "path": "publications/prime-hypostasis/index.html",
-      "sha256": "d0debc9a6c16860ebcd4a8bedf704584f6821e0d8e829f1d452f50bd34928732",
-      "bytes": 128414
+      "sha256": "226c2b06726167cd7237ff434b0642a10015a605fabd59aa42cf23e4ca393d54",
+      "bytes": 128370
     },
     {
       "path": "writing/prime-hypostasis/index.html",
