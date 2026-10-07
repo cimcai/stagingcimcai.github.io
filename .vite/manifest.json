@@ -299,7 +299,7 @@
     ]
   },
   "src/static-publications/client.tsx": {
-    "file": "assets/staticPublication-BlUZXKvQ.js",
+    "file": "assets/staticPublication-dD_y61MP.js",
     "name": "staticPublication",
     "src": "src/static-publications/client.tsx",
     "isEntry": true,
@@ -307,11 +307,11 @@
       "_index-CBAnPAO6.js"
     ],
     "css": [
-      "assets/staticPublication-qFWNUZpf.css"
+      "assets/staticPublication-Bdup2I4z.css"
     ]
   },
   "src/static-publications/readerStyles.css": {
-    "file": "assets/readerStyles-C88tfTD2.css",
+    "file": "assets/readerStyles-C46evcT7.css",
     "src": "src/static-publications/readerStyles.css",
     "isEntry": true,
     "name": "readerStyles",

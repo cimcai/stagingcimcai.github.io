@@ -15,9 +15,9 @@
       "bytes": 399551
     },
     {
-      "path": "pub/static-editions/d43fad292c032419d7fafbd41171d47658823cc90516ff732b2e34307bbef9ac.html",
-      "sha256": "d43fad292c032419d7fafbd41171d47658823cc90516ff732b2e34307bbef9ac",
-      "bytes": 1259772
+      "path": "pub/static-editions/5eb62345c89bc09967798a523391474ee2f7e7bf9a43e642ab3368a094e98766.html",
+      "sha256": "5eb62345c89bc09967798a523391474ee2f7e7bf9a43e642ab3368a094e98766",
+      "bytes": 1258747
     },
     {
       "path": "pub/static-assets/0cdd387c9590a1a9f9794560022dbb59654a7d86f187aa0c81495ad42d3a7308.woff2",
@@ -135,23 +135,23 @@
       "bytes": 176200
     },
     {
-      "path": "pub/static-assets/61c908cae449dc64d309165a1a1a2d4173adc0b0d81e32c3b0490fc96885181f.css",
-      "sha256": "61c908cae449dc64d309165a1a1a2d4173adc0b0d81e32c3b0490fc96885181f",
-      "bytes": 67070
+      "path": "pub/static-assets/64fdca823c2500573451785070ae91ebb96292427af21096febe5f1545676468.css",
+      "sha256": "64fdca823c2500573451785070ae91ebb96292427af21096febe5f1545676468",
+      "bytes": 67940
     },
     {
-      "path": "pub/static-assets/933fb68cfab956e5a976e16940f20d97080c4678911e31455f8c6df703cd13f6.js",
-      "sha256": "933fb68cfab956e5a976e16940f20d97080c4678911e31455f8c6df703cd13f6",
+      "path": "pub/static-assets/ae5360349481ff3f6102c03fcb819e3191621904d34f7e98cd943ffda098785d.js",
+      "sha256": "ae5360349481ff3f6102c03fcb819e3191621904d34f7e98cd943ffda098785d",
       "bytes": 171682
     },
     {
       "path": "publications/index.html",
-      "sha256": "450d85e4690a90bcc790f4dccf2b869930810cb195181addee3cebb9c43659f1",
+      "sha256": "6b7c5bdbfac00e2d1b8ba60bfcea1439e5335a636bb7b8c56e8d93d7f43539b2",
       "bytes": 89726
     },
     {
       "path": "publications/research-program-whitepaper/index.html",
-      "sha256": "5df26ac91b22a4b546862e499c63941fce0edd50ccc8e9c2277e4f36c67131cb",
+      "sha256": "c4f385ef5251c9a8ded027322ba7847431116e543214a882306c67857d522e97",
       "bytes": 261272
     },
     {
@@ -161,8 +161,8 @@
     },
     {
       "path": "publications/comp-func-and-against-intrinsic-properties/index.html",
-      "sha256": "4bd7b731fc2095ab69f11dc9ae248107a020c1fcd9c041419c892f773fd4cc2f",
-      "bytes": 168075
+      "sha256": "25ca1fa374e3c0f74c86154ae2b43192fce7945e7a09b91e9a3d5d34f0137b22",
+      "bytes": 168121
     },
     {
       "path": "writing/comp-func-and-against-intrinsic-properties/index.html",
@@ -171,7 +171,7 @@
     },
     {
       "path": "publications/prime-hypostasis/index.html",
-      "sha256": "6a1e09b7777f4010bdddc52b4521721fc11fd6ca8a4f45342a22299a873095f7",
+      "sha256": "1366a5df6faa5744468cb14dfe2da3e79cad9711c8c49b222951afb57d191b9f",
       "bytes": 128467
     },
     {
@@ -181,7 +181,7 @@
     },
     {
       "path": "publications/the-machine-consciousness-hypothesis/index.html",
-      "sha256": "a2c5865093f2736b1f389fb8918568171731da76e4ab5b22cba70b8da394783b",
+      "sha256": "657382a712da38babdb3dd299846357aa3d44e5c6e6a40d420d7ce78bae38474",
       "bytes": 234071
     },
     {
