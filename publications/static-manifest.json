@@ -19,14 +19,139 @@
       "bytes": 1259772
     },
     {
+      "path": "pub/static-assets/0cdd387c9590a1a9f9794560022dbb59654a7d86f187aa0c81495ad42d3a7308.woff2",
+      "sha256": "0cdd387c9590a1a9f9794560022dbb59654a7d86f187aa0c81495ad42d3a7308",
+      "bytes": 28076
+    },
+    {
+      "path": "pub/static-assets/de7701e42cf1f4cf0b766c03fb27977207eee2f4fd5d76fa82188406da43ea4c.woff2",
+      "sha256": "de7701e42cf1f4cf0b766c03fb27977207eee2f4fd5d76fa82188406da43ea4c",
+      "bytes": 6912
+    },
+    {
+      "path": "pub/static-assets/5d53e70ad607c2352162dec9e0923fb54ecdafaccbf604cd8dcf7d00facb989b.woff2",
+      "sha256": "5d53e70ad607c2352162dec9e0923fb54ecdafaccbf604cd8dcf7d00facb989b",
+      "bytes": 6908
+    },
+    {
+      "path": "pub/static-assets/74444efd593c005e3f4573b44524704c0af0a937fe911cca9e94068d0d140d3f.woff2",
+      "sha256": "74444efd593c005e3f4573b44524704c0af0a937fe911cca9e94068d0d140d3f",
+      "bytes": 11348
+    },
+    {
+      "path": "pub/static-assets/51814d270d06ff0255dba0799994fa4d8c84d11f09951d47595f4abb1f3602dc.woff2",
+      "sha256": "51814d270d06ff0255dba0799994fa4d8c84d11f09951d47595f4abb1f3602dc",
+      "bytes": 11316
+    },
+    {
+      "path": "pub/static-assets/0f60d1b897938ec918c8ce073092411baf9438f6739465693ff18b0f9d20b021.woff2",
+      "sha256": "0f60d1b897938ec918c8ce073092411baf9438f6739465693ff18b0f9d20b021",
+      "bytes": 25324
+    },
+    {
+      "path": "pub/static-assets/99cd42a3c072d918f2f44984a807cf7aa16e13545fd0875fc07c6c65f99e715b.woff2",
+      "sha256": "99cd42a3c072d918f2f44984a807cf7aa16e13545fd0875fc07c6c65f99e715b",
+      "bytes": 16780
+    },
+    {
+      "path": "pub/static-assets/97479ca6cce906abc961ecac96faa5f9ca2e61b8e7670d475826bcdee9a7c267.woff2",
+      "sha256": "97479ca6cce906abc961ecac96faa5f9ca2e61b8e7670d475826bcdee9a7c267",
+      "bytes": 16988
+    },
+    {
+      "path": "pub/static-assets/c2342cd8b869e01752a9321dc17213fc40d4d04c79688c1d43f2cf316abd7866.woff2",
+      "sha256": "c2342cd8b869e01752a9321dc17213fc40d4d04c79688c1d43f2cf316abd7866",
+      "bytes": 26272
+    },
+    {
+      "path": "pub/static-assets/dc47344dbb6cb5b655c8460d561f4df5f501b90c804ad3c6cec65fe322351ab1.woff2",
+      "sha256": "dc47344dbb6cb5b655c8460d561f4df5f501b90c804ad3c6cec65fe322351ab1",
+      "bytes": 16400
+    },
+    {
+      "path": "pub/static-assets/7af58c5ec8f132a2ddde9027c6d7814decce4d3b822a11192a42a20e2e973264.woff2",
+      "sha256": "7af58c5ec8f132a2ddde9027c6d7814decce4d3b822a11192a42a20e2e973264",
+      "bytes": 16440
+    },
+    {
+      "path": "pub/static-assets/e99ae51144bf1232efcc1bfe5add36262c6866b0faab24fa75740e1b98577a62.woff2",
+      "sha256": "e99ae51144bf1232efcc1bfe5add36262c6866b0faab24fa75740e1b98577a62",
+      "bytes": 12216
+    },
+    {
+      "path": "pub/static-assets/00b26ac825e2095056396e0553b8ac26d3f8ad158c3826e28b4c45b385c4714a.woff2",
+      "sha256": "00b26ac825e2095056396e0553b8ac26d3f8ad158c3826e28b4c45b385c4714a",
+      "bytes": 12028
+    },
+    {
+      "path": "pub/static-assets/68e8c73ef42afd3ccec58bf0fba302cce448938e7fc020a5e31f8a952eee1342.woff2",
+      "sha256": "68e8c73ef42afd3ccec58bf0fba302cce448938e7fc020a5e31f8a952eee1342",
+      "bytes": 10344
+    },
+    {
+      "path": "pub/static-assets/036d4e95149b69ff9bcc0cd55771efeb25ffa3947293e69acd78d5ac328c684b.woff2",
+      "sha256": "036d4e95149b69ff9bcc0cd55771efeb25ffa3947293e69acd78d5ac328c684b",
+      "bytes": 9644
+    },
+    {
+      "path": "pub/static-assets/6b47c40166b6dbe21a5dfca7718413f2147fd2399be1ba605d8ad39cedf25dfe.woff2",
+      "sha256": "6b47c40166b6dbe21a5dfca7718413f2147fd2399be1ba605d8ad39cedf25dfe",
+      "bytes": 5468
+    },
+    {
+      "path": "pub/static-assets/d04c54219f9eaec6d4d4fd42dfb28785975a4794d6b2fc71e566b9cd6db842dd.woff2",
+      "sha256": "d04c54219f9eaec6d4d4fd42dfb28785975a4794d6b2fc71e566b9cd6db842dd",
+      "bytes": 5208
+    },
+    {
+      "path": "pub/static-assets/73d591271b1604960cb10bb90fee021670af7297017e0e98480b332d11f51995.woff2",
+      "sha256": "73d591271b1604960cb10bb90fee021670af7297017e0e98480b332d11f51995",
+      "bytes": 3624
+    },
+    {
+      "path": "pub/static-assets/a4af7d414440a1c1790825cfb700cf9cf43b0f2c4b04f0ebc523011ad9853ec0.woff2",
+      "sha256": "a4af7d414440a1c1790825cfb700cf9cf43b0f2c4b04f0ebc523011ad9853ec0",
+      "bytes": 4928
+    },
+    {
+      "path": "pub/static-assets/71d517d67827787cfabdf186914cc3358eda539e37931941f2b2fd4a21f68c0b.woff2",
+      "sha256": "71d517d67827787cfabdf186914cc3358eda539e37931941f2b2fd4a21f68c0b",
+      "bytes": 13568
+    },
+    {
+      "path": "pub/static-assets/0f04fba32c60c6dd3463b2289df1df0690fb055a07f5eb8a928748e9859c407b.woff2",
+      "sha256": "0f04fba32c60c6dd3463b2289df1df0690fb055a07f5eb8a928748e9859c407b",
+      "bytes": 13076
+    },
+    {
+      "path": "pub/static-assets/c11809dbfd5445886293d89b32bfc2584075c80e77750cf1c284113e36b8b3f4.ttf",
+      "sha256": "c11809dbfd5445886293d89b32bfc2584075c80e77750cf1c284113e36b8b3f4",
+      "bytes": 126876
+    },
+    {
+      "path": "pub/static-assets/60ca1a3aade61c8c381800ca85b9b2f0fb341d89ebe065e12cd6ec2ee2e53e54.ttf",
+      "sha256": "60ca1a3aade61c8c381800ca85b9b2f0fb341d89ebe065e12cd6ec2ee2e53e54",
+      "bytes": 176200
+    },
+    {
+      "path": "pub/static-assets/61c908cae449dc64d309165a1a1a2d4173adc0b0d81e32c3b0490fc96885181f.css",
+      "sha256": "61c908cae449dc64d309165a1a1a2d4173adc0b0d81e32c3b0490fc96885181f",
+      "bytes": 67070
+    },
+    {
+      "path": "pub/static-assets/933fb68cfab956e5a976e16940f20d97080c4678911e31455f8c6df703cd13f6.js",
+      "sha256": "933fb68cfab956e5a976e16940f20d97080c4678911e31455f8c6df703cd13f6",
+      "bytes": 171682
+    },
+    {
       "path": "publications/index.html",
-      "sha256": "956f0c6603a3fad7e60a84c1a4ecbef1708dda7c107fc02fecca554c2c5b43f1",
-      "bytes": 88353
+      "sha256": "f103c3dd21ca5fb96291f792f3c1d15975856658b9b71265056312c82140e773",
+      "bytes": 88453
     },
     {
       "path": "publications/research-program-whitepaper/index.html",
-      "sha256": "ca0ab5c8686cddc3894432e75017085900cdf62baad2aca4de02c7ea39874eab",
-      "bytes": 417082
+      "sha256": "754717cfaddb69d8a0ea9fdda0f0c27e69b4b6ffc19460ee49dcec940a88b4d1",
+      "bytes": 260588
     },
     {
       "path": "writing/research-program-whitepaper/index.html",
@@ -35,8 +160,8 @@
     },
     {
       "path": "publications/prime-hypostasis/index.html",
-      "sha256": "106c70f71080a43527ca3f30d92f4aef82884f929699c8133cac369c1e6f94a4",
-      "bytes": 154727
+      "sha256": "e32b7542a0abab05d20cab022113b52b7523e42e9b793cac298295dea6f7d381",
+      "bytes": 127783
     },
     {
       "path": "writing/prime-hypostasis/index.html",
@@ -45,8 +170,8 @@
     },
     {
       "path": "publications/the-machine-consciousness-hypothesis/index.html",
-      "sha256": "b82201a7517267d43f5730772d5655d63df60214b3b08940c689a2328350fbb0",
-      "bytes": 233287
+      "sha256": "5f2ee4118c99db91bfa24f2d85c7c27d93466ab1d4e089f35db27bddadcc2629",
+      "bytes": 233387
     },
     {
       "path": "writing/the-machine-consciousness-hypothesis/index.html",

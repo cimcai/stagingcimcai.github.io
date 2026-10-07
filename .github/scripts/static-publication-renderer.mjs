@@ -1373,7 +1373,7 @@ var require_react_development = __commonJS({
           }
           return dispatcher.useContext(Context);
         }
-        function useState17(initialState) {
+        function useState16(initialState) {
           var dispatcher = resolveDispatcher();
           return dispatcher.useState(initialState);
         }
@@ -1381,11 +1381,11 @@ var require_react_development = __commonJS({
           var dispatcher = resolveDispatcher();
           return dispatcher.useReducer(reducer, initialArg, init);
         }
-        function useRef15(initialValue) {
+        function useRef14(initialValue) {
           var dispatcher = resolveDispatcher();
           return dispatcher.useRef(initialValue);
         }
-        function useEffect16(create, deps) {
+        function useEffect15(create, deps) {
           var dispatcher = resolveDispatcher();
           return dispatcher.useEffect(create, deps);
         }
@@ -2168,15 +2168,15 @@ var require_react_development = __commonJS({
         exports.useContext = useContext7;
         exports.useDebugValue = useDebugValue;
         exports.useDeferredValue = useDeferredValue;
-        exports.useEffect = useEffect16;
+        exports.useEffect = useEffect15;
         exports.useId = useId4;
         exports.useImperativeHandle = useImperativeHandle;
         exports.useInsertionEffect = useInsertionEffect;
         exports.useLayoutEffect = useLayoutEffect7;
         exports.useMemo = useMemo8;
         exports.useReducer = useReducer;
-        exports.useRef = useRef15;
-        exports.useState = useState17;
+        exports.useRef = useRef14;
+        exports.useState = useState16;
         exports.useSyncExternalStore = useSyncExternalStore;
         exports.useTransition = useTransition;
         exports.version = ReactVersion;
@@ -3108,11 +3108,11 @@ var require_react_jsx_runtime_development = __commonJS({
             return jsxWithValidation(type, props, key, false);
           }
         }
-        var jsx15 = jsxWithValidationDynamic;
-        var jsxs13 = jsxWithValidationStatic;
+        var jsx13 = jsxWithValidationDynamic;
+        var jsxs12 = jsxWithValidationStatic;
         exports.Fragment = REACT_FRAGMENT_TYPE;
-        exports.jsx = jsx15;
-        exports.jsxs = jsxs13;
+        exports.jsx = jsx13;
+        exports.jsxs = jsxs12;
       })();
     }
   }
@@ -10296,7 +10296,7 @@ var require_react_dom_server_legacy_node_development = __commonJS({
         function basicStateReducer(state, action) {
           return typeof action === "function" ? action(state) : action;
         }
-        function useState17(initialState) {
+        function useState16(initialState) {
           {
             currentHookNameInDev = "useState";
           }
@@ -10386,7 +10386,7 @@ var require_react_dom_server_legacy_node_development = __commonJS({
           workInProgressHook.memoizedState = [nextValue, nextDeps];
           return nextValue;
         }
-        function useRef15(initialValue) {
+        function useRef14(initialValue) {
           currentlyRenderingComponent = resolveCurrentlyRenderingComponent();
           workInProgressHook = createWorkInProgressHook();
           var previousRef = workInProgressHook.memoizedState;
@@ -10477,8 +10477,8 @@ var require_react_dom_server_legacy_node_development = __commonJS({
           useContext: useContext7,
           useMemo: useMemo8,
           useReducer,
-          useRef: useRef15,
-          useState: useState17,
+          useRef: useRef14,
+          useState: useState16,
           useInsertionEffect: noop,
           useLayoutEffect: useLayoutEffect7,
           useCallback: useCallback6,
@@ -11796,7 +11796,7 @@ var require_react_dom_server_legacy_node_development = __commonJS({
           }
           return renderToNodeStreamImpl(children, options);
         }
-        function renderToString5(children, options) {
+        function renderToString4(children, options) {
           return renderToStringImpl(children, options, false, 'The server used "renderToString" which does not support Suspense. If you intended for this Suspense boundary to render the fallback content on the server consider throwing an Error somewhere within the Suspense boundary. If you intended to have the server wait for the suspended component please switch to "renderToPipeableStream" which supports Suspense on the server');
         }
         function renderToStaticMarkup(children, options) {
@@ -11805,7 +11805,7 @@ var require_react_dom_server_legacy_node_development = __commonJS({
         exports.renderToNodeStream = renderToNodeStream;
         exports.renderToStaticMarkup = renderToStaticMarkup;
         exports.renderToStaticNodeStream = renderToStaticNodeStream;
-        exports.renderToString = renderToString5;
+        exports.renderToString = renderToString4;
         exports.version = ReactVersion;
       })();
     }
@@ -15775,7 +15775,7 @@ var require_react_dom_server_node_development = __commonJS({
         function basicStateReducer(state, action) {
           return typeof action === "function" ? action(state) : action;
         }
-        function useState17(initialState) {
+        function useState16(initialState) {
           {
             currentHookNameInDev = "useState";
           }
@@ -15865,7 +15865,7 @@ var require_react_dom_server_node_development = __commonJS({
           workInProgressHook.memoizedState = [nextValue, nextDeps];
           return nextValue;
         }
-        function useRef15(initialValue) {
+        function useRef14(initialValue) {
           currentlyRenderingComponent = resolveCurrentlyRenderingComponent();
           workInProgressHook = createWorkInProgressHook();
           var previousRef = workInProgressHook.memoizedState;
@@ -15956,8 +15956,8 @@ var require_react_dom_server_node_development = __commonJS({
           useContext: useContext7,
           useMemo: useMemo8,
           useReducer,
-          useRef: useRef15,
-          useState: useState17,
+          useRef: useRef14,
+          useState: useState16,
           useInsertionEffect: noop,
           useLayoutEffect: useLayoutEffect7,
           useCallback: useCallback6,
@@ -59033,7 +59033,7 @@ var require_react_dom_development = __commonJS({
           }
         }
         ReactDOMHydrationRoot.prototype.unstable_scheduleHydration = scheduleHydration;
-        function hydrateRoot2(container, initialChildren, options2) {
+        function hydrateRoot(container, initialChildren, options2) {
           if (!isValidContainer(container)) {
             throw new Error("hydrateRoot(...): Target container is not a DOM element.");
           }
@@ -59376,7 +59376,7 @@ var require_react_dom_development = __commonJS({
               error('You are importing hydrateRoot from "react-dom" which is not supported. You should instead import it from "react-dom/client".');
             }
           }
-          return hydrateRoot2(container, initialChildren, options2);
+          return hydrateRoot(container, initialChildren, options2);
         }
         function flushSync$1(fn) {
           {
@@ -71768,40 +71768,9 @@ var require_core = __commonJS({
   }
 });
 
-// node_modules/react-dom/client.js
-var require_client = __commonJS({
-  "node_modules/react-dom/client.js"(exports) {
-    "use strict";
-    var m2 = require_react_dom();
-    if (process.env.NODE_ENV === "production") {
-      exports.createRoot = m2.createRoot;
-      exports.hydrateRoot = m2.hydrateRoot;
-    } else {
-      i2 = m2.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
-      exports.createRoot = function(c3, o2) {
-        i2.usingClientEntryPoint = true;
-        try {
-          return m2.createRoot(c3, o2);
-        } finally {
-          i2.usingClientEntryPoint = false;
-        }
-      };
-      exports.hydrateRoot = function(c3, h, o2) {
-        i2.usingClientEntryPoint = true;
-        try {
-          return m2.hydrateRoot(c3, h, o2);
-        } finally {
-          i2.usingClientEntryPoint = false;
-        }
-      };
-    }
-    var i2;
-  }
-});
-
 // .static-renderer/render.js
-var import_jsx_runtime14 = __toESM(require_jsx_runtime(), 1);
-var import_server2 = __toESM(require_server_node(), 1);
+var import_jsx_runtime12 = __toESM(require_jsx_runtime(), 1);
+var import_server = __toESM(require_server_node(), 1);
 var import_react_router_dom2 = __toESM(require_dist2(), 1);
 
 // node_modules/tslib/tslib.es6.mjs
@@ -77703,6 +77672,9 @@ var createClient = (supabaseUrl, supabaseKey, options) => {
 };
 
 // node_modules/@cimc/publishing-reader/dist/types.js
+function citationAuthorsOf(meta) {
+  return meta.citationAuthors?.length ? meta.citationAuthors : meta.authors;
+}
 var PUB_SLUG_REGEX = /^[a-z0-9](?:[a-z0-9-]{1,78})[a-z0-9]$/;
 
 // node_modules/@cimc/publishing-reader/dist/webEdition.js
@@ -106336,45 +106308,6 @@ function FootnoteCard({
     marker.ownerDocument.body
   );
 }
-function StoredFootnoteCards({ body }) {
-  const [notes, setNotes] = (0, import_react4.useState)([]);
-  useBrowserLayoutEffect(() => {
-    const document2 = body.ownerDocument;
-    const found = Array.from(
-      body.querySelectorAll('a[role="doc-noteref"]')
-    ).flatMap((marker) => {
-      const target = decodeURIComponent(marker.getAttribute("href") || "");
-      const note = target.startsWith("#pub-note-") ? document2.getElementById(target.slice(1)) : null;
-      if (!note || !marker.id) return [];
-      const copy2 = note.cloneNode(true);
-      for (const backlinks of Array.from(
-        copy2.querySelectorAll(".pub-note-backlinks")
-      ))
-        backlinks.remove();
-      for (const element of Array.from(copy2.querySelectorAll("[id]")))
-        element.removeAttribute("id");
-      return [
-        {
-          marker,
-          noteId: target.slice("#pub-note-".length),
-          number: Number(marker.textContent) || 0,
-          html: copy2.innerHTML
-        }
-      ];
-    });
-    setNotes(found);
-  }, [body]);
-  return /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(import_jsx_runtime2.Fragment, { children: notes.map((note) => /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(
-    FootnoteCard,
-    {
-      marker: note.marker,
-      noteId: note.noteId,
-      number: note.number,
-      html: note.html
-    },
-    note.marker.id
-  )) });
-}
 var SIDENOTE_GAP = 14;
 function useSidenotePlacement(aside, bodyRef, markerIds) {
   const markerKey = markerIds?.join("|");
@@ -117442,7 +117375,10 @@ function ArticleReadingView({
               /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(
                 CiteBlock,
                 {
-                  meta: citationAuthors ? { ...meta, authors: citationAuthors } : meta,
+                  meta: {
+                    ...meta,
+                    authors: citationAuthors ?? citationAuthorsOf(meta)
+                  },
                   preview
                 }
               )
@@ -117457,153 +117393,9 @@ function ArticleReadingView({
   ] });
 }
 
-// node_modules/@cimc/publishing-reader/dist/islands.js
-var import_jsx_runtime12 = __toESM(require_jsx_runtime(), 1);
-var import_react12 = __toESM(require_react(), 1);
-var import_client = __toESM(require_client(), 1);
-function StoredReadingView({
-  data: data2,
-  stored
-}) {
-  const articleRef = (0, import_react12.useRef)(null);
-  const bodyRef = (0, import_react12.useRef)(stored.body);
-  const headerRef = (0, import_react12.useRef)(null);
-  const notesRef = (0, import_react12.useRef)(null);
-  const [readingBarVisible, setReadingBarVisible] = (0, import_react12.useState)(false);
-  const [inlineSlot, setInlineSlot] = (0, import_react12.useState)(null);
-  const [contentsTarget, setContentsTarget] = (0, import_react12.useState)(
-    null
-  );
-  const [progressTarget, setProgressTarget] = (0, import_react12.useState)(
-    null
-  );
-  useSidenotePlacement(notesRef, bodyRef);
-  (0, import_react12.useEffect)(() => {
-    const header = headerRef.current;
-    setInlineSlot(
-      header?.querySelector(".pub-inline-contents-slot") || null
-    );
-    const cite = header?.querySelector(".pub-resource-cite");
-    const reveal = (event) => {
-      if (event.button || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey)
-        return;
-      const citation = articleRef.current?.querySelector("#pub-cite");
-      const disclosure = citation?.querySelector("details");
-      if (disclosure) disclosure.open = true;
-      citation?.focus({ preventScroll: true });
-    };
-    cite?.addEventListener("click", reveal);
-    articleRef.current?.dispatchEvent(
-      new CustomEvent("pub:islands-ready", { bubbles: true })
-    );
-    return () => cite?.removeEventListener("click", reveal);
-  }, []);
-  (0, import_react12.useEffect)(() => {
-    inlineSlot?.classList.toggle(
-      "is-in-reading-bar",
-      readingBarVisible && data2.headings.length > 0
-    );
-  }, [inlineSlot, readingBarVisible, data2.headings.length]);
-  return /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "pub-reading-shell", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(SunBand, {}),
-    /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(
-      ArticleReadingBar,
-      {
-        title: data2.citationMeta.title,
-        articleRef,
-        onContentsTarget: setContentsTarget,
-        onProgressTarget: setProgressTarget,
-        onVisibilityChange: setReadingBarVisible
-      }
-    ),
-    /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)(
-      "article",
-      {
-        ref: articleRef,
-        className: "pub-article pub-reading-view",
-        id: "pub-article-top",
-        children: [
-          /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(
-            "div",
-            {
-              ref: headerRef,
-              className: "pub-reading-header-grid",
-              dangerouslySetInnerHTML: { __html: stored.header }
-            }
-          ),
-          /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "pub-reading-layout", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(
-              ContentsNavigation,
-              {
-                headings: data2.headings,
-                bodyRef,
-                mobileTarget: readingBarVisible ? contentsTarget : inlineSlot,
-                progressTarget
-              }
-            ),
-            /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "pub-reading-content", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(
-                "div",
-                {
-                  ref: bodyRef,
-                  className: "pub-article-body",
-                  dangerouslySetInnerHTML: { __html: stored.bodyHtml }
-                }
-              ),
-              /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(CiteBlock, { meta: data2.citationMeta })
-            ] }),
-            stored.notes !== null && /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(
-              "aside",
-              {
-                ref: notesRef,
-                className: "pub-margin-notes",
-                "aria-hidden": "true",
-                ...{ inert: "" },
-                dangerouslySetInnerHTML: { __html: stored.notes }
-              }
-            )
-          ] })
-        ]
-      }
-    ),
-    /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(SunBand, { setting: true }),
-    /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(StoredFootnoteCards, { body: stored.body })
-  ] });
-}
-function hydrateArticles(document2 = window.document) {
-  for (const container of Array.from(
-    document2.querySelectorAll(".pub-article-island")
-  )) {
-    const script2 = container.nextElementSibling;
-    const shell2 = container.querySelector(".pub-reading-shell");
-    const body = shell2?.querySelector(".pub-article-body");
-    const header = shell2?.querySelector(".pub-reading-header-grid");
-    if (!script2?.matches('script[type="application/json"].pub-island-data') || !shell2 || !body || !header || container.dataset.hydrated)
-      continue;
-    container.dataset.hydrated = "true";
-    const data2 = JSON.parse(script2.textContent || "{}");
-    configurePublishing({ enabled: false, siteOrigin: data2.siteOrigin });
-    (0, import_client.hydrateRoot)(
-      container,
-      /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(
-        StoredReadingView,
-        {
-          data: data2,
-          stored: {
-            header: header.innerHTML,
-            body,
-            bodyHtml: body.innerHTML,
-            notes: shell2.querySelector(".pub-margin-notes")?.innerHTML ?? null
-          }
-        }
-      )
-    );
-  }
-}
-
 // .static-renderer/render.js
 var React14 = __toESM(require_react(), 1);
-var import_react13 = __toESM(require_react(), 1);
+var import_react12 = __toESM(require_react(), 1);
 
 // node_modules/@cimc/publishing-reader/dist/storedRendering.js
 var STORED_RENDERING_MAX_BYTES = 8 * 1024 * 1024;
@@ -117691,11 +117483,6 @@ function checkStoredRendering(html) {
   visit(island);
   return { readerVersion, data: data2 };
 }
-
-// node_modules/@cimc/publishing-reader/dist/renderArticle.js
-var import_jsx_runtime13 = __toESM(require_jsx_runtime(), 1);
-var import_server = __toESM(require_server_node(), 1);
-var READER_VERSION = "0.9.26";
 
 // .static-renderer/render.js
 var SvgCimcWordmark = (props, ref) => /* @__PURE__ */ React14.createElement("svg", { id: "svg2", width: 728.68225, height: 216.94318, viewBox: "0 0 728.68225 216.94318", "sodipodi:docname": "CIMC_KH_05.pdf", "xmlns:inkscape": "http://www.inkscape.org/namespaces/inkscape", "xmlns:sodipodi": "http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd", xmlns: "http://www.w3.org/2000/svg", "xmlns:svg": "http://www.w3.org/2000/svg", ref, ...props }, /* @__PURE__ */ React14.createElement("defs", { id: "defs6" }, /* @__PURE__ */ React14.createElement("clipPath", { clipPathUnits: "userSpaceOnUse", id: "clipPath352" }, /* @__PURE__ */ React14.createElement("path", { d: "M 0,0 H 595.276 V 3203.15 H 0 Z", id: "path350" })), /* @__PURE__ */ React14.createElement("clipPath", { clipPathUnits: "userSpaceOnUse", id: "clipPath376" }, /* @__PURE__ */ React14.createElement("path", { d: "M 0,0 H 595.276 V 3203.15 H 0 Z", id: "path374" })), /* @__PURE__ */ React14.createElement("clipPath", { clipPathUnits: "userSpaceOnUse", id: "clipPath392" }, /* @__PURE__ */ React14.createElement("path", { d: "M 0,0 H 595.276 V 3203.15 H 0 Z", id: "path390" })), /* @__PURE__ */ React14.createElement("clipPath", { clipPathUnits: "userSpaceOnUse", id: "clipPath416" }, /* @__PURE__ */ React14.createElement("path", { d: "M 0,0 H 595.276 V 3203.15 H 0 Z", id: "path414" })), /* @__PURE__ */ React14.createElement("clipPath", { clipPathUnits: "userSpaceOnUse", id: "clipPath436" }, /* @__PURE__ */ React14.createElement("path", { d: "M 0,0 H 595.276 V 3203.15 H 0 Z", id: "path434" })), /* @__PURE__ */ React14.createElement("clipPath", { clipPathUnits: "userSpaceOnUse", id: "clipPath452" }, /* @__PURE__ */ React14.createElement("path", { d: "M 0,0 H 595.276 V 3203.15 H 0 Z", id: "path450" })), /* @__PURE__ */ React14.createElement("clipPath", { clipPathUnits: "userSpaceOnUse", id: "clipPath468" }, /* @__PURE__ */ React14.createElement("path", { d: "M 0,0 H 595.276 V 3203.15 H 0 Z", id: "path466" })), /* @__PURE__ */ React14.createElement("clipPath", { clipPathUnits: "userSpaceOnUse", id: "clipPath532" }, /* @__PURE__ */ React14.createElement("path", { d: "M 0,0 H 595.276 V 3203.15 H 0 Z", id: "path530" })), /* @__PURE__ */ React14.createElement("clipPath", { clipPathUnits: "userSpaceOnUse", id: "clipPath564" }, /* @__PURE__ */ React14.createElement("path", { d: "M 0,0 H 595.276 V 3203.15 H 0 Z", id: "path562" })), /* @__PURE__ */ React14.createElement("clipPath", { clipPathUnits: "userSpaceOnUse", id: "clipPath580" }, /* @__PURE__ */ React14.createElement("path", { d: "M 0,0 H 595.276 V 3203.15 H 0 Z", id: "path578" })), /* @__PURE__ */ React14.createElement("clipPath", { clipPathUnits: "userSpaceOnUse", id: "clipPath600" }, /* @__PURE__ */ React14.createElement("path", { d: "M 0,0 H 595.276 V 3203.15 H 0 Z", id: "path598" })), /* @__PURE__ */ React14.createElement("clipPath", { clipPathUnits: "userSpaceOnUse", id: "clipPath636" }, /* @__PURE__ */ React14.createElement("path", { d: "M 0,0 H 595.276 V 3203.15 H 0 Z", id: "path634" })), /* @__PURE__ */ React14.createElement("clipPath", { clipPathUnits: "userSpaceOnUse", id: "clipPath668" }, /* @__PURE__ */ React14.createElement("path", { d: "M 0,0 H 595.276 V 3203.15 H 0 Z", id: "path666" })), /* @__PURE__ */ React14.createElement("clipPath", { clipPathUnits: "userSpaceOnUse", id: "clipPath748" }, /* @__PURE__ */ React14.createElement("path", { d: "M 0,0 H 595.276 V 3203.15 H 0 Z", id: "path746" })), /* @__PURE__ */ React14.createElement("clipPath", { clipPathUnits: "userSpaceOnUse", id: "clipPath860" }, /* @__PURE__ */ React14.createElement("path", { d: "M 0,0 H 595.276 V 3203.15 H 0 Z", id: "path858" })), /* @__PURE__ */ React14.createElement("clipPath", { clipPathUnits: "userSpaceOnUse", id: "clipPath884" }, /* @__PURE__ */ React14.createElement("path", { d: "M 0,0 H 595.276 V 3203.15 H 0 Z", id: "path882" })), /* @__PURE__ */ React14.createElement("clipPath", { clipPathUnits: "userSpaceOnUse", id: "clipPath904" }, /* @__PURE__ */ React14.createElement("path", { d: "M 0,0 H 595.276 V 3203.15 H 0 Z", id: "path902" })), /* @__PURE__ */ React14.createElement("clipPath", { clipPathUnits: "userSpaceOnUse", id: "clipPath924" }, /* @__PURE__ */ React14.createElement("path", { d: "M 0,0 H 595.276 V 3203.15 H 0 Z", id: "path922" })), /* @__PURE__ */ React14.createElement("clipPath", { clipPathUnits: "userSpaceOnUse", id: "clipPath940" }, /* @__PURE__ */ React14.createElement("path", { d: "M 0,0 H 595.276 V 3203.15 H 0 Z", id: "path938" }))), /* @__PURE__ */ React14.createElement("sodipodi:namedview", { id: "namedview4", pagecolor: "#ffffff", bordercolor: "#000000", borderopacity: 0.25, "inkscape:showpageshadow": 2, "inkscape:pageopacity": 0, "inkscape:pagecheckerboard": 0, "inkscape:deskcolor": "#d1d1d1", showgrid: "false" }), /* @__PURE__ */ React14.createElement("g", { id: "g10", "inkscape:groupmode": "layer", "inkscape:label": "Page 1", transform: "matrix(1.3333333,0,0,-1.3333333,-32.509464,3817.8544)" }, /* @__PURE__ */ React14.createElement("g", { id: "g346" }, /* @__PURE__ */ React14.createElement("g", { id: "g348", clipPath: "url(#clipPath352)" }, /* @__PURE__ */ React14.createElement("g", { id: "g354", transform: "translate(432.104,2826.9644)" }, /* @__PURE__ */ React14.createElement("path", { d: "m 0,0 19.269,-12.271 c 0.488,0.718 0.99,1.426 1.51,2.12 L 2.669,3.748 C 1.745,2.525 0.854,1.275 0,0", style: {
@@ -118269,7 +118056,7 @@ var SvgCimcWordmark = (props, ref) => /* @__PURE__ */ React14.createElement("svg
   fillRule: "nonzero",
   stroke: "none"
 }, id: "path952" }))));
-var ForwardRef$1 = (0, import_react13.forwardRef)(SvgCimcWordmark);
+var ForwardRef$1 = (0, import_react12.forwardRef)(SvgCimcWordmark);
 var LogoContainer = dt.div.withConfig({
   displayName: "CIMCWordmark__LogoContainer",
   componentId: "sc-11sbkhs-0"
@@ -118287,24 +118074,24 @@ function CIMCWordmark({
   width = 215,
   className
 }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(LogoContainer, { $width: width, $color: color, className, children: /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(ForwardRef$1, {}) });
+  return /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(LogoContainer, { $width: width, $color: color, className, children: /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(ForwardRef$1, {}) });
 }
-var LinkedInIcon = (props) => /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("svg", { width: "24", height: "25", viewBox: "0 0 24 25", fill: "none", xmlns: "http://www.w3.org/2000/svg", ...props, children: [
-  /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("title", { children: "LinkedIn" }),
-  /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("g", { clipPath: "url(#clip0_6_34977)", children: /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("path", { d: "M22.2234 0.964844H1.77187C0.792187 0.964844 0 1.73828 0 2.69453V23.2305C0 24.1867 0.792187 24.9648 1.77187 24.9648H22.2234C23.2031 24.9648 24 24.1867 24 23.2352V2.69453C24 1.73828 23.2031 0.964844 22.2234 0.964844ZM7.12031 21.4164H3.55781V9.96016H7.12031V21.4164ZM5.33906 8.39922C4.19531 8.39922 3.27188 7.47578 3.27188 6.33672C3.27188 5.19766 4.19531 4.27422 5.33906 4.27422C6.47813 4.27422 7.40156 5.19766 7.40156 6.33672C7.40156 7.47109 6.47813 8.39922 5.33906 8.39922ZM20.4516 21.4164H16.8937V15.8477C16.8937 14.5211 16.8703 12.8102 15.0422 12.8102C13.1906 12.8102 12.9094 14.2586 12.9094 15.7539V21.4164H9.35625V9.96016H12.7687V11.5258H12.8156C13.2891 10.6258 14.4516 9.67422 16.1813 9.67422C19.7859 9.67422 20.4516 12.0461 20.4516 15.1305V21.4164Z", fill: "currentColor" }) }),
-  /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("defs", { children: /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("clipPath", { id: "clip0_6_34977", children: /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("rect", { width: "24", height: "24", fill: "white", transform: "translate(0 0.964844)" }) }) })
+var LinkedInIcon = (props) => /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("svg", { width: "24", height: "25", viewBox: "0 0 24 25", fill: "none", xmlns: "http://www.w3.org/2000/svg", ...props, children: [
+  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("title", { children: "LinkedIn" }),
+  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("g", { clipPath: "url(#clip0_6_34977)", children: /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("path", { d: "M22.2234 0.964844H1.77187C0.792187 0.964844 0 1.73828 0 2.69453V23.2305C0 24.1867 0.792187 24.9648 1.77187 24.9648H22.2234C23.2031 24.9648 24 24.1867 24 23.2352V2.69453C24 1.73828 23.2031 0.964844 22.2234 0.964844ZM7.12031 21.4164H3.55781V9.96016H7.12031V21.4164ZM5.33906 8.39922C4.19531 8.39922 3.27188 7.47578 3.27188 6.33672C3.27188 5.19766 4.19531 4.27422 5.33906 4.27422C6.47813 4.27422 7.40156 5.19766 7.40156 6.33672C7.40156 7.47109 6.47813 8.39922 5.33906 8.39922ZM20.4516 21.4164H16.8937V15.8477C16.8937 14.5211 16.8703 12.8102 15.0422 12.8102C13.1906 12.8102 12.9094 14.2586 12.9094 15.7539V21.4164H9.35625V9.96016H12.7687V11.5258H12.8156C13.2891 10.6258 14.4516 9.67422 16.1813 9.67422C19.7859 9.67422 20.4516 12.0461 20.4516 15.1305V21.4164Z", fill: "currentColor" }) }),
+  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("defs", { children: /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("clipPath", { id: "clip0_6_34977", children: /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("rect", { width: "24", height: "24", fill: "white", transform: "translate(0 0.964844)" }) }) })
 ] });
-var LumaIcon = (props) => /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("svg", { xmlns: "http://www.w3.org/2000/svg", width: "24", height: "25", fill: "none", viewBox: "0 0 133 134", children: [
-  /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("title", { children: "Luma" }),
-  /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("path", { fill: "currentColor", d: "M133 67C96.282 67 66.5 36.994 66.5 0c0 36.994-29.782 67-66.5 67 36.718 0 66.5 30.006 66.5 67 0-36.994 29.782-67 66.5-67" })
+var LumaIcon = (props) => /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("svg", { xmlns: "http://www.w3.org/2000/svg", width: "24", height: "25", fill: "none", viewBox: "0 0 133 134", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("title", { children: "Luma" }),
+  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("path", { fill: "currentColor", d: "M133 67C96.282 67 66.5 36.994 66.5 0c0 36.994-29.782 67-66.5 67 36.718 0 66.5 30.006 66.5 67 0-36.994 29.782-67 66.5-67" })
 ] });
-var XIcon = (props) => /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("svg", { width: "24", height: "25", viewBox: "0 0 24 25", fill: "none", xmlns: "http://www.w3.org/2000/svg", ...props, children: [
-  /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("title", { children: "X (Twitter)" }),
-  /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("path", { fillRule: "evenodd", clipRule: "evenodd", d: "M15.9455 23.9648L10.396 16.0549L3.44886 23.9648H0.509766L9.09209 14.1959L0.509766 1.96484H8.05571L13.286 9.41986L19.8393 1.96484H22.7784L14.5943 11.2813L23.4914 23.9648H15.9455ZM19.2185 21.7349H17.2398L4.71811 4.19484H6.6971L11.7121 11.218L12.5793 12.4367L19.2185 21.7349Z", fill: "currentColor" })
+var XIcon = (props) => /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("svg", { width: "24", height: "25", viewBox: "0 0 24 25", fill: "none", xmlns: "http://www.w3.org/2000/svg", ...props, children: [
+  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("title", { children: "X (Twitter)" }),
+  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("path", { fillRule: "evenodd", clipRule: "evenodd", d: "M15.9455 23.9648L10.396 16.0549L3.44886 23.9648H0.509766L9.09209 14.1959L0.509766 1.96484H8.05571L13.286 9.41986L19.8393 1.96484H22.7784L14.5943 11.2813L23.4914 23.9648H15.9455ZM19.2185 21.7349H17.2398L4.71811 4.19484H6.6971L11.7121 11.218L12.5793 12.4367L19.2185 21.7349Z", fill: "currentColor" })
 ] });
-var YouTubeIcon = (props) => /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("svg", { width: "24", height: "25", viewBox: "0 0 24 25", fill: "none", xmlns: "http://www.w3.org/2000/svg", ...props, children: [
-  /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("title", { children: "YouTube" }),
-  /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("path", { d: "M23.7609 8.16489C23.7609 8.16489 23.5266 6.51021 22.8047 5.78364C21.8906 4.82739 20.8688 4.8227 20.4 4.76645C17.0438 4.5227 12.0047 4.52271 12.0047 4.52271H11.9953C11.9953 4.52271 6.95625 4.5227 3.6 4.76645C3.13125 4.8227 2.10938 4.82739 1.19531 5.78364C0.473438 6.51021 0.24375 8.16489 0.24375 8.16489C0.24375 8.16489 0 10.1102 0 12.0508V13.8696C0 15.8102 0.239062 17.7555 0.239062 17.7555C0.239062 17.7555 0.473437 19.4102 1.19062 20.1368C2.10469 21.093 3.30469 21.0602 3.83906 21.1633C5.76094 21.3461 12 21.4024 12 21.4024C12 21.4024 17.0438 21.393 20.4 21.154C20.8688 21.0977 21.8906 21.093 22.8047 20.1368C23.5266 19.4102 23.7609 17.7555 23.7609 17.7555C23.7609 17.7555 24 15.8149 24 13.8696V12.0508C24 10.1102 23.7609 8.16489 23.7609 8.16489ZM9.52031 16.0774V9.33208L16.0031 12.7165L9.52031 16.0774Z", fill: "currentColor" })
+var YouTubeIcon = (props) => /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("svg", { width: "24", height: "25", viewBox: "0 0 24 25", fill: "none", xmlns: "http://www.w3.org/2000/svg", ...props, children: [
+  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("title", { children: "YouTube" }),
+  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("path", { d: "M23.7609 8.16489C23.7609 8.16489 23.5266 6.51021 22.8047 5.78364C21.8906 4.82739 20.8688 4.8227 20.4 4.76645C17.0438 4.5227 12.0047 4.52271 12.0047 4.52271H11.9953C11.9953 4.52271 6.95625 4.5227 3.6 4.76645C3.13125 4.8227 2.10938 4.82739 1.19531 5.78364C0.473438 6.51021 0.24375 8.16489 0.24375 8.16489C0.24375 8.16489 0 10.1102 0 12.0508V13.8696C0 15.8102 0.239062 17.7555 0.239062 17.7555C0.239062 17.7555 0.473437 19.4102 1.19062 20.1368C2.10469 21.093 3.30469 21.0602 3.83906 21.1633C5.76094 21.3461 12 21.4024 12 21.4024C12 21.4024 17.0438 21.393 20.4 21.154C20.8688 21.0977 21.8906 21.093 22.8047 20.1368C23.5266 19.4102 23.7609 17.7555 23.7609 17.7555C23.7609 17.7555 24 15.8149 24 13.8696V12.0508C24 10.1102 23.7609 8.16489 23.7609 8.16489ZM9.52031 16.0774V9.33208L16.0031 12.7165L9.52031 16.0774Z", fill: "currentColor" })
 ] });
 var FooterContainer = dt.div.withConfig({
   displayName: "Footer__FooterContainer",
@@ -118426,19 +118213,19 @@ var FooterInternalLink = dt(import_react_router_dom2.NavLink).withConfig({
 function Footer({
   routes
 }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(FooterContainer, { children: /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)(FooterLayout, { children: [
-    /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)(FooterContent, { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)(FooterCol, { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(CIMCWordmark, { color: "white" }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)(SocialRow, { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("a", { target: "_blank", href: "https://x.com/CIMCAI", "aria-label": "X", title: "X (Twitter)", className: "hover:opacity-80", rel: "noreferrer noopener", children: /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(XIcon, {}) }),
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("a", { target: "_blank", href: "https://www.youtube.com/@CIMCAIYT", "aria-label": "YouTube", title: "YouTube", className: "hover:opacity-80", rel: "noreferrer noopener", children: /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(YouTubeIcon, {}) }),
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("a", { target: "_blank", href: "https://www.linkedin.com/company/cimc-ai", "aria-label": "LinkedIn", title: "LinkedIn", className: "hover:opacity-80", rel: "noreferrer noopener", children: /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(LinkedInIcon, {}) }),
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("a", { target: "_blank", href: "https://lu.ma/cimc", "aria-label": "Luma", title: "Luma", className: "hover:opacity-80", rel: "noreferrer noopener", children: /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(LumaIcon, {}) })
+  return /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(FooterContainer, { children: /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)(FooterLayout, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)(FooterContent, { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)(FooterCol, { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(CIMCWordmark, { color: "white" }),
+        /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)(SocialRow, { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("a", { target: "_blank", href: "https://x.com/CIMCAI", "aria-label": "X", title: "X (Twitter)", className: "hover:opacity-80", rel: "noreferrer noopener", children: /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(XIcon, {}) }),
+          /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("a", { target: "_blank", href: "https://www.youtube.com/@CIMCAIYT", "aria-label": "YouTube", title: "YouTube", className: "hover:opacity-80", rel: "noreferrer noopener", children: /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(YouTubeIcon, {}) }),
+          /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("a", { target: "_blank", href: "https://www.linkedin.com/company/cimc-ai", "aria-label": "LinkedIn", title: "LinkedIn", className: "hover:opacity-80", rel: "noreferrer noopener", children: /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(LinkedInIcon, {}) }),
+          /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("a", { target: "_blank", href: "https://lu.ma/cimc", "aria-label": "Luma", title: "Luma", className: "hover:opacity-80", rel: "noreferrer noopener", children: /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(LumaIcon, {}) })
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)(FooterContent, { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(FooterCol, { children: /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { className: "flex flex-col gap-1", children: routes.map((route) => route.externalUrl ? /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(FooterExternalLink, { href: route.externalUrl, target: "_blank", rel: "noreferrer", children: route.name }, route.path) : /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(FooterInternalLink, { to: route.path, reloadDocument: route.path.startsWith("/publications"), style: ({
+      /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)(FooterContent, { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(FooterCol, { children: /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { className: "flex flex-col gap-1", children: routes.map((route) => route.externalUrl ? /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(FooterExternalLink, { href: route.externalUrl, target: "_blank", rel: "noreferrer", children: route.name }, route.path) : /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(FooterInternalLink, { to: route.path, reloadDocument: route.path.startsWith("/publications"), style: ({
           isActive,
           isPending,
           isTransitioning
@@ -118449,23 +118236,23 @@ function Footer({
             viewTransitionName: isTransitioning ? "fade" : ""
           };
         }, children: route.name }, route.path)) }) }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)(FooterCol, { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(FooterHeading, { children: "Contact" }),
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { children: [
-            /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { className: "mb-1", children: "Address:" }),
-            /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "text-white/60 text-sm", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)(FooterCol, { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(FooterHeading, { children: "Contact" }),
+          /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { className: "mb-1", children: "Address:" }),
+            /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "text-white/60 text-sm", children: [
               "1388 Haight Street",
-              /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("br", {}),
+              /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("br", {}),
               "San Francisco, CA 94122",
-              /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("br", {})
+              /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("br", {})
             ] })
           ] })
         ] })
       ] })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(FooterBottomRow, { children: /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)(FooterBottomContent, { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { children: "\xA9 2026 CIMC. All rights reserved." }),
-      /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("a", { href: "/terms.html", className: "hover:underline text-white/60", children: "Terms and Conditions" })
+    /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(FooterBottomRow, { children: /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)(FooterBottomContent, { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { children: "\xA9 2026 CIMC. All rights reserved." }),
+      /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("a", { href: "/terms.html", className: "hover:underline text-white/60", children: "Terms and Conditions" })
     ] }) })
   ] }) });
 }
@@ -118496,9 +118283,9 @@ var BarContainer = dt.div.withConfig({
 });
 var MenuButton = ({
   isOpen
-}) => /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(Circle, { children: /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)(BarContainer, { children: [
-  /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(Bar, {}),
-  !isOpen && /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(Bar, {})
+}) => /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(Circle, { children: /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)(BarContainer, { children: [
+  /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(Bar, {}),
+  !isOpen && /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(Bar, {})
 ] }) });
 var NavbarContainer = dt.div.withConfig({
   shouldForwardProp: (prop) => !["isOpen"].includes(prop)
@@ -118672,14 +118459,14 @@ var ContactButton = dt.a.withConfig({
 function Navbar({
   routes
 }) {
-  const [isOpen, setIsOpen] = (0, import_react13.useState)(false);
+  const [isOpen, setIsOpen] = (0, import_react12.useState)(false);
   const {
     pathname
   } = (0, import_react_router_dom2.useLocation)();
-  (0, import_react13.useEffect)(() => {
+  (0, import_react12.useEffect)(() => {
     setIsOpen(false);
   }, [pathname]);
-  (0, import_react13.useEffect)(() => {
+  (0, import_react12.useEffect)(() => {
     const desktop = window.matchMedia("(min-width: 1280px)");
     const closeOnDesktop = () => {
       if (desktop.matches) setIsOpen(false);
@@ -118690,14 +118477,14 @@ function Navbar({
   }, []);
   const toggleMenu = () => setIsOpen((open2) => !open2);
   const closeMenu = () => setIsOpen(false);
-  return /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)(NavbarContainer, { isOpen, "data-pub-nav": "", "data-pub-menu-open": isOpen ? "true" : "false", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)(NavbarInnerContainer, { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)(_StyledButton, { onClick: toggleMenu, "aria-expanded": isOpen, "aria-label": "Main navigation", type: "button", children: [
+  return /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)(NavbarContainer, { isOpen, "data-pub-nav": "", "data-pub-menu-open": isOpen ? "true" : "false", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)(NavbarInnerContainer, { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)(_StyledButton, { onClick: toggleMenu, "aria-expanded": isOpen, "aria-label": "Main navigation", type: "button", children: [
         isOpen ? "CLOSE" : "MENU",
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(MenuButton, { isOpen })
+        /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(MenuButton, { isOpen })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(NavbarLogoContainer, { children: /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(CIMCWordmark, { width: 108 }) }),
-      /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(NavbarStyle, { isOpen, children: routes.map((route) => route.externalUrl ? /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(NavbarExternalLink, { href: route.externalUrl, target: "_blank", rel: "noreferrer", onClick: closeMenu, children: route.name }, route.path) : /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(NavbarInternalLink, { to: route.path, reloadDocument: route.path.startsWith("/publications"), style: ({
+      /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(NavbarLogoContainer, { children: /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(CIMCWordmark, { width: 108 }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(NavbarStyle, { isOpen, children: routes.map((route) => route.externalUrl ? /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(NavbarExternalLink, { href: route.externalUrl, target: "_blank", rel: "noreferrer", onClick: closeMenu, children: route.name }, route.path) : /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(NavbarInternalLink, { to: route.path, reloadDocument: route.path.startsWith("/publications"), style: ({
         isActive,
         isPending,
         isTransitioning
@@ -118709,7 +118496,7 @@ function Navbar({
         };
       }, onClick: closeMenu, children: route.name }, route.path)) })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(ContactButton, { href: "mailto:proposals@cimc.ai", isOpen, children: "Contact" })
+    /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(ContactButton, { href: "mailto:proposals@cimc.ai", isOpen, children: "Contact" })
   ] });
 }
 var _StyledButton = dt("button").withConfig({
@@ -118727,7 +118514,7 @@ var _StyledButton = dt("button").withConfig({
   }
 });
 var SvgCimcSunburst = (props, ref) => /* @__PURE__ */ React14.createElement("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "-50 -50 100 100", ref, ...props }, /* @__PURE__ */ React14.createElement("title", null, "CIMC Sunburst Logo"), /* @__PURE__ */ React14.createElement("g", { fill: "none", stroke: "currentColor" }, /* @__PURE__ */ React14.createElement("line", { id: "axis-0", y1: -50, y2: 50 }), /* @__PURE__ */ React14.createElement("use", { id: "axis-5", href: "#axis-0", transform: "rotate(5)" }), /* @__PURE__ */ React14.createElement("use", { id: "axis-10", href: "#axis-0", transform: "rotate(10)" }), /* @__PURE__ */ React14.createElement("use", { id: "axis-15", href: "#axis-0", transform: "rotate(15)" }), /* @__PURE__ */ React14.createElement("use", { id: "axis-20", href: "#axis-0", transform: "rotate(20)" }), /* @__PURE__ */ React14.createElement("use", { id: "axis-25", href: "#axis-0", transform: "rotate(25)" }), /* @__PURE__ */ React14.createElement("use", { id: "axis-30", href: "#axis-0", transform: "rotate(30)" }), /* @__PURE__ */ React14.createElement("use", { id: "axis-35", href: "#axis-0", transform: "rotate(35)" }), /* @__PURE__ */ React14.createElement("use", { id: "axis-40", href: "#axis-0", transform: "rotate(40)" }), /* @__PURE__ */ React14.createElement("use", { id: "axis-45", href: "#axis-0", transform: "rotate(45)" }), /* @__PURE__ */ React14.createElement("use", { id: "axis-50", href: "#axis-0", transform: "rotate(50)" }), /* @__PURE__ */ React14.createElement("use", { id: "axis-55", href: "#axis-0", transform: "rotate(55)" }), /* @__PURE__ */ React14.createElement("use", { id: "axis-60", href: "#axis-0", transform: "rotate(60)" }), /* @__PURE__ */ React14.createElement("use", { id: "axis-65", href: "#axis-0", transform: "rotate(65)" }), /* @__PURE__ */ React14.createElement("use", { id: "axis-70", href: "#axis-0", transform: "rotate(70)" }), /* @__PURE__ */ React14.createElement("use", { id: "axis-75", href: "#axis-0", transform: "rotate(75)" }), /* @__PURE__ */ React14.createElement("use", { id: "axis-80", href: "#axis-0", transform: "rotate(80)" }), /* @__PURE__ */ React14.createElement("use", { id: "axis-85", href: "#axis-0", transform: "rotate(85)" }), /* @__PURE__ */ React14.createElement("use", { id: "axis-90", href: "#axis-0", transform: "rotate(90)" }), /* @__PURE__ */ React14.createElement("use", { id: "axis-95", href: "#axis-0", transform: "rotate(95)" }), /* @__PURE__ */ React14.createElement("use", { id: "axis-100", href: "#axis-0", transform: "rotate(100)" }), /* @__PURE__ */ React14.createElement("use", { id: "axis-105", href: "#axis-0", transform: "rotate(105)" }), /* @__PURE__ */ React14.createElement("use", { id: "axis-110", href: "#axis-0", transform: "rotate(110)" }), /* @__PURE__ */ React14.createElement("use", { id: "axis-115", href: "#axis-0", transform: "rotate(115)" }), /* @__PURE__ */ React14.createElement("use", { id: "axis-120", href: "#axis-0", transform: "rotate(120)" }), /* @__PURE__ */ React14.createElement("use", { id: "axis-125", href: "#axis-0", transform: "rotate(125)" }), /* @__PURE__ */ React14.createElement("use", { id: "axis-130", href: "#axis-0", transform: "rotate(130)" }), /* @__PURE__ */ React14.createElement("use", { id: "axis-135", href: "#axis-0", transform: "rotate(135)" }), /* @__PURE__ */ React14.createElement("use", { id: "axis-140", href: "#axis-0", transform: "rotate(140)" }), /* @__PURE__ */ React14.createElement("use", { id: "axis-145", href: "#axis-0", transform: "rotate(145)" }), /* @__PURE__ */ React14.createElement("use", { id: "axis-150", href: "#axis-0", transform: "rotate(150)" }), /* @__PURE__ */ React14.createElement("use", { id: "axis-155", href: "#axis-0", transform: "rotate(155)" }), /* @__PURE__ */ React14.createElement("use", { id: "axis-160", href: "#axis-0", transform: "rotate(160)" }), /* @__PURE__ */ React14.createElement("use", { id: "axis-165", href: "#axis-0", transform: "rotate(165)" }), /* @__PURE__ */ React14.createElement("use", { id: "axis-170", href: "#axis-0", transform: "rotate(170)" }), /* @__PURE__ */ React14.createElement("use", { id: "axis-175", href: "#axis-0", transform: "rotate(175)" })));
-var ForwardRef = (0, import_react13.forwardRef)(SvgCimcSunburst);
+var ForwardRef = (0, import_react12.forwardRef)(SvgCimcSunburst);
 var CIMCSunburstLogoSVG = dt(ForwardRef).withConfig({
   displayName: "CIMCSunburstLogo__CIMCSunburstLogoSVG",
   componentId: "sc-1h1pjbs-0"
@@ -118751,11 +118538,8 @@ var PageHeroLogo = dt.div.withConfig({
   componentId: "sc-pqtwxp-1"
 })(["position:absolute;left:50%;top:0;width:1600px;height:1600px;transform:translateX(-50%) translateY(-23%);pointer-events:none;z-index:0;"]);
 function PageHeroGraphic() {
-  return /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(PageHeroGraphicContainer, { children: /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(PageHeroLogo, { children: /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(CIMCSunburstLogoSVG, { strokeWidth: 0.3 }) }) });
+  return /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(PageHeroGraphicContainer, { children: /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(PageHeroLogo, { children: /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(CIMCSunburstLogoSVG, { strokeWidth: 0.3 }) }) });
 }
-var publicationCitationAuthors = {
-  "research-program-whitepaper": [{ "type": "Organization", "name": "CIMC", "url": "https://cimc.ai" }]
-};
 var PDF_REQUEST_TYPE = "cimc:open-canonical-pdf";
 function createPdfClickBridge(pdfUrl) {
   const serializedUrl = JSON.stringify(pdfUrl).replace(/</g, "\\u003c");
@@ -118785,11 +118569,11 @@ navigation.push({
 function Archive({
   articles
 }) {
-  const [query, setQuery] = (0, import_react13.useState)("");
-  const [tag, setTag] = (0, import_react13.useState)("");
-  const [sort, setSort] = (0, import_react13.useState)("newest");
-  const [page, setPage] = (0, import_react13.useState)(1);
-  (0, import_react13.useEffect)(() => {
+  const [query, setQuery] = (0, import_react12.useState)("");
+  const [tag, setTag] = (0, import_react12.useState)("");
+  const [sort, setSort] = (0, import_react12.useState)("newest");
+  const [page, setPage] = (0, import_react12.useState)(1);
+  (0, import_react12.useEffect)(() => {
     const params = new URLSearchParams(window.location.search);
     setTag(params.get("tag") || "");
     setQuery(params.get("q") || "");
@@ -118797,63 +118581,63 @@ function Archive({
   }, []);
   const filtered = articles.filter((article) => (!tag || article.tags.includes(tag)) && [article.title, article.summary, ...article.tags, ...article.authors.map((a2) => a2.name)].join(" ").toLowerCase().includes(query.toLowerCase().trim())).sort((a2, b) => sort === "newest" ? b.publishedAt.localeCompare(a2.publishedAt) : a2.publishedAt.localeCompare(b.publishedAt));
   const tags = [...new Set(articles.flatMap((article) => article.tags))].sort();
-  return /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("main", { className: "writing-page", id: "writing", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(PageHeroGraphic, {}),
-    /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "writing-content", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("header", { className: "writing-header", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("h1", { className: "writing-title", children: "Publications" }),
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("p", { className: "writing-tagline", children: "Research papers, essays, and articles from CIMC." })
+  return /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("main", { className: "writing-page", id: "writing", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(PageHeroGraphic, {}),
+    /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "writing-content", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("header", { className: "writing-header", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("h1", { className: "writing-title", children: "Publications" }),
+          /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("p", { className: "writing-tagline", children: "Research papers, essays, and articles from CIMC." })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("a", { className: "writing-rss", href: "/pub/feed.xml", target: "_blank", rel: "noreferrer", children: "RSS Feed" })
+        /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("a", { className: "writing-rss", href: "/pub/feed.xml", target: "_blank", rel: "noreferrer", children: "RSS Feed" })
       ] }),
-      tags.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("fieldset", { className: "writing-tags", "aria-label": "Filter by topic", children: tags.map((name) => /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("button", { type: "button", className: `writing-tag${tag === name ? " is-active" : ""}`, "aria-pressed": tag === name, onClick: () => {
+      tags.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("fieldset", { className: "writing-tags", "aria-label": "Filter by topic", children: tags.map((name) => /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("button", { type: "button", className: `writing-tag${tag === name ? " is-active" : ""}`, "aria-pressed": tag === name, onClick: () => {
         setTag(tag === name ? "" : name);
         setPage(1);
       }, children: name }, name)) }),
-      articles.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "writing-controls", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("label", { className: "writing-search", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("span", { children: "Search" }),
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("input", { type: "search", "aria-label": "Search articles, authors, or topics", placeholder: "Titles, authors, topics", value: query, onChange: (event) => {
+      articles.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "writing-controls", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("label", { className: "writing-search", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("span", { children: "Search" }),
+          /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("input", { type: "search", "aria-label": "Search articles, authors, or topics", placeholder: "Titles, authors, topics", value: query, onChange: (event) => {
             setQuery(event.target.value);
             setPage(1);
           } })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("label", { className: "writing-sort", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("span", { children: "Sort" }),
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("select", { "aria-label": "Sort articles", value: sort, onChange: (event) => {
+        /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("label", { className: "writing-sort", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("span", { children: "Sort" }),
+          /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("select", { "aria-label": "Sort articles", value: sort, onChange: (event) => {
             setSort(event.target.value);
             setPage(1);
           }, children: [
-            /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("option", { value: "newest", children: "Newest first" }),
-            /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("option", { value: "oldest", children: "Oldest first" })
+            /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("option", { value: "newest", children: "Newest first" }),
+            /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("option", { value: "oldest", children: "Oldest first" })
           ] })
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("output", { className: "writing-sr-only", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("output", { className: "writing-sr-only", children: [
         filtered.length,
         " ",
         filtered.length === 1 ? "article" : "articles",
         " ",
         "found."
       ] }),
-      articles.length === 0 ? /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("p", { className: "writing-empty", children: "First essays are on their way." }) : filtered.length === 0 ? /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("p", { className: "writing-empty", children: [
+      articles.length === 0 ? /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("p", { className: "writing-empty", children: "First essays are on their way." }) : filtered.length === 0 ? /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("p", { className: "writing-empty", children: [
         "No essays match.",
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("button", { type: "button", onClick: () => {
+        /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("button", { type: "button", onClick: () => {
           setQuery("");
           setTag("");
           setPage(1);
         }, children: "Show all publications" })
-      ] }) : /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { className: "writing-list", children: filtered.slice(0, page * 50).map((article) => /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("article", { className: "writing-row", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "writing-row-main", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("a", { className: "writing-row-main", href: `/publications/${article.slug}/`, children: [
-            /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("h2", { className: "writing-row-title", children: article.title }),
-            /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("p", { className: "writing-row-summary", children: article.summary })
+      ] }) : /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { className: "writing-list", children: filtered.slice(0, page * 50).map((article) => /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("article", { className: "writing-row", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "writing-row-main", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("a", { className: "writing-row-main", href: `/publications/${article.slug}/`, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("h2", { className: "writing-row-title", children: article.title }),
+            /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("p", { className: "writing-row-summary", children: article.summary })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "writing-row-byline", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("span", { className: "writing-row-authors", children: article.authors.map((a2) => a2.name).join(", ") }),
-            /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("span", { className: "writing-row-details", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("time", { dateTime: article.publishedAt, children: (/* @__PURE__ */ new Date(`${article.publishedAt}T12:00:00Z`)).toLocaleDateString("en-US", {
+          /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "writing-row-byline", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("span", { className: "writing-row-authors", children: article.authors.map((a2) => a2.name).join(", ") }),
+            /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("span", { className: "writing-row-details", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("time", { dateTime: article.publishedAt, children: (/* @__PURE__ */ new Date(`${article.publishedAt}T12:00:00Z`)).toLocaleDateString("en-US", {
                 timeZone: "UTC",
                 year: "numeric",
                 month: "long",
@@ -118866,9 +118650,9 @@ function Archive({
             ] })
           ] })
         ] }),
-        article.heroImage && safeThumbnailUrl(article.heroImage) && /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("a", { className: "writing-row-thumb", href: `/publications/${article.slug}/`, "aria-label": `Read ${article.title}`, tabIndex: -1, children: /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("img", { src: article.heroImage, alt: "", loading: "lazy" }) })
+        article.heroImage && safeThumbnailUrl(article.heroImage) && /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("a", { className: "writing-row-thumb", href: `/publications/${article.slug}/`, "aria-label": `Read ${article.title}`, tabIndex: -1, children: /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("img", { src: article.heroImage, alt: "", loading: "lazy" }) })
       ] }, article.slug)) }),
-      filtered.length > page * 50 && /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("button", { className: "pub-btn", type: "button", onClick: () => setPage(page + 1), children: "Show more publications" })
+      filtered.length > page * 50 && /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("button", { className: "pub-btn", type: "button", onClick: () => setPage(page + 1), children: "Show more publications" })
     ] })
   ] });
 }
@@ -118890,10 +118674,9 @@ function StaticPublicationPage({
     feedUrl: "/pub/feed.xml"
   });
   const article = data2.article;
-  const citationAuthors = article ? publicationCitationAuthors[article.meta.slug] : void 0;
-  const editionFrame = (0, import_react13.useRef)(null);
+  const editionFrame = (0, import_react12.useRef)(null);
   const pdfUrl = article?.doc ? canonicalPdfUrl(getManuscript(article.doc)?.pdf?.filename) : void 0;
-  (0, import_react13.useEffect)(() => {
+  (0, import_react12.useEffect)(() => {
     if (!data2.editionUrl || !pdfUrl) return;
     const openPdf = (event) => {
       if (isCanonicalPdfRequest(event, editionFrame.current?.contentWindow ?? null) && navigator.userActivation?.isActive !== false) {
@@ -118903,10 +118686,6 @@ function StaticPublicationPage({
     window.addEventListener("message", openPdf);
     return () => window.removeEventListener("message", openPdf);
   }, [data2.editionUrl, pdfUrl]);
-  const stored = data2.rendering !== void 0;
-  (0, import_react13.useEffect)(() => {
-    if (stored) hydrateArticles();
-  }, [stored]);
   const plainDoc = article?.doc ? {
     ...article.doc,
     attrs: {
@@ -118914,7 +118693,7 @@ function StaticPublicationPage({
       webEdition: void 0
     }
   } : void 0;
-  return /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { onClickCapture: (event) => {
+  return /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { onClickCapture: (event) => {
     if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
     const anchor = event.target.closest("a");
     if (!anchor || anchor.target === "_blank" || anchor.hasAttribute("download")) return;
@@ -118925,11 +118704,11 @@ function StaticPublicationPage({
       window.location.assign(url.href);
     }
   }, children: [
-    /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(Navbar, { routes: navigation }),
-    article ? /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "pub-page-wrapper pub-scope", style: {
+    /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(Navbar, { routes: navigation }),
+    article ? /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "pub-page-wrapper pub-scope", style: {
       paddingTop: 96
     }, children: [
-      data2.rendering !== void 0 ? /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(
+      data2.rendering !== void 0 ? /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(
         "div",
         {
           className: "pub-stored-article",
@@ -118937,26 +118716,26 @@ function StaticPublicationPage({
             __html: data2.rendering
           }
         }
-      ) : data2.editionUrl ? /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)(import_jsx_runtime14.Fragment, { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("iframe", { ref: editionFrame, title: article.meta.title, src: data2.editionUrl, sandbox: "allow-scripts", className: "static-edition" }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("noscript", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("style", { children: ".static-edition{display:none}" }),
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(ArticleReadingView, { meta: article.meta, citationAuthors, doc: plainDoc || article.doc })
+      ) : data2.editionUrl ? /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)(import_jsx_runtime12.Fragment, { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("iframe", { ref: editionFrame, title: article.meta.title, src: data2.editionUrl, sandbox: "allow-scripts", className: "static-edition" }),
+        /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("noscript", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("style", { children: ".static-edition{display:none}" }),
+          /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(ArticleReadingView, { meta: article.meta, doc: plainDoc || article.doc })
         ] })
-      ] }) : /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(ArticleReadingView, { meta: article.meta, citationAuthors, doc: article.doc }),
-      /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("section", { className: "static-related", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("h2", { children: "Related publications" }),
-        data2.articles.filter((a2) => a2.slug !== article.meta.slug).slice(0, 3).map((a2) => /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("p", { children: /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("a", { href: `/publications/${a2.slug}/`, children: a2.title }) }, a2.slug))
+      ] }) : null,
+      /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("section", { className: "static-related", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("h2", { children: "Related publications" }),
+        data2.articles.filter((a2) => a2.slug !== article.meta.slug).slice(0, 3).map((a2) => /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("p", { children: /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("a", { href: `/publications/${a2.slug}/`, children: a2.title }) }, a2.slug))
       ] })
-    ] }) : /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(Archive, { articles: data2.articles }),
-    /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(Footer, { routes: navigation })
+    ] }) : /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(Archive, { articles: data2.articles }),
+    /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(Footer, { routes: navigation })
   ] });
 }
 var readingStyles = '/* Draw the external PDF arrow so mobile fonts cannot replace it with emoji. */\n.pub-pdf-actions .pub-resource-link > span[aria-hidden="true"] {\n  position: relative;\n  display: inline-block;\n  width: 0.75rem;\n  height: 0.75rem;\n  font-size: 0;\n  line-height: 0;\n  flex-shrink: 0;\n}\n\n.pub-pdf-actions .pub-resource-link > span[aria-hidden="true"]::before {\n  content: "";\n  position: absolute;\n  top: 0.0625rem;\n  right: 0.0625rem;\n  width: 0.4375rem;\n  height: 0.4375rem;\n  border-top: 1px solid currentColor;\n  border-right: 1px solid currentColor;\n}\n\n.pub-pdf-actions .pub-resource-link > span[aria-hidden="true"]::after {\n  content: "";\n  position: absolute;\n  top: 0.0625rem;\n  right: 0.0625rem;\n  width: 0.8125rem;\n  height: 1px;\n  background: currentColor;\n  transform: rotate(-45deg);\n  transform-origin: right center;\n}\n\n/* Screen reading sizes shared by native articles and hosted custom editions. */\n@media screen {\n  .pub-reading-view .pub-article-body,\n  .pub-reading-view .pub-article-body blockquote,\n  .essay,\n  .essay blockquote {\n    font-size: 18px;\n  }\n\n  .introduction,\n  .genesis-passage {\n    font-size: 17px;\n  }\n\n  @container publication (max-width: 600px) {\n    .pub-reading-view .pub-article-body,\n    .pub-reading-view .pub-article-body blockquote {\n      font-size: 16px;\n    }\n  }\n}\n\n@media screen and (max-width: 900px) {\n  .introduction {\n    font-size: 16px;\n  }\n}\n\n@media screen and (max-width: 600px) {\n  .essay,\n  .essay blockquote,\n  .genesis-passage {\n    font-size: 16px;\n  }\n}\n';
 function renderPublication(data2) {
   const sheet = new gt();
   try {
-    const html = (0, import_server2.renderToString)(sheet.collectStyles(/* @__PURE__ */ (0, import_jsx_runtime14.jsx)(import_react_router_dom2.MemoryRouter, { initialEntries: [data2.path], children: /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(StaticPublicationPage, { data: data2 }) })));
+    const html = (0, import_server.renderToString)(sheet.collectStyles(/* @__PURE__ */ (0, import_jsx_runtime12.jsx)(import_react_router_dom2.MemoryRouter, { initialEntries: [data2.path], children: /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(StaticPublicationPage, { data: data2 }) })));
     return {
       html,
       styles: sheet.getStyleTags()
@@ -118973,7 +118752,6 @@ function prepareEdition(html, origin, pdf) {
   return prepareWebEditionHtml(html, void 0, pdf, true).replace('<base href="about:srcdoc">', "").replace("</head>", `<style>${readingStyles}</style>${pdf ? `<script>${createPdfClickBridge(pdf.url)}</script>` : ""}</head>`);
 }
 export {
-  READER_VERSION,
   checkStoredRendering,
   getWebEdition,
   managedAssetPath,
