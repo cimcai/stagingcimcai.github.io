@@ -3,6 +3,7 @@
   "version": 1,
   "articles": [
     "prime-hypostasis",
+    "comp-func-and-against-intrinsic-properties",
     "research-program-whitepaper",
     "the-machine-consciousness-hypothesis"
   ],
@@ -145,13 +146,13 @@
     },
     {
       "path": "publications/index.html",
-      "sha256": "f103c3dd21ca5fb96291f792f3c1d15975856658b9b71265056312c82140e773",
-      "bytes": 88453
+      "sha256": "450d85e4690a90bcc790f4dccf2b869930810cb195181addee3cebb9c43659f1",
+      "bytes": 89726
     },
     {
       "path": "publications/research-program-whitepaper/index.html",
-      "sha256": "754717cfaddb69d8a0ea9fdda0f0c27e69b4b6ffc19460ee49dcec940a88b4d1",
-      "bytes": 260588
+      "sha256": "5df26ac91b22a4b546862e499c63941fce0edd50ccc8e9c2277e4f36c67131cb",
+      "bytes": 261272
     },
     {
       "path": "writing/research-program-whitepaper/index.html",
@@ -159,9 +160,19 @@
       "bytes": 550
     },
     {
+      "path": "publications/comp-func-and-against-intrinsic-properties/index.html",
+      "sha256": "4bd7b731fc2095ab69f11dc9ae248107a020c1fcd9c041419c892f773fd4cc2f",
+      "bytes": 168075
+    },
+    {
+      "path": "writing/comp-func-and-against-intrinsic-properties/index.html",
+      "sha256": "19a9c74b452365a2a7ae58e94ced42321ac64e56dec4d1459c488f825bc0c685",
+      "bytes": 495
+    },
+    {
       "path": "publications/prime-hypostasis/index.html",
-      "sha256": "e32b7542a0abab05d20cab022113b52b7523e42e9b793cac298295dea6f7d381",
-      "bytes": 127783
+      "sha256": "6a1e09b7777f4010bdddc52b4521721fc11fd6ca8a4f45342a22299a873095f7",
+      "bytes": 128467
     },
     {
       "path": "writing/prime-hypostasis/index.html",
@@ -170,8 +181,8 @@
     },
     {
       "path": "publications/the-machine-consciousness-hypothesis/index.html",
-      "sha256": "5f2ee4118c99db91bfa24f2d85c7c27d93466ab1d4e089f35db27bddadcc2629",
-      "bytes": 233387
+      "sha256": "a2c5865093f2736b1f389fb8918568171731da76e4ab5b22cba70b8da394783b",
+      "bytes": 234071
     },
     {
       "path": "writing/the-machine-consciousness-hypothesis/index.html",
@@ -185,8 +196,8 @@
     },
     {
       "path": "pub/feed.xml",
-      "sha256": "f5cb01b686b03fbf43cc70d16c124376700be317510ec1a994fe75c3f40a6119",
-      "bytes": 1282
+      "sha256": "4cf562483bb70cc41cd67fbb19dcdb182ffb1bf1a2196415d540525887ef9f5f",
+      "bytes": 1705
     }
   ]
 }
