@@ -118719,7 +118719,7 @@ function StaticPublicationPage({
     /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(Footer, { routes: navigation })
   ] });
 }
-var readingStyles = "/*\r\n * Screen reading sizes for hosted custom editions. Native articles bring\r\n * theirs with the reader that rendered them (since reader 0.9.28).\r\n */\r\n@media screen {\r\n  .essay,\r\n  .essay blockquote {\r\n    font-size: 18px;\r\n  }\r\n\r\n  .introduction,\r\n  .genesis-passage {\r\n    font-size: 17px;\r\n  }\r\n}\r\n\r\n@media screen and (max-width: 900px) {\r\n  .introduction {\r\n    font-size: 16px;\r\n  }\r\n}\r\n\r\n@media screen and (max-width: 600px) {\r\n  .essay,\r\n  .essay blockquote,\r\n  .genesis-passage {\r\n    font-size: 16px;\r\n  }\r\n}\r\n";
+var readingStyles = "/*\n * Screen reading sizes for hosted custom editions. Native articles bring\n * theirs with the reader that rendered them (since reader 0.9.28).\n */\n@media screen {\n  .essay,\n  .essay blockquote {\n    font-size: 18px;\n  }\n\n  .introduction,\n  .genesis-passage {\n    font-size: 17px;\n  }\n}\n\n@media screen and (max-width: 900px) {\n  .introduction {\n    font-size: 16px;\n  }\n}\n\n@media screen and (max-width: 600px) {\n  .essay,\n  .essay blockquote,\n  .genesis-passage {\n    font-size: 16px;\n  }\n}\n";
 function renderPublication(data2) {
   const sheet = new gt();
   try {

@@ -15,9 +15,9 @@
       "bytes": 399551
     },
     {
-      "path": "pub/static-editions/f2d7273e81c65e4f5094d2b03577d5d2ea85495b1d0a8039a49146f45753c5b6.html",
-      "sha256": "f2d7273e81c65e4f5094d2b03577d5d2ea85495b1d0a8039a49146f45753c5b6",
-      "bytes": 1258776
+      "path": "pub/static-editions/5eb62345c89bc09967798a523391474ee2f7e7bf9a43e642ab3368a094e98766.html",
+      "sha256": "5eb62345c89bc09967798a523391474ee2f7e7bf9a43e642ab3368a094e98766",
+      "bytes": 1258747
     },
     {
       "path": "pub/static-assets/0cdd387c9590a1a9f9794560022dbb59654a7d86f187aa0c81495ad42d3a7308.woff2",
@@ -146,12 +146,12 @@
     },
     {
       "path": "publications/index.html",
-      "sha256": "1df0958835a9691252a8b505972be9481d063dbd6756e9c1d147aa9ee3c63007",
+      "sha256": "c39f55de41b8718559500ce29575b8a28042f649a17b214d96ab6684dfe9f547",
       "bytes": 89435
     },
     {
       "path": "publications/research-program-whitepaper/index.html",
-      "sha256": "7a3fd770a1eb058e4276e48dfcf8b66e38c441940a9409788170aad0cfc2a8fa",
+      "sha256": "d0e04f95c47c114a78526548e32dc760bff069e5b95ea6a3f836ea81516894e9",
       "bytes": 261175
     },
     {
@@ -161,7 +161,7 @@
     },
     {
       "path": "publications/against-intrinsic-properties/index.html",
-      "sha256": "882e796490c898a3bbfcf1ae43598630e1efb970b75b875084bcb0008fc485dd",
+      "sha256": "6f1d1297c5f24c6cc25db6796e11a42b3c0098d7ea42f7dd30800ae6fc5df58f",
       "bytes": 167810
     },
     {
@@ -171,7 +171,7 @@
     },
     {
       "path": "publications/prime-hypostasis/index.html",
-      "sha256": "8be92b53c6fc47d01f91606a1b54ff0f6c81054154579d3f2ef0159e875cfdb4",
+      "sha256": "0c1b5866c3604ace38dbbdff049c109a84f8c5d15521ea4c282653b4daba1ad1",
       "bytes": 128370
     },
     {
@@ -181,7 +181,7 @@
     },
     {
       "path": "publications/the-machine-consciousness-hypothesis/index.html",
-      "sha256": "4890b85ccaf2bad4b42c7c6c070199f2faaf84aa2db94cd35f26c416ded5c985",
+      "sha256": "fda7dfd7b9ff50844b9fc9bc68b5ac7164a0120f2388323e6f6064fd27ded165",
       "bytes": 233974
     },
     {

@@ -1,29 +1,29 @@
 {
-  "_index-8C5QCSVR.css": {
-    "file": "assets/index-8C5QCSVR.css",
-    "src": "_index-8C5QCSVR.css"
+  "_index-C_qonbQw.css": {
+    "file": "assets/index-C_qonbQw.css",
+    "src": "_index-C_qonbQw.css"
   },
-  "_index-DhE0FS1O.js": {
-    "file": "assets/index-DhE0FS1O.js",
+  "_index-OzENBwXy.js": {
+    "file": "assets/index-OzENBwXy.js",
     "name": "index",
     "css": [
-      "assets/index-8C5QCSVR.css"
+      "assets/index-C_qonbQw.css"
     ]
   },
-  "_useDialogLifecycle-BScQsi8n.js": {
-    "file": "assets/useDialogLifecycle-BScQsi8n.js",
+  "_useDialogLifecycle-J4Ea9PUd.js": {
+    "file": "assets/useDialogLifecycle-J4Ea9PUd.js",
     "name": "useDialogLifecycle",
     "imports": [
-      "_index-DhE0FS1O.js"
+      "_index-OzENBwXy.js"
     ]
   },
   "index.html": {
-    "file": "assets/main-C6-_4IH4.js",
+    "file": "assets/main-BN6gHFre.js",
     "name": "main",
     "src": "index.html",
     "isEntry": true,
     "imports": [
-      "_index-DhE0FS1O.js"
+      "_index-OzENBwXy.js"
     ],
     "dynamicImports": [
       "src/pages/AaaiSymposiumSchedule.tsx",
@@ -279,32 +279,32 @@
     "src": "node_modules/@cimc/publishing-reader/dist/katex/fonts/KaTeX_Typewriter-Regular.woff2"
   },
   "src/pages/AaaiSymposiumSchedule.tsx": {
-    "file": "assets/AaaiSymposiumSchedule-CHnBQ73h.js",
+    "file": "assets/AaaiSymposiumSchedule-BqHLgfOm.js",
     "name": "AaaiSymposiumSchedule",
     "src": "src/pages/AaaiSymposiumSchedule.tsx",
     "isDynamicEntry": true,
     "imports": [
-      "_index-DhE0FS1O.js",
-      "_useDialogLifecycle-BScQsi8n.js"
+      "_index-OzENBwXy.js",
+      "_useDialogLifecycle-J4Ea9PUd.js"
     ]
   },
   "src/pages/ComputationalConsciousnessSchedule.tsx": {
-    "file": "assets/ComputationalConsciousnessSchedule-BEULNp7a.js",
+    "file": "assets/ComputationalConsciousnessSchedule-BRuroFF4.js",
     "name": "ComputationalConsciousnessSchedule",
     "src": "src/pages/ComputationalConsciousnessSchedule.tsx",
     "isDynamicEntry": true,
     "imports": [
-      "_index-DhE0FS1O.js",
-      "_useDialogLifecycle-BScQsi8n.js"
+      "_index-OzENBwXy.js",
+      "_useDialogLifecycle-J4Ea9PUd.js"
     ]
   },
   "src/static-publications/client.tsx": {
-    "file": "assets/staticPublication-B4G2ULEz.js",
+    "file": "assets/staticPublication-DSvpxVof.js",
     "name": "staticPublication",
     "src": "src/static-publications/client.tsx",
     "isEntry": true,
     "imports": [
-      "_index-DhE0FS1O.js"
+      "_index-OzENBwXy.js"
     ],
     "css": [
       "assets/staticPublication-Bdup2I4z.css"
